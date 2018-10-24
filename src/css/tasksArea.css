@@ -1,0 +1,96 @@
+#task-list, #note-list {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.button-to-input {
+  width: 200px;
+  padding: 5px;
+}
+
+.one-task, .one-note {
+  width: 97%;
+  height: auto;
+  background-color: white;
+  margin: 5px auto;
+  padding: 2px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-container {
+  padding-left: 5px;
+}
+
+.checkbox-style {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.task-text {
+  width: 85%;
+  margin-left: 10px;
+  outline-color: grey;
+}
+
+.delete-task-button, .delete-note-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  text-align: center;
+  background-color: var(--button-color);
+  border: 2px solid var(--button-border-color);
+  border-radius: 50px;
+  outline: none;
+  box-shadow: 2px 2px var(--button-shadow-color);
+}
+
+.delete-task-button:active, .delete-note-button:active {
+  box-shadow: 1px 1px var(--button-shadow-color);
+}
+
+#add-note {
+  margin: 25px auto 5px auto;
+  padding: 15px 0;
+}
+
+.textarea {
+  width: 90%;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  resize: vertical;
+}
+
+.note-text {
+  width: 85%;
+  margin-left: 15px;
+  outline-color: grey;
+}
+
+.add-button-round {
+  width: 50px;
+  height: 50px;
+  background-color: var(--button-border-color);
+  border: 0 solid;
+  border-radius: 50px;
+  outline: none;
+  box-shadow: 3px 3px 5px var(--button-shadow-color);
+}
+
+.add-button-round:active {
+  box-shadow: 1px 1px 5px var(--button-shadow-color);
+  transform: translateX(1px) translateY(1px);
+}
+
+.add-task {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,42 @@
+
+.overlap {
+    border: 1px solid red;
+}
+
+.hidden {
+    display: block;
+    height: 0;
+    opacity: 0;
+    -webkit-transition: height 2s ease;  
+    -moz-transition: height 2s ease;  
+    -o-transition: height 2s ease;  
+    -ms-transition: height 2s ease;  
+    transition: height 2s ease;
+}
+
+.visible {
+    display: block;
+    max-height: 300px;
+    opacity: 1;
+    -webkit-transition: height 2s ease;  
+    -moz-transition: height 2s ease;  
+    -o-transition: height 2s ease;  
+    -ms-transition: height 2s ease;  
+    transition: height 2s ease;
+    border: 1px dotted black;
+}
+
+.hidden * {
+    display: none;
+}
+
+.visible * {
+    display: block;
+    height: auto;
+    opacity: 1;
+    /* border: 1px solid yellow; */
+}
+
+.ovlp-descr-p {
+    padding: 5px 10px;
+}
