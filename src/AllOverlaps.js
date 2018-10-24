@@ -4,7 +4,7 @@ import Desktop from './components/Desktop.js';
 import TasksFilter from './components/TasksFilter.js';
 import NotesFilter from './components/NotesFilter.js';
 
-const AllOverlaps = ( {overlaps, toggleVisibility, overlapDescription} ) => {
+const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
     
     const overlap = overlaps.map( overlap => {
         const chooseOverlap = ( (id) => {
@@ -19,7 +19,7 @@ const AllOverlaps = ( {overlaps, toggleVisibility, overlapDescription} ) => {
             }
         })
         return (
-        <div className="overlap" key={overlap.id} onClick={() => {toggleVisibility(overlap.visibility, overlap.id)} } >
+        <div className="overlap" key={overlap.id} onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} } >
             <h2 className="ovlp-title" >{overlap.title}</h2>
             <div className="ovlp-descr" className={overlap.visibility ? ("visible") : ("hidden") } >
                 {chooseOverlap(overlap.id)}
