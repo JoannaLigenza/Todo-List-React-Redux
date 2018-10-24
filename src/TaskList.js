@@ -1,8 +1,9 @@
 import React from 'react';
-import AddTask from './Add-task.js';
+import { connect } from 'react-redux';
 
 const TaskList = ( {tasks, deleteTask, editTask, changeStyle} ) => {
     const addTask = () => {
+        console.log("tuuu " , deleteTask)
         console.log("dziala")
     }
     const alltasks = tasks.map( task => {
@@ -13,9 +14,6 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle} ) => {
     } );
     return(
         <div id="task-list-container">
-            <div className="add-task">
-                <AddTask/>
-            </div>
             <button className="add-button-round" onClick={addTask}>Add Task</button> 
             <ul id="task-list">
                 { alltasks }
@@ -24,4 +22,19 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle} ) => {
     )
 }
 
-export default TaskList;
+
+const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
+    return {
+        tasks: state.tasks
+    }
+}
+
+const mapDispatchToPost = (dispatch) => {
+    return {
+        deleteTask: (id) => { dispatch( { type: 'DELETE_TASK', id: id} ) }, 
+        changeStyle: (checked, id) => { dispatch( {type: 'CHANGE_TASK_STYLE', checked: checked, id: id}  ) },
+        editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToPost)(TaskList);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const NoteList = ( {notes, deleteNote, editNote} ) => {
     const showNotes = notes.map( (note) => {
@@ -16,4 +17,17 @@ const NoteList = ( {notes, deleteNote, editNote} ) => {
 
 }
 
-export default NoteList;
+const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
+    return {
+        notes: state.notes
+    }
+}
+
+const mapDispatchToPost = (dispatch) => {
+    return {
+        deleteNote: (id) => { dispatch( { type: 'DELETE_NOTE', id: id} ) }, 
+        editNote: (text, id) => { dispatch( { type: 'EDIT_NOTE', note: text, id: id} ) }, 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToPost)(NoteList);
