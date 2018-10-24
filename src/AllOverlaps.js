@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Desktop from './components/Desktop.js';
 import TasksFilter from './components/TasksFilter.js';
 import NotesFilter from './components/NotesFilter.js';
@@ -34,4 +35,16 @@ const AllOverlaps = ( {overlaps, toggleVisibility, overlapDescription} ) => {
     )
 }
 
-export default AllOverlaps;
+const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
+    return {
+        overlaps: state.overlaps
+    }
+}
+
+const mapDispatchToPost = (dispatch) => {
+    return {
+        toggleVisibility: (visibility, id) => { dispatch( { type: 'TOGGLE_VISIBILITY', visibility: visibility, id: id} ) }, 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToPost)(AllOverlaps);
