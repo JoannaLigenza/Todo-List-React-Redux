@@ -17,7 +17,7 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-    console.log("action: ", action.visibility)
+    console.log("action: ", action)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
