@@ -10,6 +10,58 @@
   padding: 5px;
 }
 
+#task-area {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.add-task-div-hidden {
+  display: block;
+  width: 90%;
+  height: 0;
+  opacity: 1;
+  position: absolute;
+  top: 40px;
+  left: 4%;
+  transition: height 0.5s ease;
+  background-color: red;
+}
+
+.add-task-div-hidden * {
+  display: none;
+}
+
+.add-task-div-visible {
+  display: block;
+  width: 90%;
+  height: 500px;
+  opacity: 1;
+  position: absolute;
+  top: 40px;
+  left: 4%;
+  transition: height 0.5s ease;
+  background-color: red;
+  border: 5px double #bbb;
+  box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
+}
+
+.add-task-area {
+  width: 100%;
+  position: relative;
+}
+
+.right {
+  position: absolute;
+  top: -15px;
+  right: -19px;
+}
+
+.add-task {
+  width: 100%;
+  height: auto;
+}
+
 .one-task, .one-note {
   width: 97%;
   height: auto;
@@ -32,10 +84,23 @@
   height: 20px;
 }
 
-.task-text {
+.task-p-area {
   width: 85%;
   margin-left: 10px;
   outline-color: grey;
+}
+
+.task-text, .task-property {
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.task-property {
+  margin: 3px 0 15px 0  ;
+  padding: 0;
+  font-size: 14px;
+  color: grey;
 }
 
 .delete-task-button, .delete-note-button {
@@ -61,6 +126,8 @@
 
 .textarea {
   width: 90%;
+  height: 50px;
+  max-height: 200px;
   display: block;
   margin: 10px auto;
   padding: 10px;
@@ -90,7 +157,3 @@
   transform: translateX(1px) translateY(1px);
 }
 
-.add-task {
-  width: 100%;
-  height: auto;
-}

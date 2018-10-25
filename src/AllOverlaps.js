@@ -21,7 +21,7 @@ const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
         return (
         <div className="overlap" key={overlap.id} onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} } >
             <h2 className="ovlp-title" >{overlap.title}</h2>
-            <div className="ovlp-descr" className={overlap.visibility ? ("visible") : ("hidden") } >
+            <div className={overlap.visibility ? ("visible") : ("hidden") } >
                 {chooseOverlap(overlap.id)}
                 
                 
