@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TaskList from './taskList.js';
+import TaskList from './TaskList.js';
 
 class TaskArea extends Component {
     render() {

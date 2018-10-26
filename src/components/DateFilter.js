@@ -5,7 +5,7 @@ const DateFilter = () => {
         <p className="ovlp-descr-p">
             Opis Opis Opis haha Opis Opis Opis haha, Opis Opis Opis haha
             Opis Opis Opis haha
-            Opis Opis Opis ha
+            Opis Opis Opis ha  babababababababa
         </p>
     )
 }

@@ -7,7 +7,7 @@ const SectionFilter = () => {
             Opis Opis Opis haha
             Opis Opis Opis hahaOpis Opis Opis hahaOpis Opis Opis hahaOpis Opis Opis haha
             Opis Opis Opis haha
-            Opis Opis Opis 
+            Opis Opis Opis gdffdgdfgfh
         </p>
     )
 }

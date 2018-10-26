@@ -1,0 +1,18 @@
+.add-priority {
+
+}
+
+.add-priority select {
+    width: 97%;
+    padding: 0 10px;
+    margin: 10px;
+    outline: none;
+    appearance: none;
+    border-radius: 2px;
+    background-color: yellow;
+}
+
+.priority-list {
+    display: flex;
+    margin: 10px;
+}

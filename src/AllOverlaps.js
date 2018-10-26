@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Desktop from './components/Desktop.js';
-import TasksFilter from './components/TasksFilter.js';
+import ListFilter from './components/ListFilter.js';
 import NotesFilter from './components/NotesFilter.js';
 
 const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
@@ -12,7 +12,7 @@ const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
                 return <Desktop />
             }
             if( id === 2) {
-                return <TasksFilter />
+                return <ListFilter />
             }
             if( id === 3) {
                 return <NotesFilter />

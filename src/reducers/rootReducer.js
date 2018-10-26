@@ -6,6 +6,9 @@ const initState = {
         {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "",}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "",},
         ], 
+    lists: [
+        "Default", "Private", "Work"
+    ],
     notes: [ 
             {note: "Sample note", id: 1},
         ],

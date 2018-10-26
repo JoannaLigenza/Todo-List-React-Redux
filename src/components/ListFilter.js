@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TasksFilter = () => {
+const ListFilter = () => {
     return(
         <p className="ovlp-descr-p">
             Opis Opis Opis haha Opis Opis Opis haha, Opis Opis Opis haha
@@ -18,4 +18,4 @@ const TasksFilter = () => {
     )
 }
 
-export default TasksFilter;
+export default ListFilter;
