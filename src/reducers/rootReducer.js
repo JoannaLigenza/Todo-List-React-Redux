@@ -48,8 +48,8 @@ const rootReducer = (state = initState, action) => {
                 }
                 console.log(post.checked)
                 console.log("state: ", state.tasks)
-                return post.style, post.checked
             }
+            return [post.style, post.checked]
         })
         return {
             ...state, 
@@ -59,8 +59,9 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'EDIT_TASK') {
         const newTask = state.tasks.map( task => {
             if (task.id === action.id) {
-               return task.task = action.task;
+               task.task = action.task;
             }
+            return task.task
         })
         return {
             ...state, 
@@ -97,8 +98,9 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'EDIT_NOTE') {
         const newNote = state.notes.map( note => {
             if (note.id === action.id) {
-               return note.note = action.note;
+                note.note = action.note;
             }
+            return note.note
         })
         return {
             ...state, 
@@ -120,9 +122,10 @@ const rootReducer = (state = initState, action) => {
             if (visible.id !== action.id) {
                 if (visible.visibility === true) {
                     visible.visibility = false
-                    return visible.visibility
                 }
+                // return visible.visibility
             }
+            return visible.visibility
         }) 
         return {
                 ...state, 

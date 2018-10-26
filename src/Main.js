@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Menu from './Menu.js';
-import TaskArea from './TaskArea.js';
+import TaskArea from './taskArea.js';
 import NoteArea from './NoteArea.js';
 
 class Main extends Component {

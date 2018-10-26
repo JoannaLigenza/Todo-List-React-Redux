@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import AddTask from './Add-task.js';
+import AddTask from './add-task.js';
 
 class AddTaskDiv extends Component {
     render() {
