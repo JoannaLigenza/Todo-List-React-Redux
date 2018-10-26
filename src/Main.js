@@ -38,11 +38,17 @@ class Main extends Component {
         // console.log("state: " ,this.state.overlap)
     }
 
+    filterTaskModuleToTaskArea = (filterName) => {
+        console.log("cos3")
+        console.log("filterName ", filterName)
+        //filter task here 
+    }
+
     render() {
         return (
             <div id="main">
                 <div id="menu">
-                    <Menu loadOverlap={this.loadOverlap}/>
+                    <Menu loadOverlap={this.loadOverlap} filter={this.filterTaskModuleToTaskArea}/>
                 </div>
                 <div id="tasks">
                     {this.state.overlap}

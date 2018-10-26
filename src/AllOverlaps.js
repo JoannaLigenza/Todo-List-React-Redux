@@ -4,23 +4,29 @@ import Desktop from './components/Desktop.js';
 import ListFilter from './components/ListFilter.js';
 import NotesFilter from './components/NotesFilter.js';
 
-const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
+// props:filter is from Menu
+const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap, filter} ) => {
     
     const overlap = overlaps.map( overlap => {
+        const filterTaskModuleToMenu = (filterName) => {
+            console.log("cos")
+            console.log("filter ", filterName)
+            filter(filterName)
+        }
         const chooseOverlap = ( (id) => {
             if( id === 1) {
                 return <Desktop />
             }
             if( id === 2) {
-                return <ListFilter />
+                return <ListFilter filter={filterTaskModuleToMenu}/>
             }
             if( id === 3) {
                 return <NotesFilter />
             }
         })
         return (
-        <div className="overlap" key={overlap.id} onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} } >
-            <h2 className="ovlp-title" >{overlap.title}</h2>
+        <div className="overlap" key={overlap.id}  >
+            <h2 className="ovlp-title" onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} }>{overlap.title}</h2>
             <div className={overlap.visibility ? ("visible") : ("hidden") } >
                 {chooseOverlap(overlap.id)}
                 
