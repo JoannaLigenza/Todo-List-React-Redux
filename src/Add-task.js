@@ -21,14 +21,18 @@ class AddTask extends Component {
         this.setState( {id: id})
         this.props.addTask(this.state.task, this.state.id, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
         this.setState( {task: ""})
+        this.setState( {date: ""});
     }
     selectChange = (e) => {
         this.setState( {list: e.target.value} );
     }
+    dateChange = (e) => {
+        this.setState( {date: e.target.value} );
+    }
     
     render() {
         const lists = this.props.lists.map( list => {
-           return <option className="option" style={{margin: 5+"px"}}> {list} </option>
+           return <option className="option" style={{margin: 5+"px"}} key={list.id}> {list.list} </option> 
         });
        // const date = 
        // console.log("lists: ", lists)
@@ -43,7 +47,10 @@ class AddTask extends Component {
                             {lists}
                         </select>
                     </div>
-                    <div className="add-priority priority-date"></div>
+                    <div className="add-priority priority-date">
+                        <h4>Date:</h4>
+                        <input type="date" value={this.state.date} onChange={this.dateChange}></input>
+                    </div>
                     <div className="add-priority priority-time"></div>
                     <div className="add-priority priority-priority"></div>
                 </div>
