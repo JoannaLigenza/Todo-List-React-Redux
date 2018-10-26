@@ -7,11 +7,11 @@ const ListFilter = ( {filter} ) => {
         filter(filterName);
     }
     return(
-        <p className="ovlp-descr-p">
+        <div className="ovlp-descr-p">
             <div id="list-filter" onClick={ () => {filterTaskModuleToAllOverlaps("listFilter")} }></div>
             <div id="date-filter" onClick={ () => {filterTaskModuleToAllOverlaps("dateFilter")} }></div>
 
-        </p>
+        </div>
     )
 }
 

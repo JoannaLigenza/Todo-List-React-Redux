@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddTask extends Component {
-    state = { task: "Add new task", id: 5, list: "", date: "", time: "", priority: "", color: "" }
+    state = { task: "Add new task", id: 5, list: "a", date: " ", time: "", priority: "", color: "" }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
@@ -78,10 +78,10 @@ class AddTask extends Component {
                         <h4>Priority:</h4>
                         <div id="priority-select" onChange={this.priorityChange} default="none">
                             <ul>
-                                <li><label for="1"><input type="radio" id="1"name="prior" value="None"></input>None</label></li>
-                                <li><label for="2"><input type="radio" id="2"name="prior" value="Low"></input>Low</label></li>
-                                <li><label for="3"><input type="radio" id="3"name="prior" value="Middle"></input>Middle</label></li>
-                                <li><label for="4"><input type="radio" id="4"name="prior" value="High"></input>High</label></li>
+                                <li><label htmlFor="1"><input type="radio" id="1"name="prior" value="None"></input>None</label></li>
+                                <li><label htmlFor="2"><input type="radio" id="2"name="prior" value="Low"></input>Low</label></li>
+                                <li><label htmlFor="3"><input type="radio" id="3"name="prior" value="Middle"></input>Middle</label></li>
+                                <li><label htmlFor="4"><input type="radio" id="4"name="prior" value="High"></input>High</label></li>
                             </ul>
                         </div>
                     </div>
