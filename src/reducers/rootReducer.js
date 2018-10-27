@@ -1,9 +1,9 @@
 const initState = {
     addTaskArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "orange", },
-        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: "red"}, 
-        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "yellow"}, 
+        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "", },
+        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: ""}, 
+        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: ""}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "",},
         ], 
     lists: [
@@ -38,6 +38,7 @@ const rootReducer = (state = initState, action) => {
             tasks: [...state.tasks, action.task]
         }
     }  
+    console.log("filter: ", state.tasks)
     if (action.type === 'DELETE_TASK') {
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id

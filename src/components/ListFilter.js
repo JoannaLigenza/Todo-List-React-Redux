@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 const ListFilter = ( {lists, priorities, filterTasks} ) => {
 
     const listOption = lists.map( list => {
-         return <option key={list.id}> {list.list} </option> 
+        if (list.id === 1) {
+            console.log("jeden")
+            return <option key={list.id} selected> {list.list} </option> 
+        }
+        if (list.id !== 1) {
+            console.log(" NIE jeden")
+            return <option key={list.id} > {list.list} </option> 
+        }
     })
     const piorityOption = priorities.map( prior => {
          return <option key={prior.id}> {prior.priority} </option> 
@@ -14,7 +21,7 @@ const ListFilter = ( {lists, priorities, filterTasks} ) => {
         <div className="ovlp-descr-select">
             <div className="choose-list">
                 <p>Choose List</p>
-                <select id="list-filter"  onChange={ (e) => {filterTasks("list", e.target.value);}  }>
+                <select id="list-filter" onChange={ (e) => {filterTasks("list", e.target.value);}  }>
                     {listOption}
                 </select>
             </div>

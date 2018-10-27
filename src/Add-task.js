@@ -18,8 +18,7 @@ class AddTask extends Component {
         let id = this.state.id+1;
         this.setState( {id: id})
         this.props.addTask(this.state.task, this.state.id, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
-        this.setState( {task: ""})
-        this.setState( {date: ""});
+        this.setState( {task: "", date: ""})
     };
     selectChange = (e) => {
         console.log("e.target.value ", e.target.value)
@@ -36,7 +35,17 @@ class AddTask extends Component {
 
     priorityChange = (e) => {
         console.log("e.target.value ", e.target.value)
-        this.setState( {priority: e.target.value} );
+        let color = "";
+        if (e.target.value === "Low") {
+            color = "yellow"
+        };
+        if (e.target.value === "Middle") {
+            color = "orange"
+        };
+        if (e.target.value === "High") {
+            color = "red"
+        }
+        this.setState( {priority: e.target.value, color: color} );
     };
     
     render() {

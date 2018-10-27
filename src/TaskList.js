@@ -18,6 +18,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
     }) 
 
     const alltasks = filteringTask.map( task => {
+        console.log("task ", task.color)
         const showProperty = (property) => {
             let switchProperty = () => {
                 if (property === "list") {
@@ -42,7 +43,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         }
 
         return ( <li className="one-task" key={task.id}>
-            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={{borderColor: tasks.color}}></input></div> 
+            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
             <div className="task-p-area">
                 <p className="task-text" style={task.style} contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
                 <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
