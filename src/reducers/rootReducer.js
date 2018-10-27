@@ -11,6 +11,12 @@ const initState = {
         {list: "Private", id: 2},
         {list: "Work", id: 3} 
     ],
+    priorities: [
+        {priority: "None", id: 1},
+        {priority: "Low", id: 2},
+        {priority: "Middle", id: 3},
+        {priority: "High", id: 4},
+    ],
     notes: [ 
             {note: "Sample note", id: 1},
         ],
@@ -19,6 +25,9 @@ const initState = {
             { id: 2, title: "AllTasks", description: "", visibility: false },
             { id: 3, title: "AllNotes", description: "", visibility: false },
         ],
+    filter: [
+        {list: "Default", priority: "None"}
+    ]
 }
 
 const rootReducer = (state = initState, action) => {
@@ -148,6 +157,30 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             addTaskArea: false
+        }
+    }
+    if (action.type === 'FILTER_TASKS') {
+        console.log("filter ", action.value)
+        console.log("All state ", action.filter)
+        const filter = state.filter.map( fil  => {
+            if (action.filter === "list") {
+                fil =  { list: action.value,
+                priority: "None" }
+            }
+            if (action.filter === "priority") {
+                fil = { list: "Default",
+                priority: action.value }
+            }
+            if (action.filter === "none") {
+                fil = { list: "Default",
+                priority: "None" }
+            }
+            return fil
+        })
+        console.log("All state 2 ", filter)
+        return {
+            ...state, 
+            filter: filter
         }
     }
 

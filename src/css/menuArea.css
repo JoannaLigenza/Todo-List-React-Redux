@@ -54,7 +54,7 @@
     background-color: yellow;
 }
 
-#date-filter {
+#date-filter, #no-filter {
     width: 20px;
     height: 20px;
     display: inline-block;

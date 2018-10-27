@@ -4,7 +4,7 @@ import Desktop from './components/Desktop.js';
 import ListFilter from './components/ListFilter.js';
 import NotesFilter from './components/NotesFilter.js';
 
-// props:filter is from Menu
+// props:filter is from AllOverlaps
 const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap, filter} ) => {
     
     const overlap = overlaps.map( overlap => {

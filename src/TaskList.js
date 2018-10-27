@@ -7,6 +7,9 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle, showAddNewTask} ) 
         const showProperty = (property) => {
             let switchProperty = () => {
                 if (property === "list") {
+                    if(task.list === "Default") {
+                        task.list = ""
+                    }
                     return task.list
                 }
                 if (property === "priority") {
@@ -33,6 +36,7 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle, showAddNewTask} ) 
             
             <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li> )
     } );
+    
     return(
         <div id="task-list-container">
             <button className="add-button-round" onClick={showAddNewTask}>Add Task</button> 
