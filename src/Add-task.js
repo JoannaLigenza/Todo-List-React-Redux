@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddTask extends Component {
-    state = { task: "Add new task", id: 5, list: "", date:"", time: "", priority: "", color: "" }
+    state = { task: "Add new task", id: 5, list: "Default", date:"", time: "", priority: "", color: "" }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
@@ -43,8 +43,7 @@ class AddTask extends Component {
         const lists = this.props.lists.map( list => {
            return <option className="option" style={{margin: 5+"px"}} key={list.id}> {list.list} </option> 
         });
-       // const date = 
-       // console.log("lists: ", lists)
+
         return(
             <div id="add-task-area">
                 <button className="delete-task-button right" onClick={this.props.hideAddNewTask}>X</button>

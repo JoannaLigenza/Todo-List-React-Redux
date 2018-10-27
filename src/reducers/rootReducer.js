@@ -1,9 +1,9 @@
 const initState = {
     addTaskArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "fast", color: "orange", },
-        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "",}, 
-        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "",}, 
+        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "orange", },
+        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: "red"}, 
+        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "yellow"}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "",},
         ], 
     lists: [
@@ -25,13 +25,13 @@ const initState = {
             { id: 2, title: "AllTasks", description: "", visibility: false },
             { id: 3, title: "AllNotes", description: "", visibility: false },
         ],
-    filter: [
+    filter: 
         {list: "Default", priority: "None"}
-    ]
+    
 }
 
 const rootReducer = (state = initState, action) => {
-    console.log("action: ", action)
+    //console.log("filter: ", state.filter)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -160,27 +160,26 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'FILTER_TASKS') {
-        console.log("filter ", action.value)
-        console.log("All state ", action.filter)
-        const filter = state.filter.map( fil  => {
+        //console.log("filterrrrrrrrrr ", state.filter.list)
+        //console.log("All state ", action.filter)
+        const filter = ( fil  => {
             if (action.filter === "list") {
-                fil =  { list: action.value,
+                return  { list: action.value,
                 priority: "None" }
             }
             if (action.filter === "priority") {
-                fil = { list: "Default",
+                return { list: "Default",
                 priority: action.value }
             }
             if (action.filter === "none") {
-                fil = { list: "Default",
+                return { list: "Default",
                 priority: "None" }
             }
-            return fil
         })
-        console.log("All state 2 ", filter)
+        //console.log("state.filter.list ", state.filter.list)
         return {
             ...state, 
-            filter: filter
+            filter: filter()
         }
     }
 

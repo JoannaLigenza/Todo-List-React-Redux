@@ -4,21 +4,16 @@ import Desktop from './components/Desktop.js';
 import ListFilter from './components/ListFilter.js';
 import NotesFilter from './components/NotesFilter.js';
 
-// props:filter is from AllOverlaps
-const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap, filter} ) => {
+
+const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
     
     const overlap = overlaps.map( overlap => {
-        const filterTaskModuleToMenu = (filterName) => {
-            console.log("cos")
-            console.log("filter ", filterName)
-            filter(filterName)
-        }
         const chooseOverlap = ( (id) => {
             if( id === 1) {
                 return <Desktop />
             }
             if( id === 2) {
-                return <ListFilter filter={filterTaskModuleToMenu}/>
+                return <ListFilter />
             }
             if( id === 3) {
                 return <NotesFilter />

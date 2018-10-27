@@ -2,8 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 
-const TaskList = ( {tasks, deleteTask, editTask, changeStyle, showAddNewTask} ) => {
-    const alltasks = tasks.map( task => {
+const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask} ) => {
+
+    const filteringTask = tasks.filter( task => {          
+        if (filter.list === "Default" && filter.priority === "None") {
+            return task
+        }
+        if (filter.list !== "Default" && filter.priority === "None") {
+            return task.list === filter.list
+        }
+        if (filter.priority !== "None" && filter.list === "Default") {
+            return task.priority === filter.priority
+        }
+        return task
+    }) 
+
+    const alltasks = filteringTask.map( task => {
         const showProperty = (property) => {
             let switchProperty = () => {
                 if (property === "list") {
@@ -26,9 +40,9 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle, showAddNewTask} ) 
                 return property.charAt(0).toUpperCase() + property.slice(1) + ": " + switchProperty() + ", "
             }
         }
-        //console.log("czesc ", task.priority)
+
         return ( <li className="one-task" key={task.id}>
-            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked}></input></div> 
+            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={{borderColor: tasks.color}}></input></div> 
             <div className="task-p-area">
                 <p className="task-text" style={task.style} contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
                 <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
@@ -51,7 +65,8 @@ const TaskList = ( {tasks, deleteTask, editTask, changeStyle, showAddNewTask} ) 
 
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
-        tasks: state.tasks
+        tasks: state.tasks,
+        filter: state.filter
     }
 }
 

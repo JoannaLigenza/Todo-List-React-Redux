@@ -43,21 +43,31 @@
     padding: 10px;
 }
 
-.ovlp-descr-p {
-    padding: 5px 10px;
+.ovlp-descr-select {
+    display: flex;
+    /* flex-direction: column; */
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
-#list-filter {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
+#list-filter, #date-filter {
+    width: 120px;
+    height: 30px;
+    padding: 0 5px;
+    margin: 5px;
+ 
     background-color: yellow;
 }
 
-#date-filter, #no-filter {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    background-color: red;
+#no-filter {
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+    background-color: yellow;
+}
+
+.choose-list{
+    margin: 0;
 }
 
