@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const ListFilter = ( {lists, priorities, filterTasks} ) => {
+const ListFilter = ( {lists, priorities, filter, filterTasks} ) => {
 
     const listOption = lists.map( list => {
         if (list.id === 1) {
@@ -21,13 +21,13 @@ const ListFilter = ( {lists, priorities, filterTasks} ) => {
         <div className="ovlp-descr-select">
             <div className="choose-list">
                 <p>Choose List</p>
-                <select id="list-filter" onChange={ (e) => {filterTasks("list", e.target.value);}  }>
+                <select id="list-filter" onChange={ (e) => {filterTasks("list", e.target.value);}} value={filter.list}>
                     {listOption}
                 </select>
             </div>
             <div className="choose-list">
                 <p>Choose Priority</p>
-                <select id="date-filter" onChange={ (e) => {filterTasks("priority", e.target.value);} }>
+                <select id="date-filter" onChange={ (e) => {filterTasks("priority", e.target.value);}} value={filter.priority}>
                     {piorityOption}
                 </select>
             </div>
@@ -42,7 +42,8 @@ const ListFilter = ( {lists, priorities, filterTasks} ) => {
 const mapStateToProps = (state) => {
     return {
         lists: state.lists,
-        priorities: state.priorities
+        priorities: state.priorities,
+        filter: state.filter
     }
 }
 
