@@ -14,19 +14,19 @@ class Main extends Component {
     }
     
     loadOverlap = (id) => {
-        console.log("id: " , id)
+       // console.log("id: " , id)
         const filterTask = this.filterTaskModuleToTaskArea;
-        console.log("filterTaskModuleToTaskArea ", filterTask)
+      //  console.log("filterTaskModuleToTaskArea ", filterTask)
         const overlap = this.state.overlap.map( ov => {
             if( id === 1) {
-            console.log("jeden ", id)
+            //console.log("jeden ", id)
             ov =  <div>
                 <TaskArea />
                 <NoteArea />
             </div>
             }
             if( id === 2) {
-                console.log("dwa ", id)
+            //    console.log("dwa ", id)
              ov = <TaskArea />
             }
             // if( id === 2 && ) {
@@ -34,7 +34,7 @@ class Main extends Component {
             //  ov = <TaskArea />
             // }
             if( id === 3) {
-                console.log("trzy ", id)
+            //    console.log("trzy ", id)
              ov = <NoteArea /> 
             }
             return ov 

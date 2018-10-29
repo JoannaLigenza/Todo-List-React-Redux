@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 
-const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask} ) => {
+const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder} ) => {
 
     const filteringTask = tasks.filter( task => {          
         if (filter.list === "Default" && filter.priority === "None") {
@@ -18,7 +18,6 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
     }) 
 
     const alltasks = filteringTask.map( task => {
-        console.log("task ", task.color)
         const showProperty = (property) => {
             let switchProperty = () => {
                 if (property === "list") {
@@ -42,7 +41,15 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             }
         }
 
-        return ( <li className="one-task" key={task.id}>
+        const onDragStart = (e, id) => {
+            //e.preventDefault();
+            e.dataTransfer.setData("text", id); 
+            e.dataTransfer.effectAllowed = "move"; 
+            //e.target.style.opacity = "0.5"; // ustaw wartosc w state: opacity: 0.5, a w onDragEnd ustaw na 1 + dodaj style do kazdego taska
+            console.log(e.target, id)
+        }
+        
+        return ( <li className="one-task" key={task.id} id={task.id} draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }}>
             <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
             <div className="task-p-area">
                 <p className="task-text" style={task.style} contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
@@ -51,14 +58,44 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             
             <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li> )
     } );
+
+    const dragoverHandler = e => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        console.log("trzymam")
+        
+    }
+
+    const dropHandler = e => {
+        const tasksCopy = tasks
+        e.preventDefault();
+        console.log("drop");
+        let MovedTask = e.dataTransfer.getData("text")
+        let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
+        console.log("id: ", MovedTask);
+
+        const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
+        console.log("DeletedTask ", DeletedTask)
+        let newPlace = e.target.closest(".one-task");
+        if(newPlace === null) {return}
+        
+        let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id))
+        console.log("index: ", indexOfNewPlace);
+
+        tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+        console.log("tasks copy ", tasksCopy)
+        
+        changeTasksOrder(tasksCopy);
+    }
     
     return(
         <div id="task-list-container">
             <button className="add-button-round" onClick={showAddNewTask}>Add Task</button> 
             <div><AddTaskDiv /></div>
-            <ul id="task-list">
+            <ul id="task-list" onDrop={dropHandler} onDragOver={dragoverHandler}>
                 { alltasks }
             </ul>
+            <div id="test" ></div>
         </div>
     )
 }
@@ -76,7 +113,8 @@ const mapDispatchToPost = (dispatch) => {
         deleteTask: (id) => { dispatch( { type: 'DELETE_TASK', id: id} ) }, 
         changeStyle: (checked, id) => { dispatch( {type: 'CHANGE_TASK_STYLE', checked: checked, id: id}  ) },
         editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
-        showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) }
+        showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
+        changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }
     }
 }
 

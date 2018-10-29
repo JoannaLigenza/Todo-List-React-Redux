@@ -38,7 +38,7 @@ const rootReducer = (state = initState, action) => {
             tasks: [...state.tasks, action.task]
         }
     }  
-    console.log("filter: ", state.tasks)
+    //console.log("filter: ", state.tasks)
     if (action.type === 'DELETE_TASK') {
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id
@@ -163,7 +163,7 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'FILTER_TASKS') {
         //console.log("filterrrrrrrrrr ", state.filter.list)
         //console.log("All state ", action.filter)
-        const filter = ( fil  => {
+        const filter = ( ()  => {
             if (action.filter === "list") {
                 return  { list: action.value,
                 priority: "None" }
@@ -181,6 +181,13 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             filter: filter()
+        }
+    }
+    if (action.type === 'CHANGE_TASKS_ORDER') {
+        console.log("tasks: ", state.tasks)
+        return {
+            ...state, 
+            tasks: action.newOrder
         }
     }
 

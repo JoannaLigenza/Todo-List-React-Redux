@@ -6,7 +6,7 @@ const ListFilter = ( {lists, priorities, filter, filterTasks} ) => {
     const listOption = lists.map( list => {
         if (list.id === 1) {
             console.log("jeden")
-            return <option key={list.id} selected> {list.list} </option> 
+            return <option key={list.id} > {list.list} </option> 
         }
         if (list.id !== 1) {
             console.log(" NIE jeden")
@@ -32,7 +32,7 @@ const ListFilter = ( {lists, priorities, filter, filterTasks} ) => {
                 </select>
             </div>
             <div className="choose-list">
-                <p>Redet Filters</p>
+                <p>Reset Filters</p>
                 <div id="no-filter" onClick={ () => {filterTasks("none")} }>Reset</div>
             </div>
         </div>
