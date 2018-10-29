@@ -66,6 +66,10 @@
   width: 97%;
   height: auto;
   background-color: white;
+  background-image: url("../img/dnd.png");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: right 55px bottom 50%;
   margin: 5px auto;
   padding: 2px;
   border-radius: 20px;
@@ -80,7 +84,9 @@
   border: 2px dashed blue;
 }
 
-.one-task * {pointer-events: none;}
+.one-task-dragover * {pointer-events: none;}
+
+/* .one-task * {pointer-events: none;} */
 
 .checkbox-container {
   padding-left: 5px;
@@ -97,6 +103,7 @@
 .task-p-area {
   width: 85%;
   margin-left: 10px;
+  margin-right: 50px;
   outline-color: grey;
 }
 

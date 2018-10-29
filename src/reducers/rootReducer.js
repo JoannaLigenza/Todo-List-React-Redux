@@ -1,10 +1,10 @@
 const initState = {
     addTaskArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, dragOverStyle: {pointerEvents: "auto"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "", },
-        {task: "task 2", id: 2, style: {textDecoration: "none"}, dragOverStyle: {pointerEvents: "auto"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: ""}, 
-        {task: "task 3", id: 3, style: {textDecoration: "none"}, dragOverStyle: {pointerEvents: "auto"}, checked: false, list: "", date: "", time: "", priority: "Low", color: ""}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, dragOverStyle: {pointerEvents: "auto"}, checked: false, list: "Private", date: "", time: "", priority: "",},
+        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "", },
+        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: ""}, 
+        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: ""}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "",},
         ], 
     lists: [
         {list: "Default", id: 1},
@@ -188,20 +188,6 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             tasks: action.newOrder
-        }
-    }
-    if (action.type === 'CHANGE_DRAGOVER_STYLE') {
-        console.log("tasks: ", state.tasks)
-        const tasks = state.tasks.map( task => {
-
-               return {dragOverStyle: {pointerEvents: action.dragOverStyle}}
-               
-
-        })
-        console.log("seee ", tasks)
-        return {
-            ...state, 
-            tasks: tasks
         }
     }
 

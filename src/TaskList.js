@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 
-const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder, dragOverStyle} ) => {
+const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder} ) => {
 
     const filteringTask = tasks.filter( task => {          
         if (filter.list === "Default" && filter.priority === "None") {
@@ -45,18 +45,15 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             //e.preventDefault();
             e.dataTransfer.setData("text", id); 
             e.dataTransfer.effectAllowed = "move"; 
-            //e.target.style.opacity = "0.5"; // ustaw wartosc w state: opacity: 0.5, a w onDragEnd ustaw na 1 + dodaj style do kazdego taska
             console.log(e.target, id)
         }
         
         return ( <li className="one-task" key={task.id} id={task.id} draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} >
-                {/* style={task.dragenterStyle===true ? ({backgroundColor: "rgba"+(255,255,255,0.7), border: 2+"px "+ "dashed blue"}) : ({backgroundColor: "white", border: "none"})}> */}
             <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
             <div className="task-p-area">
                 <p className="task-text" style={task.style} contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
                 <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
             </div>
-            
             <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li> )
     } );
 
@@ -66,14 +63,9 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         e.dataTransfer.dropEffect = 'move';
         if(e.target === null) {return};
         if(e.target.tagName !== "LI") {return};
-        // const style = tasks.map( task => {
-        //     return true
-        // })
-        //dragOverStyle(true);
         if(e.target.className !== "one-task") {return};
-        
         e.target.closest(".one-task").classList.add("one-task-dragover");
-         console.log("trzymam ", e.target.className)
+        // console.log("trzymam ", e.target.className)
         
     }
 
@@ -83,12 +75,11 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         if(e.target === null) {return};
         if(e.target.tagName !== "LI") {return};
         e.target.closest(".one-task").classList.remove("one-task-dragover");
-       // dragOverStyle(false);
     }
 
     const dropHandler = e => {
         const tasksCopy = tasks
-        e.preventDefault();
+        //e.preventDefault();
         console.log("drop");
         let MovedTask = e.dataTransfer.getData("text")
         let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
@@ -96,8 +87,9 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
 
         if( e.target.closest(".one-task") === null) {return};
         if( e.target.closest(".one-task").tagName !== "LI") {return};
-        if( e.target.closest(".one-task").id === MovedTask) { console.log("same id");return};
         e.target.closest(".one-task").classList.remove("one-task-dragover");
+        if( e.target.closest(".one-task").id === MovedTask) { console.log("same id");return};
+        
 
         const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
         console.log("DeletedTask ", DeletedTask)
@@ -140,7 +132,6 @@ const mapDispatchToPost = (dispatch) => {
         editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
-        dragOverStyle: (bolean) => { dispatch( {type: 'CHANGE_DRAGOVER_STYLE', dragOverStyle: bolean } ) },
     }
 }
 
