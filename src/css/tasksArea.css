@@ -72,7 +72,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: margin 1s ease;
 }
+
+.one-task-dragover {
+  background-color: rgba(255,255,255,0.7);
+  border: 2px dashed blue;
+}
+
+.one-task * {pointer-events: none;}
 
 .checkbox-container {
   padding-left: 5px;

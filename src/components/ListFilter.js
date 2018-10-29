@@ -4,16 +4,10 @@ import { connect } from 'react-redux';
 const ListFilter = ( {lists, priorities, filter, filterTasks} ) => {
 
     const listOption = lists.map( list => {
-        if (list.id === 1) {
-            console.log("jeden")
-            return <option key={list.id} > {list.list} </option> 
-        }
-        if (list.id !== 1) {
-            console.log(" NIE jeden")
-            return <option key={list.id} > {list.list} </option> 
-        }
+        return <option key={list.id} > {list.list} </option>
     })
-    const piorityOption = priorities.map( prior => {
+
+    const priorityOption = priorities.map( prior => {
          return <option key={prior.id}> {prior.priority} </option> 
     })
 
@@ -28,7 +22,7 @@ const ListFilter = ( {lists, priorities, filter, filterTasks} ) => {
             <div className="choose-list">
                 <p>Choose Priority</p>
                 <select id="date-filter" onChange={ (e) => {filterTasks("priority", e.target.value);}} value={filter.priority}>
-                    {piorityOption}
+                    {priorityOption}
                 </select>
             </div>
             <div className="choose-list">
