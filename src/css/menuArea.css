@@ -84,7 +84,7 @@ input[type="radio"] + label[for="1"] {
     background: url(../img/whitePr.png);
 }
 
-input[type="radio"] + label[for="2"] {
+input[type="radio"] + label[for="2"]{
     background: url(../img/yellowPr.png);
 }
 

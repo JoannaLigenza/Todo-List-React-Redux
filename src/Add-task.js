@@ -85,10 +85,10 @@ class AddTask extends Component {
                         <h4>Priority:</h4>
                         <div id="priority-select" onChange={this.priorityChange} default="none">
                             <ul>
-                                <li><label htmlFor="1"><input type="radio" id="1"name="prior" value=""></input>None</label></li>
-                                <li><label htmlFor="2"><input type="radio" id="2"name="prior" value="Low"></input>Low</label></li>
-                                <li><label htmlFor="3"><input type="radio" id="3"name="prior" value="Middle"></input>Middle</label></li>
-                                <li><label htmlFor="4"><input type="radio" id="4"name="prior" value="High"></input>High</label></li>
+                                <li><input type="radio" id="1I" name="prior" value=""></input><label htmlFor="1I">None</label></li>
+                                <li><input type="radio" id="2I" name="prior" value="Low"></input><label htmlFor="2I">Low</label></li>
+                                <li><input type="radio" id="3I" name="prior" value="Middle"></input><label htmlFor="3I">Middle</label></li>
+                                <li><input type="radio" id="4I" name="prior" value="High"></input><label htmlFor="4I">High</label></li>
                             </ul>
                         </div>
                     </div>

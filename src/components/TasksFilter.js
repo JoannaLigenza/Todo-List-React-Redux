@@ -11,7 +11,7 @@ const TasksFilter = ( {lists, priorities, filter, filterTasks} ) => {
          return <div> <h4>{prior.priority}</h4>
                 <input id={prior.id} type="radio" name="priority" key={prior.id}
                 onClick={ (e) => { filterTasks("priority", prior.priority);}} /> 
-                <label for={prior.id}></label></div>
+                <label htmlFor={prior.id}></label></div>
     })
 
     return(

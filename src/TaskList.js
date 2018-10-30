@@ -112,7 +112,6 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             <ul id="task-list" onDrop={dropHandler} onDragOver={dragoverHandler} onDragLeave={dragleaveHandler}>
                 { alltasks }
             </ul>
-            <div id="test" ></div>
         </div>
     )
 }
