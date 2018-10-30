@@ -1,6 +1,11 @@
 
 .overlap {
-    border: 1px solid red;
+    outline: none;
+    margin: 3px 0;
+}
+
+.overlap-active {
+    /* border: 5px solid orange; */
 }
 
 .hidden {
@@ -23,7 +28,6 @@
     -o-transition: height 2s ease;  
     -ms-transition: height 2s ease;  
     transition: height 2s ease;
-    border: 1px dotted black;
 }
 
 .hidden * {
@@ -38,10 +42,16 @@
 }
 
 .ovlp-title {
-    border: 1px solid yellow;
     margin: 0;
-    padding: 10px;
+    padding: 20px;
+    border: 2px solid orange
 }
+.ovlp-title-active {
+    margin: 0;
+    padding: 20px;
+    border: 5px solid orange
+}
+ 
 
 .ovlp-descr-select {
     display: flex;

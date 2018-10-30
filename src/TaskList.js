@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 
-const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder} ) => {
+const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder, filterTasks} ) => {
 
     const filteringTask = tasks.filter( task => {          
         if (filter.list === "Default" && filter.priority === "All") {
@@ -107,7 +107,11 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
     
     return(
         <div id="task-list-container">
-            <button className="add-button-round" onClick={showAddNewTask}>Add Task</button> 
+            <div id="round-button-area">
+                <button className="button-round" onClick={showAddNewTask}>Add Task</button> 
+                <button className="button-round" onClick={ () => {filterTasks("none")} }>Show All</button>
+            </div>
+            
             <div><AddTaskDiv /></div>
             <ul id="task-list" onDrop={dropHandler} onDragOver={dragoverHandler} onDragLeave={dragleaveHandler}>
                 { alltasks }
@@ -131,6 +135,7 @@ const mapDispatchToPost = (dispatch) => {
         editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
+        filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) }
     }
 }
 

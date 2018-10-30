@@ -11,7 +11,8 @@ const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
     const overlap = overlaps.map( overlap => {
         const chooseOverlap = ( (id) => {
             if( id === 1) {
-                return <Desktop />
+                // return <Desktop />
+                return
             }
             if( id === 2) {
                 return <TasksFilter />
@@ -20,12 +21,14 @@ const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {
                 return <ListFilter />
             }
             if( id === 4) {
-                return <NotesFilter />
+                // return <NotesFilter />
+                return
             }
         })
         return (
         <div className="overlap" key={overlap.id}  >
-            <h2 className="ovlp-title" onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} }>{overlap.title}</h2>
+            <h2 className={ overlap.visibility ? ("ovlp-title-active") : ("ovlp-title") }
+                onClick={() => {toggleVisibility(overlap.visibility, overlap.id); displayOverlap(overlap.id)} }>{overlap.title}</h2>
             <div className={overlap.visibility ? ("visible") : ("hidden") } >
                 {chooseOverlap(overlap.id)}
                 

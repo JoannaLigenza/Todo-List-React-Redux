@@ -21,10 +21,10 @@ const initState = {
             {note: "Sample note", id: 1},
         ],
     overlaps: [
-            { id: 1, title: "Desktop", description: "", visibility: false },
-            { id: 2, title: "Tasks", description: "", visibility: false },
-            { id: 3, title: "Lists", description: "", visibility: false },
-            { id: 4, title: "Notes", description: "", visibility: false },
+            { id: 1, title: "Desktop", description: "", visibility: false, style: {border: "none"} },
+            { id: 2, title: "Tasks", description: "", visibility: false, style: {border: "none"}},
+            { id: 3, title: "Lists", description: "", visibility: false, style: {border: "none"} },
+            { id: 4, title: "Notes", description: "", visibility: false, style: {border: "none"} },
         ],
     filter: 
         {list: "Default", priority: "All"}
