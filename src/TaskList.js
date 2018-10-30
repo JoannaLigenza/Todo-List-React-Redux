@@ -5,13 +5,13 @@ import AddTaskDiv from './AddTaskDiv.js';
 const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder} ) => {
 
     const filteringTask = tasks.filter( task => {          
-        if (filter.list === "Default" && filter.priority === "None") {
+        if (filter.list === "Default" && filter.priority === "All") {
             return task
         }
-        if (filter.list !== "Default" && filter.priority === "None") {
+        if (filter.list !== "Default" && filter.priority === "All") {
             return task.list === filter.list
         }
-        if (filter.priority !== "None" && filter.list === "Default") {
+        if (filter.priority !== "All" && filter.list === "Default") {
             return task.priority === filter.priority
         }
         return task

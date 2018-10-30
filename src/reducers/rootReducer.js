@@ -1,10 +1,10 @@
 const initState = {
     addTaskArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: "", },
-        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "", time: "", priority: "High", color: ""}, 
-        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "", time: "", priority: "Low", color: ""}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "", time: "", priority: "",},
+        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
+        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
+        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
         ], 
     lists: [
         {list: "Default", id: 1},
@@ -12,7 +12,7 @@ const initState = {
         {list: "Work", id: 3} 
     ],
     priorities: [
-        {priority: "None", id: 1},
+        {priority: "All", id: 1},
         {priority: "Low", id: 2},
         {priority: "Middle", id: 3},
         {priority: "High", id: 4},
@@ -22,11 +22,12 @@ const initState = {
         ],
     overlaps: [
             { id: 1, title: "Desktop", description: "", visibility: false },
-            { id: 2, title: "AllTasks", description: "", visibility: false },
-            { id: 3, title: "AllNotes", description: "", visibility: false },
+            { id: 2, title: "Tasks", description: "", visibility: false },
+            { id: 3, title: "Lists", description: "", visibility: false },
+            { id: 4, title: "Notes", description: "", visibility: false },
         ],
     filter: 
-        {list: "Default", priority: "None"}
+        {list: "Default", priority: "All"}
     
 }
 
@@ -162,11 +163,11 @@ const rootReducer = (state = initState, action) => {
     }
     if (action.type === 'FILTER_TASKS') {
         //console.log("filterrrrrrrrrr ", state.filter.list)
-        //console.log("All state ", action.filter)
+        console.log("checked ", state.filter.checked)
         const filter = ( ()  => {
             if (action.filter === "list") {
                 return  { list: action.value,
-                priority: "None" }
+                priority: "All" }
             }
             if (action.filter === "priority") {
                 return { list: "Default",
@@ -174,7 +175,7 @@ const rootReducer = (state = initState, action) => {
             }
             if (action.filter === "none") {
                 return { list: "Default",
-                priority: "None" }
+                priority: "All" }
             }
         })
         //console.log("state.filter.list ", state.filter.list)

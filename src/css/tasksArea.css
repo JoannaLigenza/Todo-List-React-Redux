@@ -62,14 +62,16 @@
   height: auto;
 }
 
+.one-task {
+  background-image: url("../img/dnd.png");
+  background-repeat: no-repeat;
+  background-position: right 55px bottom 50%;
+}
+
 .one-task, .one-note {
   width: 97%;
   height: auto;
   background-color: white;
-  background-image: url("../img/dnd.png");
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-position: right 55px bottom 50%;
   margin: 5px auto;
   padding: 2px;
   border-radius: 20px;

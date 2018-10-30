@@ -51,13 +51,49 @@
     justify-content: center;
 }
 
-#list-filter, #date-filter {
-    width: 120px;
-    height: 30px;
+#list-filter {
+    width: 95%;
+    height: 50px;
     padding: 0 5px;
-    margin: 5px;
- 
-    background-color: yellow;
+    margin: 10px;
+    background-color: white;
+    border: 3px solid orange;
+}
+
+#priority-filter {
+    display: flex;
+    justify-content: center;
+}
+
+#priority-filter div {
+    margin: 0 auto 5px auto;
+}
+
+input[name="priority"]{
+    display: none;
+}
+
+input[type="radio"] + label {
+	background-repeat: no-repeat;
+	content: "";
+    width: 40px;
+    height: 42px;
+}
+
+input[type="radio"] + label[for="1"] {
+    background: url(../img/whitePr.png);
+}
+
+input[type="radio"] + label[for="2"] {
+    background: url(../img/yellowPr.png);
+}
+
+input[type="radio"] + label[for="3"] {
+    background: url(../img/orangePr.png);
+}
+
+input[type="radio"] + label[for="4"] {
+    background: url(../img/redPr.png);
 }
 
 #no-filter {
@@ -68,6 +104,7 @@
 }
 
 .choose-list{
+    width: 100%;
     margin: 0;
 }
 

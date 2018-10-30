@@ -26,13 +26,13 @@ class Main extends Component {
             //    console.log("dwa ", id)
              ov = <TaskArea />
             }
-            // if( id === 2 && ) {
-            //     console.log("dwa filtrowane ", id)
-            //  ov = <TaskArea />
-            // }
             if( id === 3) {
             //    console.log("trzy ", id)
-             ov = <NoteArea /> 
+             ov = <TaskArea />
+            }
+            if( id === 4) {
+            //    console.log("cztery ", id)
+             ov =<NoteArea /> 
             }
             return ov 
         })
