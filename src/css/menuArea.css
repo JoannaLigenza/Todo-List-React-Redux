@@ -36,7 +36,6 @@
 
 .visible * {
     display: block;
-    height: auto;
     opacity: 1;
     /* border: 1px solid yellow; */
 }
@@ -54,14 +53,10 @@
  
 
 .ovlp-descr-select {
-    display: flex;
-    /* flex-direction: column; */
     padding-bottom: 20px;
-    align-items: center;
-    justify-content: center;
 }
 
-#list-filter {
+.list-filter {
     width: 95%;
     height: 50px;
     padding: 0 5px;
@@ -113,8 +108,19 @@ input[type="radio"] + label[for="4"] {
     background-color: yellow;
 }
 
-.choose-list{
+#choose-list{
     width: 100%;
     margin: 0;
+}
+
+#add-new-list {
+ width: 100%;
+ height: auto;
+ margin: 40px 0 20px 0;
+}
+
+.add-new-delete-list-button {
+    margin: 0 10px;
+    display: inline-block;
 }
 

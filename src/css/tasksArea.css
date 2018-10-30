@@ -16,7 +16,7 @@
   height: auto;
 }
 
-.add-task-div-hidden {
+.add-task-div-hidden, .add-list-div-hidden {
   display: block;
   width: 90%;
   height: 0;
@@ -28,14 +28,14 @@
   background-color: red;
 }
 
-.add-task-div-hidden * {
+.add-task-div-hidden *, .add-list-div-hidden * {
   display: none;
 }
 
-.add-task-div-visible {
+.add-task-div-visible, .add-list-div-visible {
   display: block;
   width: 90%;
-  height: 500px;
+  height: 520px;
   opacity: 1;
   position: absolute;
   top: 40px;
@@ -46,7 +46,11 @@
   box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
 }
 
-.add-task-area {
+.add-list-div-visible {
+  height: 200px;
+}
+
+.add-task-area, .add-list-area {
   width: 100%;
   position: relative;
 }
@@ -123,7 +127,7 @@
   color: grey;
 }
 
-.delete-task-button, .delete-note-button {
+.delete-task-button, .delete-note-button, .delete-list-button {
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -151,6 +155,7 @@
   display: block;
   margin: 10px auto;
   padding: 10px;
+  border: 0;
   border-radius: 20px;
   outline: none;
   resize: vertical;

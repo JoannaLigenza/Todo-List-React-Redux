@@ -1,15 +1,16 @@
 const initState = {
     addTaskArea: false,
+    addListArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
+        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
         {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
         {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
         ], 
     lists: [
-        {list: "Default", id: 1},
-        {list: "Private", id: 2},
-        {list: "Work", id: 3} 
+        {list: "Default", id: 1, nameRepeat: false},
+        {list: "Private", id: 2, nameRepeat: false},
+        {list: "Work", id: 3, nameRepeat: false},
     ],
     priorities: [
         {priority: "All", id: 1},
@@ -82,6 +83,34 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             tasks: [...state.tasks: newTask]
+        }
+    }
+
+    if (action.type === 'ADD_LIST') {
+        return {
+            ...state, 
+            lists: [...state.lists, action.list]
+        }
+    }  
+    if (action.type === 'DELETE_LIST') {
+        let newPosts = state.lists.filter( list => {
+                return list.list !== action.list
+        })
+        return {
+            ...state, 
+            lists: newPosts
+        }
+    }
+    if (action.type === 'EDIT_LIST') {
+        const newList = state.lists.map( list => {
+            if (list.id === action.id) {
+               list.list = action.list;
+            }
+            return list.list
+        })
+        return {
+            ...state, 
+            lists: [...state.lists: newList]
         }
     }
 
@@ -159,6 +188,19 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             addTaskArea: false
+        }
+    }
+    if (action.type === 'SHOW_ADD_LIST_AREA') {
+        return {
+            ...state, 
+            addListArea: true
+        }
+    }
+    if (action.type === 'HIDE_ADD_LIST_AREA') {
+        console.log("ukryj")
+        return {
+            ...state, 
+            addListArea: false
         }
     }
     if (action.type === 'FILTER_TASKS') {

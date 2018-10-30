@@ -62,3 +62,24 @@ input[type="radio"] {
     height: 20px;
     margin: 10px;
 }
+
+.add-list-input {
+  width: 90%;
+  height: 50px;
+  display: block;
+  margin: 10px auto 30px auto;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  outline: none;
+}
+
+ /* displayDiv is in add list div */
+.displayDiv {
+    display: block;
+    margin: 20px;
+}
+
+.notDisplayDiv {
+    display: none;
+}

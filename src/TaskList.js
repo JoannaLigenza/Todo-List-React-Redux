@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
+import AddListDiv from './AddListDiv.js';
 
 const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder, filterTasks} ) => {
 
@@ -113,6 +114,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             </div>
             
             <div><AddTaskDiv /></div>
+            <div><AddListDiv /></div>
             <ul id="task-list" onDrop={dropHandler} onDragOver={dragoverHandler} onDragLeave={dragleaveHandler}>
                 { alltasks }
             </ul>
