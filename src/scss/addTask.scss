@@ -1,0 +1,101 @@
+.add-priority {
+    display: flex;
+    margin: 10px;
+}
+
+.add-priority h4 {
+    width: 70px;
+}
+
+%add-priority {
+    width: 97%;
+    padding: 0 10px;
+    margin: 10px;
+    outline: none;
+    border: 0;
+    appearance: none;
+    border-radius: 2px;
+    background-color: yellow;
+}
+
+.priority-list select {
+    @extend %add-priority;
+}
+
+.priority-date input {
+    @extend %add-priority;
+}
+
+.priority-time input {
+    @extend %add-priority;
+}
+
+.priority-priority select {
+    @extend %add-priority;
+}
+
+input[type="date"] {
+  outline: none;
+  border: 0;
+}
+
+input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
+  font-size: 18px;
+  height: 30px;
+  margin: 6px;
+  position: relative;
+}
+
+input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
+  height: 40px;
+  margin: 3px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 15px;
+  margin: 3px;
+}
+
+#priority-select {
+    width: 97%;
+    padding: 0 10px;
+    margin: 10px;
+
+    ul {
+    list-style: none;
+    border: 1px solid yellow;
+    text-align: left;
+
+    li {
+    display: inline-block;
+    margin: 20px;
+    }
+    }
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.add-list-input {
+  width: 90%;
+  height: 50px;
+  display: block;
+  margin: 10px auto 30px auto;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  outline: none;
+}
+
+ /* displayDiv is in add list div */
+.displayDiv {
+    display: block;
+    margin: 20px;
+}
+
+.notDisplayDiv {
+    display: none;
+}

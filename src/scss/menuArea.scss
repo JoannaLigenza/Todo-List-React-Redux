@@ -1,0 +1,117 @@
+@import '../variables';
+
+.overlap {
+    outline: none;
+    margin: 3px 0;
+    background-color: $background-color;
+}
+
+.hidden {
+    display: block;
+    height: 0;
+    opacity: 0;
+    /* transition: height 0.s ease; */
+}
+
+.visible {
+    display: block;
+    height: auto;
+    opacity: 1;
+    /* transition: height 0.5s ease; */
+}
+
+.hidden * {
+    display: none;
+}
+
+.visible * {
+    display: block;
+    opacity: 1;
+    /* border: 1px solid yellow; */
+}
+
+%ovlp {
+    margin: 0;
+    padding: 20px;
+}
+
+.ovlp-title {
+    @extend %ovlp;
+    border: 2px solid orange;
+}
+.ovlp-title-active {
+    @extend %ovlp;
+    border: 5px solid orange
+}
+
+.ovlp-descr-select {
+    padding-bottom: 20px;
+}
+
+.list-filter {
+    width: 95%;
+    height: 50px;
+    padding: 0 5px;
+    margin: 10px;
+    background-color: white;
+    border: 3px solid orange;
+}
+
+#priority-filter {
+    display: flex;
+    justify-content: center;
+    div {
+         margin: 0 auto 5px auto;
+    }
+}
+
+
+input[name="priority"]{
+    display: none;
+}
+
+input[type="radio"] + label {
+	background-repeat: no-repeat;
+	content: "";
+    width: 40px;
+    height: 42px;
+}
+
+input[type="radio"] + label[for="1"] {
+    background: url(../img/whitePr.png);
+}
+
+input[type="radio"] + label[for="2"]{
+    background: url(../img/yellowPr.png);
+}
+
+input[type="radio"] + label[for="3"] {
+    background: url(../img/orangePr.png);
+}
+
+input[type="radio"] + label[for="4"] {
+    background: url(../img/redPr.png);
+}
+
+#no-filter {
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+    background-color: yellow;
+}
+
+#choose-list{
+    width: 100%;
+    margin: 0;
+}
+
+#add-new-list {
+    width: 100%;
+    height: auto;
+    margin: 40px 0 20px 0;
+}
+
+.add-new-delete-list-button {
+    margin: 0 10px;
+    display: inline-block;
+}

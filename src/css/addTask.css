@@ -1,21 +1,25 @@
 .add-priority {
-    display: flex;
-    margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
 }
 
 .add-priority h4 {
-    width: 70px;
+  width: 70px;
 }
 
 .priority-list select, .priority-date input, .priority-time input, .priority-priority select {
-    width: 97%;
-    padding: 0 10px;
-    margin: 10px;
-    outline: none;
-    border: 0;
-    appearance: none;
-    border-radius: 2px;
-    background-color: yellow;
+  width: 97%;
+  padding: 0 10px;
+  margin: 10px;
+  outline: none;
+  border: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 2px;
+  background-color: yellow;
 }
 
 input[type="date"] {
@@ -41,26 +45,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #priority-select {
-    width: 97%;
-    padding: 0 10px;
-    margin: 10px;
+  width: 97%;
+  padding: 0 10px;
+  margin: 10px;
 }
 
 #priority-select ul {
-    list-style: none;
-    border: 1px solid yellow;
-    text-align: left;
+  list-style: none;
+  border: 1px solid yellow;
+  text-align: left;
 }
 
-#priority-select li {
-    display: inline-block;
-    margin: 20px;
+#priority-select ul li {
+  display: inline-block;
+  margin: 20px;
 }
 
 input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    margin: 10px;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
 }
 
 .add-list-input {
@@ -74,12 +78,13 @@ input[type="radio"] {
   outline: none;
 }
 
- /* displayDiv is in add list div */
+/* displayDiv is in add list div */
 .displayDiv {
-    display: block;
-    margin: 20px;
+  display: block;
+  margin: 20px;
 }
 
 .notDisplayDiv {
-    display: none;
+  display: none;
 }
+/*# sourceMappingURL=addTask.css.map */

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Desktop from './components/Desktop.js';
+//import Desktop from './components/Desktop.js';
 import TasksFilter from './components/TasksFilter.js';
 import ListFilter from './components/ListFilter.js';
-import NotesFilter from './components/NotesFilter.js';
+//import NotesFilter from './components/NotesFilter.js';
 
 
 const AllOverlaps = ( {overlaps, toggleVisibility, displayOverlap} ) => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const TasksFilter = ( {lists, priorities, filter, filterTasks} ) => {
+const TasksFilter = ( {priorities, filterTasks} ) => {
 
     // const listOption = lists.map( list => {
     //     return <option key={list.id} > {list.list} </option>
     // })
 
     const priorityOption = priorities.map( prior => {
-         return <div> <h4>{prior.priority}</h4>
+         return <div key={prior.id}> <h4>{prior.priority}</h4>
                 <input id={prior.id} type="radio" name="priority" key={prior.id}
                 onClick={ (e) => { filterTasks("priority", prior.priority);}} /> 
                 <label htmlFor={prior.id}></label></div>
@@ -38,9 +38,7 @@ const TasksFilter = ( {lists, priorities, filter, filterTasks} ) => {
 
 const mapStateToProps = (state) => {
     return {
-        lists: state.lists,
         priorities: state.priorities,
-        filter: state.filter
     }
 }
 
