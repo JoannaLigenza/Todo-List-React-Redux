@@ -46,7 +46,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             //e.preventDefault();
             e.dataTransfer.setData("text", id); 
             e.dataTransfer.effectAllowed = "move"; 
-            console.log(e.target, id)
+            // console.log(e.target, id)
         }
         
         return ( <li className="one-task" key={task.id} id={task.id} style={ task.checked===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
@@ -102,8 +102,13 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         
         let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id))
         console.log("index: ", indexOfNewPlace);
-
-        tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+        if(MovedTaskIndex > indexOfNewPlace) {
+            tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+        }
+        if(MovedTaskIndex <= indexOfNewPlace) {
+            tasksCopy.splice(indexOfNewPlace+1, 0, DeletedTask[0]);
+        }
+        
         console.log("tasks copy ", tasksCopy)
         
         changeTasksOrder(tasksCopy);

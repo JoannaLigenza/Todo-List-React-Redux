@@ -5,7 +5,7 @@ class TaskArea extends Component {
     render() {
         return (
             <div id="taskArea">
-                <h4>Task Area:</h4>
+                {/* <h4>Task Area:</h4> */}
                 
                 <TaskList />
             </div>
