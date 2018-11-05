@@ -35,7 +35,7 @@
   top: 40px;
   left: 4%;
   transition: height 0.5s ease;
-  background-color: red;
+  background-color: $main-color;
 }
 
 .add-task-div-hidden {
@@ -59,7 +59,7 @@
   top: 40px;
   left: 4%;
   transition: height 0.5s ease;
-  background-color: red;
+  background-color: $main-color;
   border: 5px double #bbb;
   box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
 }
@@ -92,7 +92,7 @@
 %one-task-one-note {
   width: 97%;
   height: auto;
-  background-color: white;
+  background-color: $task-color;
   margin: 5px auto;
   padding: 2px;
   border-radius: 20px;
@@ -100,7 +100,7 @@
   justify-content: space-between;
   align-items: center;
   /* transition: margin 1s ease; */
-  border: 3px solid orange;
+  border: 1px solid $main-color;
 }
 
 .one-task {
@@ -127,8 +127,6 @@
   margin-left: 5px;
   width: 20px;
   height: 20px;
-  /* background-color: white; */
-  /* box-shadow: 3px 3px 5px red; */
 }
 
 .task-p-area {
@@ -156,11 +154,11 @@
     height: 30px;
     margin-right: 5px;
     text-align: center;
-    background-color: var(--button-color);
-    border: 2px solid var(--button-border-color);
+    background-color: $button-color;
+    border: 2px solid $button-border-color;
     border-radius: 50px;
     outline: none;
-    box-shadow: 2px 2px var(--button-shadow-color);
+    box-shadow: 2px 2px $button-shadow-color;
 }
 
 .delete-task-button, .delete-note-button, .delete-list-button {
@@ -168,7 +166,7 @@
 }
 
 .delete-task-button:active, .delete-note-button:active {
-  box-shadow: 1px 1px var(--button-shadow-color);
+  box-shadow: 1px 1px $button-shadow-color;
 }
 
 #add-note {
@@ -210,14 +208,14 @@
 .button-round {
   width: 50px;
   height: 50px;
-  background-color: var(--button-border-color);
+  background-color: $button-border-color;
   border: 0 solid;
   border-radius: 50px;
   outline: none;
-  box-shadow: 3px 3px 5px var(--button-shadow-color);
+  box-shadow: 3px 3px 5px $button-shadow-color;
 }
 
 .button-round:active {
-  box-shadow: 1px 1px 5px var(--button-shadow-color);
+  box-shadow: 1px 1px 5px $button-shadow-color;
   transform: translateX(1px) translateY(1px);
 }

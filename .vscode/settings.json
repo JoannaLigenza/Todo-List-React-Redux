@@ -3,13 +3,13 @@
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true,
-    "**/scss/**": true
+    "**/scss/source/**": false
   },
   "liveSassCompile.settings.formats": [
     {
       "format": "expanded",
       "extensionName": ".css",
-      "savePath": "~/../css/"
+      "savePath": "~/../../css/"
     }
   ],
   "liveSassCompile.settings.generateMap": false;

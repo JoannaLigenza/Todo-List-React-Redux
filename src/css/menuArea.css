@@ -1,7 +1,6 @@
 .overlap {
   outline: none;
   margin: 3px 0;
-  background-color: #0e79e7;
 }
 
 .hidden {
@@ -34,11 +33,11 @@
 }
 
 .ovlp-title {
-  border: 2px solid orange;
+  border: 1px solid #fff;
 }
 
 .ovlp-title-active {
-  border: 5px solid orange;
+  border: 3px solid #fff;
 }
 
 .ovlp-descr-select {
@@ -51,7 +50,8 @@
   padding: 0 5px;
   margin: 10px;
   background-color: white;
-  border: 3px solid orange;
+  border: 3px solid #fff;
+  outline: none;
 }
 
 #priority-filter {
@@ -94,13 +94,6 @@ input[type="radio"] + label[for="4"] {
   background: url(../img/redPr.png);
 }
 
-#no-filter {
-  width: 120px;
-  height: 30px;
-  margin: 5px;
-  background-color: yellow;
-}
-
 #choose-list {
   width: 100%;
   margin: 0;
@@ -115,6 +108,5 @@ input[type="radio"] + label[for="4"] {
 .add-new-delete-list-button {
   margin: 0 10px;
   display: inline-block;
-  padding: 10px;
 }
 /*# sourceMappingURL=menuArea.css.map */

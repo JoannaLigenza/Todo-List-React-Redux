@@ -1,10 +1,14 @@
 @import '../variables';
 
+html {
+  height: 100%;
+}
 
 body {
   margin: 0;
   padding: 0;
-  background-color: $button-color;
+  height: 100%;
+  background-color: $background-color;
 }
 
 #main {
@@ -16,8 +20,8 @@ body {
 }
 
 %menu-tasks {
-  background-color: $background-color;
   min-width: 300px;
+  // min-height: 760px;
   height: auto;
   text-align: center;
 }
@@ -26,10 +30,11 @@ body {
   @extend %menu-tasks;
   /* flex grow / shrink, basis */
   flex: 1;  
+  background-color: $main-color;
 } 
 
 #tasks {
   @extend %menu-tasks;
-  flex: 2;
+  flex: 3;
 }
 

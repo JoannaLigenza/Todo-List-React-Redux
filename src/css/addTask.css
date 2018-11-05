@@ -19,7 +19,7 @@
      -moz-appearance: none;
           appearance: none;
   border-radius: 2px;
-  background-color: yellow;
+  background-color: white;
 }
 
 input[type="date"] {

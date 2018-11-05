@@ -2,10 +2,10 @@ const initState = {
     addTaskArea: false,
     addListArea: false,
     tasks: [
-        {task: "task 1", id: 1, style: {textDecoration: "none"}, checked: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
-        {task: "task 2", id: 2, style: {textDecoration: "none"}, checked: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
-        {task: "task 3", id: 3, style: {textDecoration: "none"}, checked: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, style: {textDecoration: "none"}, checked: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
+        {task: "task 1", id: 1, checked: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
+        {task: "task 2", id: 2, checked: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
+        {task: "task 3", id: 3, checked: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
         ], 
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
@@ -54,19 +54,13 @@ const rootReducer = (state = initState, action) => {
         let newPosts = state.tasks.filter( post => {
             if (post.id === action.id) {
                 if (action.checked) {
-                    console.log("checked ", action.checked);
-                    post.style = {textDecoration: "line-through"}
                     post.checked = true 
                 }
                 if (!action.checked) {
-                    console.log("checked ", action.checked);
-                    post.style = {textDecoration: "none"}
                     post.checked = false
                 }
-                console.log(post.checked)
-                console.log("state: ", state.tasks)
             }
-            return [post.style, post.checked]
+            return  post.checked
         })
         return {
             ...state, 

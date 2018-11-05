@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 // Whenever addTask function is called, dispatch is running
 const mapDispatchToPost = (dispatch) => {
     return {
-        addTask: (task, id, list, date, time, priority, color) => { dispatch( { type: 'ADD_TASK', task: {task: task, id: id, style: {textDecoration: "none"}, checked: false, list: list, date: date, time: time, priority: priority, color: color}} ) },
+        addTask: (task, id, list, date, time, priority, color) => { dispatch( { type: 'ADD_TASK', task: {task: task, id: id, checked: false, list: list, date: date, time: time, priority: priority, color: color}} ) },
         hideAddNewTask: () => { dispatch( {type: 'HIDE_ADD_TASK_AREA'} ) }
     }
 }

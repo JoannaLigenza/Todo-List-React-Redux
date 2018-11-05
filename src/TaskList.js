@@ -49,10 +49,13 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             console.log(e.target, id)
         }
         
-        return ( <li className="one-task" key={task.id} id={task.id} draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} >
-            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
+        return ( <li className="one-task" key={task.id} id={task.id} style={ task.checked===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
+                draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} >
+            <div className="checkbox-container"><input type="checkbox" className="checkbox-style" 
+            onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} 
+            style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
             <div className="task-p-area">
-                <p className="task-text" style={task.style} contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
+                <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}}>{task.task}</p> 
                 <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
             </div>
             <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li> )

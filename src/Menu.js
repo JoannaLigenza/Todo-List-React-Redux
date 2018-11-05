@@ -8,7 +8,7 @@ class Menu extends Component {
 
     render() {
         return(
-            <div className="menu-container">
+            <div id="menu-container">
                 <h4>Menu</h4>
                 <AllOverlaps displayOverlap={this.displayOverlap} />
             </div>
