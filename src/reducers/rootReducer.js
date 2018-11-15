@@ -4,7 +4,7 @@ const initState = {
     // addEditTaskArea: false,
     // editTask: {},
     tasks: [
-        {task: "task 1", id: 1, checked: false, edit: true, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
+        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
         {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
         {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
@@ -53,34 +53,22 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'CHANGE_TASK_STYLE') {
-        let newPosts = state.tasks.filter( post => {
-            if (post.id === action.id) {
+        let newTask = state.tasks.filter( task => {
+            if (task.id === action.id) {
                 if (action.checked) {
-                    post.checked = true 
+                    task.checked = true 
                 }
                 if (!action.checked) {
-                    post.checked = false
+                    task.checked = false
                 }
             }
-            return  post.checked
+            return  task
         })
         return {
             ...state, 
-            tasks: [...state.tasks: newPosts]
+            tasks: newTask
         }
     }
-    // if (action.type === 'EDIT_TASK') {
-    //     const newTask = state.tasks.map( task => {
-    //         if (task.id === action.id) {
-    //            task.task = action.task;
-    //         }
-    //         return task.task
-    //     })
-    //     return {
-    //         ...state, 
-    //         tasks: [...state.tasks: newTask]
-    //     }
-    // }
     if (action.type === 'SHOW_EDIT_TASK') {
         const newTask = state.tasks.map( task => {
             if (task.id === action.id) {
@@ -90,7 +78,7 @@ const rootReducer = (state = initState, action) => {
         })
         return {
             ...state, 
-            tasks: [...state.tasks: newTask]
+            tasks: newTask
         }
     }
     if (action.type === 'EDIT_TASK') {
@@ -105,25 +93,19 @@ const rootReducer = (state = initState, action) => {
         console.log("newTask ", newTask)
         return {
             ...state, 
-            tasks: [...state.tasks: newTask]
-        }
-    }
-    if (action.type === 'HIDE_EDIT_TASK') {
-        const newTask = state.tasks.map( task => {
-            if (task.id === action.id) {
-               task.edit = false;
-            }
-            return task
-        })
-        return {
-            ...state, 
-            tasks: [...state.tasks: newTask]
+            tasks: newTask
         }
     }
     // if (action.type === 'HIDE_EDIT_TASK') {
+    //     const newTask = state.tasks.map( task => {
+    //         if (task.id === action.id) {
+    //            task.edit = false;
+    //         }
+    //         return task
+    //     })
     //     return {
     //         ...state, 
-    //         addEditTaskArea: false
+    //         tasks: [...state.tasks: newTask]
     //     }
     // }
     if (action.type === 'ADD_LIST') {
@@ -141,18 +123,18 @@ const rootReducer = (state = initState, action) => {
             lists: newPosts
         }
     }
-    if (action.type === 'EDIT_LIST') {
-        const newList = state.lists.map( list => {
-            if (list.id === action.id) {
-               list.list = action.list;
-            }
-            return list.list
-        })
-        return {
-            ...state, 
-            lists: [...state.lists: newList]
-        }
-    }
+    // if (action.type === 'EDIT_LIST') {
+    //     const newList = state.lists.map( list => {
+    //         if (list.id === action.id) {
+    //            list.list = action.list;
+    //         }
+    //         return list
+    //     })
+    //     return {
+    //         ...state, 
+    //         lists: newList
+    //     }
+    // }
 
     if (action.type === 'ADD_NOTE') {
         console.log("action note" , action.note)
@@ -185,36 +167,36 @@ const rootReducer = (state = initState, action) => {
             if (note.id === action.id) {
                 note.note = action.note;
             }
-            return note.note
+            return note
         })
         return {
             ...state, 
-            notes: [...state.notes: newNote]
+            notes: newNote
         }
     }
     if (action.type === 'TOGGLE_VISIBILITY') {
-        const visible = state.overlaps.map( visible => {
-            if (visible.id === action.id) {
-                if (visible.visibility === action.visibility) {
-                    visible.visibility = !action.visibility
-                    return visible.visibility
+        const visible = state.overlaps.map( overlap => {
+            if (overlap.id === action.id) {
+                if (overlap.visibility === action.visibility) {
+                    overlap.visibility = !action.visibility
+                    return overlap
                 }
-                if (visible.visibility !== action.visibility) {
-                    visible.visibility = action.visibility
-                    return visible.visibility
+                if (overlap.visibility !== action.visibility) {
+                    overlap.visibility = action.visibility
+                    return overlap
                 }
             }
-            if (visible.id !== action.id) {
-                if (visible.visibility === true) {
-                    visible.visibility = false
+            if (overlap.id !== action.id) {
+                if (overlap.visibility === true) {
+                    overlap.visibility = false
                 }
                 // return visible.visibility
             }
-            return visible.visibility
+            return overlap
         }) 
         return {
                 ...state, 
-                overlaps: [...state.overlaps: visible]
+                overlaps: visible
             }
     }
     if (action.type === 'SHOW_ADD_TASK_AREA') {
