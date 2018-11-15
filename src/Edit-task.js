@@ -8,15 +8,6 @@ class EditTask extends Component {
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
-    handleClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if(this.state.task.length === 0 ) {
-            return
-        }
-        this.props.editTaskProperty(this.state.task, this.state.id, this.state.checked, this.state.edit, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
-        //this.props.hideEditTask(this.props.task.id); - this isn't needed because in this.props.editTaskProperty this.state.edit is false
-    };
     selectChange = (e) => {
         console.log("e.target.value ", e.target.value)
         this.setState( {list: e.target.value} );
@@ -43,6 +34,22 @@ class EditTask extends Component {
             color = "red"
         }
         this.setState( {priority: e.target.value, color: color} );
+    };
+
+    handleClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if(this.state.task.length === 0 ) {
+            return
+        }
+        this.props.editTaskProperty(this.state.task, this.state.id, this.state.checked, this.state.edit, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
+        //this.props.hideEditTask(this.props.task.id); - this isn't needed because in this.props.editTaskProperty this.state.edit is false
+    };
+
+    handleCancel = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.props.hideEditTask(this.props.task.id);
     };
     
     render() {
@@ -91,6 +98,7 @@ class EditTask extends Component {
                         </div>
                     </div> */}
                 </div>
+                <button className="button-to-input" onClick={this.handleCancel}>Cancel</button>
                 <button className="button-to-input" onClick={this.handleClick}>Save</button>
             </div>
         )
@@ -101,7 +109,6 @@ class EditTask extends Component {
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
         tasks: state.tasks, 
-        editTask: state.editTask,
         lists: state.lists
     }
 }
@@ -110,7 +117,7 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 const mapDispatchToPost = (dispatch) => {
     return {
         editTaskProperty: (task, id, checked, edit, list, date, time, priority, color) => { dispatch( { type: 'EDIT_TASK', task: {task: task, id: id, checked: checked, edit: edit, list: list, date: date, time: time, priority: priority, color: color}} ) },
-        //hideEditTask: (id) => { dispatch( {type: 'HIDE_EDIT_TASK', id: id} ) }
+        hideEditTask: (id) => { dispatch( {type: 'HIDE_EDIT_TASK', id: id} ) }
     }
 }
 

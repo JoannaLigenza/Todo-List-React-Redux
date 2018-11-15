@@ -17,22 +17,22 @@ class Main extends Component {
         const overlap = this.state.overlap.map( ov => {
             if( id === 1) {
             //console.log("jeden ", id)
-            ov =  <div>
+            ov =  <div key={1}>
                 <TaskArea />
                 <NoteArea />
             </div>
             }
             if( id === 2) {
             //    console.log("dwa ", id)
-             ov = <TaskArea />
+             ov = <TaskArea key={2}/>
             }
             if( id === 3) {
             //    console.log("trzy ", id)
-             ov = <TaskArea />
+             ov = <TaskArea key={3}/>
             }
             if( id === 4) {
             //    console.log("cztery ", id)
-             ov =<NoteArea /> 
+             ov =<NoteArea key={4}/> 
             }
             return ov 
         })

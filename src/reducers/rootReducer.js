@@ -96,18 +96,18 @@ const rootReducer = (state = initState, action) => {
             tasks: newTask
         }
     }
-    // if (action.type === 'HIDE_EDIT_TASK') {
-    //     const newTask = state.tasks.map( task => {
-    //         if (task.id === action.id) {
-    //            task.edit = false;
-    //         }
-    //         return task
-    //     })
-    //     return {
-    //         ...state, 
-    //         tasks: [...state.tasks: newTask]
-    //     }
-    // }
+    if (action.type === 'HIDE_EDIT_TASK') {
+        const newTask = state.tasks.map( task => {
+            if (task.id === action.id) {
+               task.edit = false;
+            }
+            return task
+        })
+        return {
+            ...state, 
+            tasks: newTask
+        }
+    }
     if (action.type === 'ADD_LIST') {
         return {
             ...state, 
