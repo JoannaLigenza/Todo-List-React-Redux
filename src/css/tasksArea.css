@@ -206,4 +206,8 @@
   -webkit-transform: translateX(1px) translateY(1px);
           transform: translateX(1px) translateY(1px);
 }
+
+#edit-task-area {
+  border: 1px solid red;
+}
 /*# sourceMappingURL=tasksArea.css.map */

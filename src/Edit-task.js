@@ -1,24 +1,21 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-class AddTask extends Component {
-    state = { task: "Add new task", id: 5, list: "Default", date:"", time: "", priority: "", color: "" }
+class EditTask extends Component {
+    state = { task: this.props.task.task, id: this.props.task.id, checked: this.props.task.checked, edit: this.props.task.edit,
+            list: this.props.task.list, date: this.props.task.date, time: this.props.task.time, 
+            priority: this.props.task.priority, color: this.props.task.color }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
     handleClick = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         if(this.state.task.length === 0 ) {
             return
         }
-        this.addTask();
-        this.props.hideAddNewTask();
-    };
-    addTask = (e) => {
-        let id = this.state.id+1;
-        this.setState( {id: id})
-        this.props.addTask(this.state.task, this.state.id, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
-        this.setState( {task: "", date: ""})
+        this.props.editTaskProperty(this.state.task, this.state.id, this.state.checked, this.state.edit, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
+        this.props.hideEditTask(this.props.task.id);
     };
     selectChange = (e) => {
         console.log("e.target.value ", e.target.value)
@@ -34,6 +31,7 @@ class AddTask extends Component {
     };
 
     priorityChange = (e) => {
+        console.log("e.target.value ", e.target.value)
         let color = "";
         if (e.target.value === "Low") {
             color = "yellow"
@@ -48,41 +46,42 @@ class AddTask extends Component {
     };
     
     render() {
+        //console.log("this.props.task ", this.props.task)
         const lists = this.props.lists.map( list => {
            return <option className="option" style={{margin: 5+"px"}} key={list.id}> {list.list} </option> 
         });
-
+        
         return(
-            <div id="add-task-area">
-                <button className="delete-task-button right" onClick={this.props.hideAddNewTask}>X</button>
-                <textarea className="textarea" value={this.state.task} onChange={this.handleChange}></textarea>
+            <div id="edit-task-area">
+                <button className="delete-task-button right" onClick={this.props.hideEditTask}>X</button>
+                <textarea className="textarea" defaultValue={this.props.task.task} onChange={this.handleChange}></textarea>
                 <div className="add-task-properties">
                     <div className="add-priority priority-list">
                         <h4>List:</h4>
-                        <select onChange={this.selectChange}>
+                        <select defaultValue={this.props.task.list} onChange={this.selectChange}>
                             {lists}
                         </select>
                     </div>
                     <div className="add-priority priority-date">
                         <h4>Date:</h4>
-                        <input type="date" value={this.state.date} onChange={this.dateChange}></input>
+                        <input type="date" defaultValue={this.props.task.date} onChange={this.dateChange}></input>
                     </div>
                     <div className="add-priority priority-time">
                         <h4>Time:</h4>
-                        <input type="time" value={this.state.time} onChange={this.timeChange}></input>
+                        <input type="time" defaultValue={this.props.task.time} onChange={this.timeChange}></input>
+                    </div>
+                    <div className="add-priority priority-priority">
+                        <h4>Priority:</h4>
+                        <select label="wybierz" onChange={this.priorityChange} defaultValue={this.props.task.priority}>
+                            <option value="">None</option>
+                            <option value="Low">Low</option>
+                            <option value="Middle">Middle</option>
+                            <option value="High">High</option>
+                        </select>
                     </div>
                     {/* <div className="add-priority priority-priority">
                         <h4>Priority:</h4>
-                        <select label="wybierz" onChange={this.priorityChange} default="none">
-                            <option>None</option>
-                            <option>Low</option>
-                            <option>Middle</option>
-                            <option>High</option>
-                        </select>
-                    </div> */}
-                    <div className="add-priority priority-priority">
-                        <h4>Priority:</h4>
-                        <div id="priority-select" onChange={this.priorityChange} default="none">
+                        <div id="priority-select" onChange={this.priorityChange}>
                             <ul>
                                 <li><input type="radio" id="1I" name="prior" value=""></input><label htmlFor="1I">None</label></li>
                                 <li><input type="radio" id="2I" name="prior" value="Low"></input><label htmlFor="2I">Low</label></li>
@@ -90,9 +89,9 @@ class AddTask extends Component {
                                 <li><input type="radio" id="4I" name="prior" value="High"></input><label htmlFor="4I">High</label></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
-                <button className="button-to-input" onClick={this.handleClick}>Add Task</button>
+                <button className="button-to-input" onClick={this.handleClick}>Save</button>
             </div>
         )
     }
@@ -102,6 +101,7 @@ class AddTask extends Component {
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
         tasks: state.tasks, 
+        editTask: state.editTask,
         lists: state.lists
     }
 }
@@ -109,9 +109,9 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 // Whenever addTask function is called, dispatch is running
 const mapDispatchToPost = (dispatch) => {
     return {
-        addTask: (task, id, list, date, time, priority, color) => { dispatch( { type: 'ADD_TASK', task: {task: task, id: id, checked: false, edit: false, list: list, date: date, time: time, priority: priority, color: color}} ) },
-        hideAddNewTask: () => { dispatch( {type: 'HIDE_ADD_TASK_AREA'} ) }
+        editTaskProperty: (task, id, checked, edit, list, date, time, priority, color) => { dispatch( { type: 'EDIT_TASK', task: {task: task, id: id, checked: checked, edit: edit, list: list, date: date, time: time, priority: priority, color: color}} ) },
+        hideEditTask: (id) => { dispatch( {type: 'HIDE_EDIT_TASK', id: id} ) }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToPost)(AddTask);
+export default connect(mapStateToProps, mapDispatchToPost)(EditTask);

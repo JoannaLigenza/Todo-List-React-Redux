@@ -1,11 +1,13 @@
 const initState = {
     addTaskArea: false,
     addListArea: false,
+    // addEditTaskArea: false,
+    // editTask: {},
     tasks: [
-        {task: "task 1", id: 1, checked: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
-        {task: "task 2", id: 2, checked: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
-        {task: "task 3", id: 3, checked: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
+        {task: "task 1", id: 1, checked: false, edit: true, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
+        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
+        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
         ], 
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
@@ -33,7 +35,7 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-    //console.log("filter: ", state.filter)
+    console.log("state.tasks ", state.tasks)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -67,19 +69,63 @@ const rootReducer = (state = initState, action) => {
             tasks: [...state.tasks: newPosts]
         }
     }
-    if (action.type === 'EDIT_TASK') {
+    // if (action.type === 'EDIT_TASK') {
+    //     const newTask = state.tasks.map( task => {
+    //         if (task.id === action.id) {
+    //            task.task = action.task;
+    //         }
+    //         return task.task
+    //     })
+    //     return {
+    //         ...state, 
+    //         tasks: [...state.tasks: newTask]
+    //     }
+    // }
+    if (action.type === 'SHOW_EDIT_TASK') {
         const newTask = state.tasks.map( task => {
             if (task.id === action.id) {
-               task.task = action.task;
+               task.edit = true;
             }
-            return task.task
+            return task
         })
         return {
             ...state, 
             tasks: [...state.tasks: newTask]
         }
     }
-
+    if (action.type === 'EDIT_TASK') {
+        console.log("taskkkkk ", action.task)
+        const newTask = state.tasks.map( task => {
+            if (task.id === action.task.id) {
+               task = action.task;
+            }
+            //console.log("task ", task)
+            return task
+        })
+        console.log("newTask ", newTask)
+        return {
+            ...state, 
+            tasks: [...state.tasks: newTask]
+        }
+    }
+    if (action.type === 'HIDE_EDIT_TASK') {
+        const newTask = state.tasks.map( task => {
+            if (task.id === action.id) {
+               task.edit = false;
+            }
+            return task
+        })
+        return {
+            ...state, 
+            tasks: [...state.tasks: newTask]
+        }
+    }
+    // if (action.type === 'HIDE_EDIT_TASK') {
+    //     return {
+    //         ...state, 
+    //         addEditTaskArea: false
+    //     }
+    // }
     if (action.type === 'ADD_LIST') {
         return {
             ...state, 
