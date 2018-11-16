@@ -87,4 +87,27 @@ input[type="radio"] {
 .notDisplayDiv {
   display: none;
 }
+
+.edit-task-div {
+  width: 100%;
+}
+
+.edit-task-proprty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.edit-task-proprty h4 {
+  width: 70px;
+}
+
+#edit-task-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 /*# sourceMappingURL=addTask.css.map */

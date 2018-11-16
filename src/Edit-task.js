@@ -60,24 +60,23 @@ class EditTask extends Component {
         
         return(
             <div id="edit-task-area">
-                <button className="delete-task-button right" onClick={this.props.hideEditTask}>X</button>
-                <textarea className="textarea" defaultValue={this.props.task.task} onChange={this.handleChange}></textarea>
-                <div className="add-task-properties">
-                    <div className="add-priority priority-list">
+                <textarea className="textarea-edit-task" defaultValue={this.props.task.task} onChange={this.handleChange}></textarea>
+                <div className="edit-task-properties">
+                    <div className="edit-task-proprty priority-list">
                         <h4>List:</h4>
                         <select defaultValue={this.props.task.list} onChange={this.selectChange}>
                             {lists}
                         </select>
                     </div>
-                    <div className="add-priority priority-date">
+                    <div className="edit-task-proprty priority-date">
                         <h4>Date:</h4>
                         <input type="date" defaultValue={this.props.task.date} onChange={this.dateChange}></input>
                     </div>
-                    <div className="add-priority priority-time">
+                    <div className="edit-task-proprty priority-time">
                         <h4>Time:</h4>
                         <input type="time" defaultValue={this.props.task.time} onChange={this.timeChange}></input>
                     </div>
-                    <div className="add-priority priority-priority">
+                    <div className="edit-task-proprty priority-priority">
                         <h4>Priority:</h4>
                         <select label="wybierz" onChange={this.priorityChange} defaultValue={this.props.task.priority}>
                             <option value="">None</option>
@@ -98,8 +97,11 @@ class EditTask extends Component {
                         </div>
                     </div> */}
                 </div>
-                <button className="button-to-input" onClick={this.handleCancel}>Cancel</button>
-                <button className="button-to-input" onClick={this.handleClick}>Save</button>
+                <div id="edit-task-buttons">
+                    <button className="button-to-input" onClick={this.handleCancel}>Cancel</button>
+                    <button className="button-to-input" onClick={this.handleClick}>Save</button>
+                </div>
+                
             </div>
         )
     }

@@ -122,6 +122,12 @@
   outline-color: grey;
 }
 
+@media screen and (max-width: 500px) {
+  .task-p-area {
+    width: 60%;
+  }
+}
+
 .task-text, .task-property {
   margin-bottom: 0;
   padding: 0;
@@ -135,7 +141,7 @@
   color: grey;
 }
 
-.delete-task-button, .delete-note-button, .delete-list-button {
+.delete-task-button, .delete-note-button {
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -160,15 +166,30 @@
 
 .textarea {
   width: 90%;
-  height: 50px;
+  min-height: 20px;
   max-height: 200px;
   display: block;
   margin: 10px auto;
   padding: 10px;
-  border: 0;
-  border-radius: 20px;
+  border: 1px solid #ffc539;
+  border-radius: 10px;
   outline: none;
   resize: vertical;
+  height: 50px;
+}
+
+.textarea-edit-task {
+  width: 90%;
+  min-height: 20px;
+  max-height: 200px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ffc539;
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+  height: 20px;
 }
 
 .note-text {
@@ -205,9 +226,5 @@
           box-shadow: 1px 1px 5px #9c9c9c;
   -webkit-transform: translateX(1px) translateY(1px);
           transform: translateX(1px) translateY(1px);
-}
-
-#edit-task-area {
-  border: 1px solid red;
 }
 /*# sourceMappingURL=tasksArea.css.map */

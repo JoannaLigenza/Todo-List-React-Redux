@@ -1,0 +1,18 @@
+@mixin textarea {
+  width: 90%;
+  min-height: 20px;
+  max-height: 200px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid $main-color;
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+}
+
+@mixin mediaQuery($arg) {
+  @media screen and (max-width: $arg) {
+    @content
+  }
+}

@@ -44,12 +44,12 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         }
         
         return <li className="one-task" key={task.id} id={task.id} //onClick={ () => {handleEdit(task.id)} }
-                style={ task.checked===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
+                style={ task.checked===true || task.edit===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
                 draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} >
             <div className="checkbox-container"><input type="checkbox" className="checkbox-style" 
             onChange={ (e) => {changeStyle(e.target.checked, task.id) } } defaultChecked={task.checked} 
             style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } ></input></div> 
-            <div className="task-p-area" onClick={() => {handleEdit(task.id)}}>
+            <div className="task-p-area" onClick={() => {handleEdit(task.id)}} >
                 <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } >{task.task}</p>
                     {/* contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}} */}
                      

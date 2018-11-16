@@ -1,3 +1,6 @@
+@import '../variables';
+@import './mixin';
+
 .add-priority {
     display: flex;
     margin: 10px;
@@ -98,4 +101,25 @@ input[type="radio"] {
 
 .notDisplayDiv {
     display: none;
+}
+
+// #edit-task-area {
+//   border: 1px solid red;
+// }
+
+.edit-task-div {
+    width: 100%;
+}
+
+.edit-task-proprty {
+  display: flex;
+}
+
+.edit-task-proprty h4 {
+    width: 70px;
+}
+
+#edit-task-buttons {
+    display: flex;
+    justify-content: center;
 }
