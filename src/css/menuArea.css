@@ -36,8 +36,22 @@
   border: 1px solid #fff;
 }
 
+@media screen and (max-width: 500px) {
+  .ovlp-title {
+    padding: 5px;
+  }
+}
+
 .ovlp-title-active {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: 3px solid #fff;
+}
+
+@media screen and (max-width: 500px) {
+  .ovlp-title-active {
+    padding: 5px;
+  }
 }
 
 .ovlp-descr-select {

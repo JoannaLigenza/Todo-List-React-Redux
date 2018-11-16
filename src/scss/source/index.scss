@@ -1,4 +1,5 @@
 @import '../variables';
+@import './mixin';
 
 html {
   height: 100%;
@@ -32,6 +33,12 @@ body {
   flex: 1;  
   background-color: $main-color;
 } 
+
+#menu h4 {
+  @include mediaQuery(500px) {
+    display: none;
+  }
+}
 
 #tasks {
   @extend %menu-tasks;

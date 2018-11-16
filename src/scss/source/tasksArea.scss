@@ -206,7 +206,7 @@
   margin: 10px;
 }
 
-.button-round {
+%button-round {
   width: 50px;
   height: 50px;
   background-color: $button-border-color;
@@ -216,7 +216,31 @@
   box-shadow: 3px 3px 5px $button-shadow-color;
 }
 
-.button-round:active {
+%active {
   box-shadow: 1px 1px 5px $button-shadow-color;
   transform: translateX(1px) translateY(1px);
+}
+
+.add-task-button {
+  @extend %button-round;
+  &:active {
+    @extend %active;
+  }
+  @include mediaQuery(500px) {
+    position: fixed; 
+    bottom: 11%;
+    right: 2%;
+  }
+}
+
+.show-all-buttton {
+  @extend %button-round;
+  &:active {
+    @extend %active;
+  }
+  @include mediaQuery(500px) {
+    position: fixed; 
+    bottom: 2%;
+    right: 2%;
+  }
 }

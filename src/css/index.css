@@ -36,6 +36,12 @@ body {
   background-color: #ffc539;
 }
 
+@media screen and (max-width: 500px) {
+  #menu h4 {
+    display: none;
+  }
+}
+
 #tasks {
   -webkit-box-flex: 3;
       -ms-flex: 3;

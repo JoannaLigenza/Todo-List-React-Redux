@@ -129,8 +129,8 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
     return(
         <div id="task-list-container">
             <div id="round-button-area">
-                <button className="button-round" onClick={showAddNewTask}>Add Task</button> 
-                <button className="button-round" onClick={ () => {filterTasks("none")} }>Show All</button>
+                <button className="add-task-button" onClick={showAddNewTask}>Add Task</button> 
+                <button className="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button>
             </div>
             
             <div><AddTaskDiv /></div>
