@@ -52,6 +52,15 @@ const rootReducer = (state = initState, action) => {
             tasks: newPosts
         }
     }
+    if (action.type === 'DELETE_All_TASKS') {
+        let newPosts = state.tasks.filter( post => {
+            return post.checked === false
+        })
+        return {
+            ...state, 
+            tasks: newPosts
+        }
+    }
     if (action.type === 'CHANGE_TASK_STYLE') {
         let newTask = state.tasks.filter( task => {
             if (task.id === action.id) {
@@ -72,8 +81,15 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'SHOW_EDIT_TASK') {
         const newTask = state.tasks.map( task => {
             if (task.id === action.id) {
-               task.edit = true;
+                if (task.edit === false) {
+                    task.edit = true;
+                    return task
+                }
+                if (task.edit === true) {
+                    task.edit = false;
+                }
             }
+            console.log("task ", task)
             return task
         })
         return {
@@ -91,18 +107,6 @@ const rootReducer = (state = initState, action) => {
             return task
         })
         console.log("newTask ", newTask)
-        return {
-            ...state, 
-            tasks: newTask
-        }
-    }
-    if (action.type === 'HIDE_EDIT_TASK') {
-        const newTask = state.tasks.map( task => {
-            if (task.id === action.id) {
-               task.edit = false;
-            }
-            return task
-        })
         return {
             ...state, 
             tasks: newTask
@@ -227,7 +231,7 @@ const rootReducer = (state = initState, action) => {
     }
     if (action.type === 'FILTER_TASKS') {
         //console.log("filterrrrrrrrrr ", state.filter.list)
-        console.log("checked ", state.filter.checked)
+       // console.log("checked ", state.filter.checked)
         const filter = ( ()  => {
             if (action.filter === "list") {
                 return  { list: action.value,

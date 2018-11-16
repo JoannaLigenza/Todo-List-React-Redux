@@ -96,12 +96,15 @@
   background-color: $task-color;
   margin: 5px auto;
   padding: 2px;
-  border-radius: 20px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* transition: margin 1s ease; */
   border: 1px solid $main-color;
+  @include mediaQuery(500px) {
+    margin: 1px auto;
+  }
 }
 
 .one-task {
@@ -128,7 +131,19 @@
   margin-left: 5px;
   width: 20px;
   height: 20px;
+  position: relative;
 }
+
+// .checkbox-style:after {
+//   content: "";
+//   background-image: url("../img/trashIcon.png");
+//   width: 25px;
+//   height: 24px;
+//   position: absolute;
+//   left: -3px;
+//   bottom: -28px;
+//   // border: 1px solid red;
+// }
 
 .task-p-area {
   width: 85%;
@@ -140,17 +155,35 @@
   }
 }
 
-.task-text, .task-property {
+.task-p {
+  height: 100%;
+}
+
+%task {
+  margin-top: 0;
   margin-bottom: 0;
-  padding: 0;
+  padding: 15px 0 0 0;
   font-size: 18px;
+  
+}
+
+.task-text {
+  @extend %task;
+  @include mediaQuery(500px) {
+    padding: 5px 0 0 0;
+  }
 }
 
 .task-property {
-  margin: 3px 0 15px 0  ;
+  @extend %task;
+  margin: 3px 0 15px 0;
   padding: 0;
   font-size: 14px;
   color: grey;
+  @include mediaQuery(500px) {
+    margin: 3px 0 5px 0;
+    font-size: 12px;
+  }
 }
 
 %delete-button {
@@ -165,7 +198,16 @@
     box-shadow: 2px 2px $button-shadow-color;
 }
 
-.delete-task-button, .delete-note-button {
+.delete-task-button {
+  background-image: url("../img/trashIcon.png");
+  width: 35px;
+  height: 33px;
+  margin-right: 5px;
+  outline: none;
+  // box-shadow: 2px 2px $button-shadow-color;
+}
+
+.delete-note-button, .delete-list-button {
   @extend %delete-button;
 }
 
@@ -228,19 +270,15 @@
   }
   @include mediaQuery(500px) {
     position: fixed; 
-    bottom: 11%;
+    bottom: 2%;
     right: 2%;
   }
 }
 
-.show-all-buttton {
+#show-all-buttton, #delete-all-buttton {
   @extend %button-round;
+  margin: 0 auto;
   &:active {
     @extend %active;
-  }
-  @include mediaQuery(500px) {
-    position: fixed; 
-    bottom: 2%;
-    right: 2%;
   }
 }

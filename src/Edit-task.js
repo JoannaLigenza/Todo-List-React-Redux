@@ -45,12 +45,6 @@ class EditTask extends Component {
         this.props.editTaskProperty(this.state.task, this.state.id, this.state.checked, this.state.edit, this.state.list, this.state.date, this.state.time, this.state.priority, this.state.color);
         //this.props.hideEditTask(this.props.task.id); - this isn't needed because in this.props.editTaskProperty this.state.edit is false
     };
-
-    handleCancel = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.props.hideEditTask(this.props.task.id);
-    };
     
     render() {
         //console.log("this.props.task ", this.props.task)
@@ -98,7 +92,6 @@ class EditTask extends Component {
                     </div> */}
                 </div>
                 <div id="edit-task-buttons">
-                    <button className="button-to-input" onClick={this.handleCancel}>Cancel</button>
                     <button className="button-to-input" onClick={this.handleClick}>Save</button>
                 </div>
                 
@@ -119,7 +112,6 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 const mapDispatchToPost = (dispatch) => {
     return {
         editTaskProperty: (task, id, checked, edit, list, date, time, priority, color) => { dispatch( { type: 'EDIT_TASK', task: {task: task, id: id, checked: checked, edit: edit, list: list, date: date, time: time, priority: priority, color: color}} ) },
-        hideEditTask: (id) => { dispatch( {type: 'HIDE_EDIT_TASK', id: id} ) }
     }
 }
 

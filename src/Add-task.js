@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddTask extends Component {
-    state = { task: "Add new task", id: 5, list: "Default", date:"", time: "", priority: "", color: "" }
+    state = { task: "Add new task", id: 5, list: "Default", date:"", time: "", priority: "None", color: "" }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };

@@ -43,8 +43,6 @@
 }
 
 .ovlp-title-active {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border: 3px solid #fff;
 }
 
@@ -56,6 +54,19 @@
 
 .ovlp-descr-select {
   padding-bottom: 20px;
+}
+
+#desktop-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10px 5px 20px 5px;
+}
+
+#desktop-div div {
+  text-align: center;
 }
 
 .list-filter {

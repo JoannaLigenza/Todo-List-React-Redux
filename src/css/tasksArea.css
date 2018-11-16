@@ -75,7 +75,7 @@
   background-color: #fff;
   margin: 5px auto;
   padding: 2px;
-  border-radius: 20px;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,6 +87,12 @@
           align-items: center;
   /* transition: margin 1s ease; */
   border: 1px solid #ffc539;
+}
+
+@media screen and (max-width: 500px) {
+  .one-task, .one-note {
+    margin: 1px auto;
+  }
 }
 
 .one-task {
@@ -113,6 +119,7 @@
   margin-left: 5px;
   width: 20px;
   height: 20px;
+  position: relative;
 }
 
 .task-p-area {
@@ -128,10 +135,21 @@
   }
 }
 
+.task-p {
+  height: 100%;
+}
+
 .task-text, .task-property {
+  margin-top: 0;
   margin-bottom: 0;
-  padding: 0;
+  padding: 15px 0 0 0;
   font-size: 18px;
+}
+
+@media screen and (max-width: 500px) {
+  .task-text {
+    padding: 5px 0 0 0;
+  }
 }
 
 .task-property {
@@ -141,7 +159,14 @@
   color: grey;
 }
 
-.delete-task-button, .delete-note-button {
+@media screen and (max-width: 500px) {
+  .task-property {
+    margin: 3px 0 5px 0;
+    font-size: 12px;
+  }
+}
+
+.delete-note-button, .delete-list-button {
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -152,6 +177,14 @@
   outline: none;
   -webkit-box-shadow: 2px 2px #9c9c9c;
           box-shadow: 2px 2px #9c9c9c;
+}
+
+.delete-task-button {
+  background-image: url("../img/trashIcon.png");
+  width: 35px;
+  height: 33px;
+  margin-right: 5px;
+  outline: none;
 }
 
 .delete-task-button:active, .delete-note-button:active {
@@ -210,7 +243,7 @@
   margin: 10px;
 }
 
-.add-task-button, .show-all-buttton {
+.add-task-button, #show-all-buttton, #delete-all-buttton {
   width: 50px;
   height: 50px;
   background-color: #ffc807;
@@ -221,7 +254,7 @@
           box-shadow: 3px 3px 5px #9c9c9c;
 }
 
-.add-task-button:active, .show-all-buttton:active {
+.add-task-button:active, #show-all-buttton:active, #delete-all-buttton:active {
   -webkit-box-shadow: 1px 1px 5px #9c9c9c;
           box-shadow: 1px 1px 5px #9c9c9c;
   -webkit-transform: translateX(1px) translateY(1px);
@@ -231,16 +264,12 @@
 @media screen and (max-width: 500px) {
   .add-task-button {
     position: fixed;
-    bottom: 11%;
+    bottom: 2%;
     right: 2%;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .show-all-buttton {
-    position: fixed;
-    bottom: 2%;
-    right: 2%;
-  }
+#show-all-buttton, #delete-all-buttton {
+  margin: 0 auto;
 }
 /*# sourceMappingURL=tasksArea.css.map */
