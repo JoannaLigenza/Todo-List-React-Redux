@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 
 const Desktop = ( {tasks, filterTasks, deleteAllTasks} ) => {
     return(
-        <div id="desktop-div">
-            <div>
-                <p className="ovlp-descr-p">Show All Tasks</p>
-                <button id="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button>
+        <div >
+            <div id="desktop-div">
+                <div> 
+                    <p className="ovlp-descr-p">Show All Tasks</p>
+                    <button id="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button>
+                </div>
+                <div>
+                    <p className="ovlp-descr-p">Delete Checked Tasks</p>
+                    <button id="delete-all-buttton" onClick={ () => {deleteAllTasks()} }>Delete All</button>
+                </div>
             </div>
-            <div>
-                <p className="ovlp-descr-p">Delete Checked Tasks</p>
-                <button id="delete-all-buttton" onClick={ () => {deleteAllTasks()} }>Delete All</button>
-            </div>
-            
         </div>
         
     )

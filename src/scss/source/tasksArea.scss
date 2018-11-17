@@ -33,10 +33,13 @@
   height: 0;
   opacity: 1;
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 4%;
   transition: height 0.5s ease;
   background-color: $main-color;
+  @include mediaQuery(500px) {
+    top: 0px;
+  }
 }
 
 .add-task-div-hidden {
@@ -54,19 +57,26 @@
 %add-task-list-div-visible {
   display: block;
   width: 90%;
-  height: 520px;
+  height: 450px;
   opacity: 1;
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 4%;
   transition: height 0.5s ease;
   background-color: $main-color;
   border: 5px double #bbb;
   box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
+  z-index: 3;
+  @include mediaQuery(500px) {
+    top: 0px;
+  }
 }
 
 .add-task-div-visible {
     @extend %add-task-list-div-visible;
+    @include mediaQuery(500px) {
+        height: 430px;
+    }
 }
 
 .add-list-div-visible {
@@ -77,6 +87,7 @@
 .add-task-area, .add-list-area {
   width: 100%;
   position: relative;
+  z-index: 3;
 }
 
 .right {
@@ -198,21 +209,19 @@
     box-shadow: 2px 2px $button-shadow-color;
 }
 
-.delete-task-button {
+.delete-task-button, .delete-note-button {
   background-image: url("../img/trashIcon.png");
   width: 35px;
   height: 33px;
   margin-right: 5px;
   outline: none;
-  // box-shadow: 2px 2px $button-shadow-color;
+  &:active {
+    @extend %active;
+  }
 }
 
-.delete-note-button, .delete-list-button {
+.delete-list-button, .delete-add-new-task-button {
   @extend %delete-button;
-}
-
-.delete-task-button:active, .delete-note-button:active {
-  box-shadow: 1px 1px $button-shadow-color;
 }
 
 #add-note {

@@ -54,7 +54,7 @@ class AddTask extends Component {
 
         return(
             <div id="add-task-area">
-                <button className="delete-task-button right" onClick={this.props.hideAddNewTask}>X</button>
+                <button className="delete-add-new-task-button right" onClick={this.props.hideAddNewTask}>X</button>
                 <textarea className="textarea" value={this.state.task} onChange={this.handleChange}></textarea>
                 <div className="add-task-properties">
                     <div className="add-priority priority-list">
@@ -71,16 +71,16 @@ class AddTask extends Component {
                         <h4>Time:</h4>
                         <input type="time" value={this.state.time} onChange={this.timeChange}></input>
                     </div>
-                    {/* <div className="add-priority priority-priority">
+                    <div className="add-priority priority-priority">
                         <h4>Priority:</h4>
-                        <select label="wybierz" onChange={this.priorityChange} default="none">
+                        <select id="priority-select" onChange={this.priorityChange} default="none">
                             <option>None</option>
                             <option>Low</option>
                             <option>Middle</option>
                             <option>High</option>
                         </select>
-                    </div> */}
-                    <div className="add-priority priority-priority">
+                    </div>
+                    {/* <div className="add-priority priority-priority">
                         <h4>Priority:</h4>
                         <div id="priority-select" onChange={this.priorityChange} default="none">
                             <ul>
@@ -90,7 +90,7 @@ class AddTask extends Component {
                                 <li><input type="radio" id="4I" name="prior" value="High"></input><label htmlFor="4I">High</label></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <button className="button-to-input" onClick={this.handleClick}>Add Task</button>
             </div>

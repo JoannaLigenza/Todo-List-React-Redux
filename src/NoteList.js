@@ -5,7 +5,7 @@ const NoteList = ( {notes, deleteNote, editNote} ) => {
     const showNotes = notes.map( (note) => {
         return <li className="one-note" key={note.id}>
             <p className="note-text" contentEditable="true" onBlur={ (e) => {editNote(e.target.innerText, note.id)} }>{note.note}</p>
-            <button className="delete-note-button" onClick={ () => {deleteNote(note.id)} }>X</button></li>
+            <div className="delete-note-button" onClick={ () => {deleteNote(note.id)} }></div></li>
     })
     return(
         <div id="notes">

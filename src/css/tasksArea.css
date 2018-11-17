@@ -22,11 +22,17 @@
   height: 0;
   opacity: 1;
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 4%;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
   background-color: #ffc539;
+}
+
+@media screen and (max-width: 500px) {
+  .add-task-div-hidden, .add-list-div-hidden {
+    top: 0px;
+  }
 }
 
 .add-task-div-hidden *, .add-list-div-hidden * {
@@ -36,10 +42,10 @@
 .add-task-div-visible, .add-list-div-visible {
   display: block;
   width: 90%;
-  height: 520px;
+  height: 450px;
   opacity: 1;
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 4%;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
@@ -47,6 +53,19 @@
   border: 5px double #bbb;
   -webkit-box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
           box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
+  z-index: 3;
+}
+
+@media screen and (max-width: 500px) {
+  .add-task-div-visible, .add-list-div-visible {
+    top: 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .add-task-div-visible {
+    height: 430px;
+  }
 }
 
 .add-list-div-visible {
@@ -56,6 +75,7 @@
 .add-task-area, .add-list-area {
   width: 100%;
   position: relative;
+  z-index: 3;
 }
 
 .right {
@@ -166,7 +186,7 @@
   }
 }
 
-.delete-note-button, .delete-list-button {
+.delete-list-button, .delete-add-new-task-button {
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -179,17 +199,12 @@
           box-shadow: 2px 2px #9c9c9c;
 }
 
-.delete-task-button {
+.delete-task-button, .delete-note-button {
   background-image: url("../img/trashIcon.png");
   width: 35px;
   height: 33px;
   margin-right: 5px;
   outline: none;
-}
-
-.delete-task-button:active, .delete-note-button:active {
-  -webkit-box-shadow: 1px 1px #9c9c9c;
-          box-shadow: 1px 1px #9c9c9c;
 }
 
 #add-note {
@@ -254,7 +269,7 @@
           box-shadow: 3px 3px 5px #9c9c9c;
 }
 
-.add-task-button:active, #show-all-buttton:active, #delete-all-buttton:active {
+.delete-task-button:active, .delete-note-button:active, .add-task-button:active, #show-all-buttton:active, #delete-all-buttton:active {
   -webkit-box-shadow: 1px 1px 5px #9c9c9c;
           box-shadow: 1px 1px 5px #9c9c9c;
   -webkit-transform: translateX(1px) translateY(1px);

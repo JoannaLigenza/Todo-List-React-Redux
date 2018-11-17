@@ -7,7 +7,7 @@
 }
 
 .add-priority h4 {
-    width: 70px;
+    width: 90px;
 }
 
 %add-priority {
@@ -19,22 +19,22 @@
     appearance: none;
     border-radius: 2px;
     background-color: white;
+    @include mediaQuery(500px) {
+       margin: 0px;
+       height: 50px;
+    }
 }
 
-.priority-list select {
+.add-priority select {
     @extend %add-priority;
+    // padding: 0 10px;
 }
 
-.priority-date input {
+.add-priority input {
     @extend %add-priority;
-}
-
-.priority-time input {
-    @extend %add-priority;
-}
-
-.priority-priority select {
-    @extend %add-priority;
+    @include mediaQuery(500px) {
+        padding: 0 5px;
+    }
 }
 
 input[type="date"] {
@@ -59,22 +59,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 3px;
 }
 
-#priority-select {
-    width: 97%;
-    padding: 0 10px;
-    margin: 10px;
+// #priority-select {
+//     width: 97%;
+//     padding: 0 10px;
+//     margin: 10px;
 
-    ul {
-    list-style: none;
-    border: 1px solid yellow;
-    text-align: left;
+//     ul {
+//     list-style: none;
+//     border: 1px solid yellow;
+//     text-align: left;
 
-    li {
-    display: inline-block;
-    margin: 20px;
-    }
-    }
-}
+//     li {
+//     display: inline-block;
+//     margin: 20px;
+//     border: 1px solid red;
+//     @include mediaQuery(500px) {
+//     margin: 2px;
+//   }
+//     }
+//     }
+
 
 input[type="radio"] {
     width: 20px;
