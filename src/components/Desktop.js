@@ -5,13 +5,13 @@ const Desktop = ( {tasks, filterTasks, deleteAllTasks} ) => {
     return(
         <div >
             <div id="desktop-div">
-                <div> 
-                    <p className="ovlp-descr-p">Show All Tasks</p>
-                    <button id="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button>
+                <div>
+                    {/* <p className="ovlp-descr-p">Show All Tasks</p> */}
+                    <button id="show-all-button" onClick={ () => {filterTasks("none")} }>Show All Tasks</button>
                 </div>
                 <div>
-                    <p className="ovlp-descr-p">Delete Checked Tasks</p>
-                    <button id="delete-all-buttton" onClick={ () => {deleteAllTasks()} }>Delete All</button>
+                    {/* <p className="ovlp-descr-p">Delete Checked Tasks</p> */}
+                    <button id="delete-all-button" onClick={ () => {deleteAllTasks()} }>Delete All Tasks</button>
                 </div>
             </div>
         </div>

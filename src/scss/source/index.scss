@@ -43,6 +43,7 @@ body {
 #tasks {
   @extend %menu-tasks;
   flex: 3;
+  padding-bottom: 60px;
 }
 
 #test {

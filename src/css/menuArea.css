@@ -52,21 +52,22 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .ovlp-descr-p {
+    margin: 0 0 10px 0;
+  }
+}
+
 .ovlp-descr-select {
   padding-bottom: 20px;
 }
 
 #desktop-div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 10px 5px 20px 5px;
+  padding: 20px 5px;
 }
 
 #desktop-div div {
-  text-align: center;
+  display: inline-block;
 }
 
 .list-filter {
@@ -131,7 +132,25 @@ input[type="radio"] + label[for="4"] {
 }
 
 .add-new-delete-list-button {
-  margin: 0 10px;
   display: inline-block;
+  padding: 10px;
+  margin: 0 10px;
+  background-color: #fff;
+  border: 0 solid;
+  border-radius: 5px;
+  outline: none;
+  -webkit-box-shadow: 3px 3px 5px #9c9c9c;
+          box-shadow: 3px 3px 5px #9c9c9c;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.add-new-delete-list-button:active {
+  -webkit-box-shadow: 1px 1px 5px #9c9c9c;
+          box-shadow: 1px 1px 5px #9c9c9c;
+  -webkit-transform: translateX(1px) translateY(1px);
+          transform: translateX(1px) translateY(1px);
 }
 /*# sourceMappingURL=menuArea.css.map */

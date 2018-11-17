@@ -216,7 +216,7 @@
   margin-right: 5px;
   outline: none;
   &:active {
-    @extend %active;
+    @include active;
   }
 }
 
@@ -267,15 +267,10 @@
   box-shadow: 3px 3px 5px $button-shadow-color;
 }
 
-%active {
-  box-shadow: 1px 1px 5px $button-shadow-color;
-  transform: translateX(1px) translateY(1px);
-}
-
 .add-task-button {
   @extend %button-round;
   &:active {
-    @extend %active;
+    @include active;
   }
   @include mediaQuery(500px) {
     position: fixed; 
@@ -284,10 +279,20 @@
   }
 }
 
-#show-all-buttton, #delete-all-buttton {
-  @extend %button-round;
+%button-menu {
+  padding: 10px;
+  background-color: $button-color;
+  border: 0 solid;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 3px 3px 5px $button-shadow-color;
   margin: 0 auto;
+  user-select: none;
+}
+
+#show-all-button, #delete-all-button {
+  @include button-menu;
   &:active {
-    @extend %active;
+    @include active;
   }
 }

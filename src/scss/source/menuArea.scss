@@ -51,18 +51,22 @@
     }
 }
 
+.ovlp-descr-p {
+    @include mediaQuery(500px) {
+        margin: 0 0 10px 0;
+    }
+}
+
 .ovlp-descr-select {
     padding-bottom: 20px;
 }
 
 #desktop-div {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 5px 20px 5px;
+    padding: 20px 5px;
 }
 
 #desktop-div div {
-    text-align: center;
+    display: inline-block;
 }
 
 .list-filter {
@@ -130,6 +134,9 @@ input[type="radio"] + label[for="4"] {
 }
 
 .add-new-delete-list-button {
-    margin: 0 10px;
     display: inline-block;
+    @include button-menu;
+  &:active {
+    @include active;
+  }
 }

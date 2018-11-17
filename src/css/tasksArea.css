@@ -191,7 +191,7 @@
   height: 30px;
   margin-right: 5px;
   text-align: center;
-  background-color: #0e79e7;
+  background-color: #fff;
   border: 2px solid #ffc807;
   border-radius: 50px;
   outline: none;
@@ -205,6 +205,13 @@
   height: 33px;
   margin-right: 5px;
   outline: none;
+}
+
+.delete-task-button:active, .delete-note-button:active {
+  -webkit-box-shadow: 1px 1px 5px #9c9c9c;
+          box-shadow: 1px 1px 5px #9c9c9c;
+  -webkit-transform: translateX(1px) translateY(1px);
+          transform: translateX(1px) translateY(1px);
 }
 
 #add-note {
@@ -258,7 +265,7 @@
   margin: 10px;
 }
 
-.add-task-button, #show-all-buttton, #delete-all-buttton {
+.add-task-button {
   width: 50px;
   height: 50px;
   background-color: #ffc807;
@@ -269,7 +276,7 @@
           box-shadow: 3px 3px 5px #9c9c9c;
 }
 
-.delete-task-button:active, .delete-note-button:active, .add-task-button:active, #show-all-buttton:active, #delete-all-buttton:active {
+.add-task-button:active {
   -webkit-box-shadow: 1px 1px 5px #9c9c9c;
           box-shadow: 1px 1px 5px #9c9c9c;
   -webkit-transform: translateX(1px) translateY(1px);
@@ -284,7 +291,26 @@
   }
 }
 
-#show-all-buttton, #delete-all-buttton {
-  margin: 0 auto;
+#show-all-button, #delete-all-button {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 10px;
+  background-color: #fff;
+  border: 0 solid;
+  border-radius: 5px;
+  outline: none;
+  -webkit-box-shadow: 3px 3px 5px #9c9c9c;
+          box-shadow: 3px 3px 5px #9c9c9c;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#show-all-button:active, #delete-all-button:active {
+  -webkit-box-shadow: 1px 1px 5px #9c9c9c;
+          box-shadow: 1px 1px 5px #9c9c9c;
+  -webkit-transform: translateX(1px) translateY(1px);
+          transform: translateX(1px) translateY(1px);
 }
 /*# sourceMappingURL=tasksArea.css.map */
