@@ -292,7 +292,10 @@
 }
 
 #show-all-button, #delete-all-button {
+  width: 120px;
+  height: 50px;
   display: inline-block;
+  vertical-align: top;
   padding: 10px;
   margin: 0 10px;
   background-color: #fff;
@@ -312,5 +315,12 @@
           box-shadow: 1px 1px 5px #9c9c9c;
   -webkit-transform: translateX(1px) translateY(1px);
           transform: translateX(1px) translateY(1px);
+}
+
+@media screen and (max-width: 500px) {
+  #show-all-button, #delete-all-button {
+    height: 40px;
+    padding: 5px;
+  }
 }
 /*# sourceMappingURL=tasksArea.css.map */

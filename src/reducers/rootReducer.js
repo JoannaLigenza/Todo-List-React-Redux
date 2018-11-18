@@ -254,6 +254,7 @@ const rootReducer = (state = initState, action) => {
     }
     if (action.type === 'CHANGE_TASKS_ORDER') {
         console.log("tasks: ", state.tasks)
+        console.log("action.newOrder: ", action.newOrder)
         return {
             ...state, 
             tasks: action.newOrder

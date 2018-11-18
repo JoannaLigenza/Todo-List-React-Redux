@@ -87,7 +87,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         e.stopPropagation();
         e.dataTransfer.dropEffect = 'move';
         if(e.target === null) {return};
-        if(e.target.tagName !== "LI") {return};
+       // if(e.target.tagName !== "LI") {return};
         if(e.target.className !== "one-task") {return};
         e.target.closest(".one-task").classList.add("one-task-dragover");
         // console.log("trzymam ", e.target.className)
@@ -104,7 +104,8 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
 
     const dropHandler = e => {
         const tasksCopy = tasks
-        //e.preventDefault();
+        // e.preventDefault();
+        // e.stopPropagation();
         console.log("drop");
         let MovedTask = e.dataTransfer.getData("text")
         let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
@@ -131,6 +132,10 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
         }
         
         console.log("tasks copy ", tasksCopy)
+        // tasksCopy.map(task => {
+        //     task.checked = true;
+        //     return task;
+        // })
         
         changeTasksOrder(tasksCopy);
     }
@@ -144,7 +149,7 @@ const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNew
             
             <div><AddTaskDiv /></div>
             <div><AddListDiv /></div>
-            <ul id="task-list" onDrop={dropHandler} onDragOver={dragoverHandler} onDragLeave={dragleaveHandler}>
+            <ul id="task-list" onDragOver={dragoverHandler} onDragLeave={dragleaveHandler} onDrop={dropHandler}>
                 { alltasks }
             </ul>
         </div>
