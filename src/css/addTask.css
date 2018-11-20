@@ -9,7 +9,7 @@
   width: 90px;
 }
 
-.add-priority select, .add-priority input {
+.add-priority select, .add-priority input, .edit-task-proprty select, .edit-task-proprty input {
   width: 97%;
   padding: 0 10px;
   margin: 10px;
@@ -23,7 +23,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .add-priority select, .add-priority input {
+  .add-priority select, .add-priority input, .edit-task-proprty select, .edit-task-proprty input {
     margin: 0px;
     height: 50px;
   }
@@ -96,6 +96,12 @@ input[type="radio"] {
 
 .edit-task-proprty h4 {
   width: 70px;
+}
+
+@media screen and (max-width: 500px) {
+  .edit-task-proprty input {
+    padding: 0 5px;
+  }
 }
 
 #edit-task-buttons {

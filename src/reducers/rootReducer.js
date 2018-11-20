@@ -35,7 +35,6 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-    //console.log("state.tasks ", state.tasks)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -43,7 +42,6 @@ const rootReducer = (state = initState, action) => {
         }
     }  
     if (action.type === 'DELETE_TASK') {
-        console.log("action.id ", action.id)
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id
         })

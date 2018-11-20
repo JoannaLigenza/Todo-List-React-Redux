@@ -123,6 +123,18 @@ input[type="radio"] {
     width: 70px;
 }
 
+.edit-task-proprty select {
+    @extend %add-priority;
+    // padding: 0 10px;
+}
+
+.edit-task-proprty input {
+    @extend %add-priority;
+    @include mediaQuery(500px) {
+        padding: 0 5px;
+    }
+}
+
 #edit-task-buttons {
     display: flex;
     justify-content: center;
