@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Desktop = ( {tasks, filterTasks, deleteAllTasks} ) => {
+
     return(
         <div >
             <div id="desktop-div">
@@ -26,4 +27,4 @@ const mapDispatchToPost = (dispatch) => {
     }
 }
 
-export  default connect(mapStateToProps, mapDispatchToPost)(Desktop);
+export default connect(mapStateToProps, mapDispatchToPost)(Desktop);

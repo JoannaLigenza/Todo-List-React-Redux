@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class EditTask extends Component {
+    // prop task is from
     state = { task: this.props.task.task, id: this.props.task.id, checked: this.props.task.checked, edit: this.props.task.edit,
             list: this.props.task.list, date: this.props.task.date, time: this.props.task.time, 
             priority: this.props.task.priority, color: this.props.task.color }

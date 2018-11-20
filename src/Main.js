@@ -8,7 +8,6 @@ class Main extends Component {
         overlap: [ 
              <div key={0}>
                 <TaskArea />
-                <NoteArea />
             </div>
             ]
     }
@@ -19,7 +18,6 @@ class Main extends Component {
             //console.log("jeden ", id)
             ov =  <div key={1}>
                 <TaskArea />
-                <NoteArea />
             </div>
             }
             if( id === 2) {
@@ -41,18 +39,11 @@ class Main extends Component {
         // console.log("state: " ,this.state.overlap)
     }
 
-    filterTaskModuleToTaskArea = (filterName) => {
-        console.log("cos3")
-        console.log("filterName ", filterName)
-        //return filterName
-        //filter task here 
-    }
-
     render() {
         return (
             <div id="main">
                 <div id="menu">
-                    <Menu loadOverlap={this.loadOverlap} filter={this.filterTaskModuleToTaskArea}/>
+                    <Menu loadOverlap={this.loadOverlap} />
                 </div>
                 <div id="tasks">
                     {this.state.overlap}

@@ -4,10 +4,10 @@ const initState = {
     // addEditTaskArea: false,
     // editTask: {},
     tasks: [
-        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", },
-        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: ""}, 
-        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: ""}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", time: "", priority: "",},
+        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", moveTaskStyle: false},
+        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: "red", moveTaskStyle: false}, 
+        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: "yellow", moveTaskStyle: false}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", time: "", priority: "", moveTaskStyle: false},
         ], 
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
@@ -42,8 +42,8 @@ const rootReducer = (state = initState, action) => {
             tasks: [...state.tasks, action.task]
         }
     }  
-    //console.log("filter: ", state.tasks)
     if (action.type === 'DELETE_TASK') {
+        console.log("action.id ", action.id)
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id
         })
@@ -78,6 +78,13 @@ const rootReducer = (state = initState, action) => {
             tasks: newTask
         }
     }
+    if (action.type === 'CHANGE_TASK_STYLE') {
+        //console.log("tasks: ", state.tasks)
+        return {
+            ...state, 
+            tasks: action.tasks
+        }
+    }
     if (action.type === 'SHOW_EDIT_TASK') {
         const newTask = state.tasks.map( task => {
             if (task.id === action.id) {
@@ -89,7 +96,6 @@ const rootReducer = (state = initState, action) => {
                     task.edit = false;
                 }
             }
-            console.log("task ", task)
             return task
         })
         return {
@@ -98,7 +104,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'EDIT_TASK') {
-        console.log("taskkkkk ", action.task)
         const newTask = state.tasks.map( task => {
             if (task.id === action.task.id) {
                task = action.task;
@@ -106,7 +111,6 @@ const rootReducer = (state = initState, action) => {
             //console.log("task ", task)
             return task
         })
-        console.log("newTask ", newTask)
         return {
             ...state, 
             tasks: newTask
@@ -141,29 +145,18 @@ const rootReducer = (state = initState, action) => {
     // }
 
     if (action.type === 'ADD_NOTE') {
-        console.log("action note" , action.note)
         return {
             ...state, 
             notes: [...state.notes, action.note]
         }
     }  
     if (action.type === 'DELETE_NOTE') {
-        console.log("action id:" , action.id)
         let newNotes = state.notes.filter( note => {
             return note.id !== action.id
         })
         return {
             ...state, 
             notes: newNotes
-        }
-    }
-    if (action.type === 'DELETE_TASK') {
-        let newPosts = state.tasks.filter( post => {
-            return post.id !== action.id
-        })
-        return {
-            ...state, 
-            tasks: newPosts
         }
     }
     if (action.type === 'EDIT_NOTE') {
@@ -253,8 +246,8 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'CHANGE_TASKS_ORDER') {
-        console.log("tasks: ", state.tasks)
-        console.log("action.newOrder: ", action.newOrder)
+        //console.log("tasks: ", state.tasks)
+        //console.log("action.newOrder: ", action.newOrder)
         return {
             ...state, 
             tasks: action.newOrder

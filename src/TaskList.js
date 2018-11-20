@@ -1,161 +1,179 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 import EditTask from './Edit-task.js';
 import AddListDiv from './AddListDiv.js';
 
-const TaskList = ( {tasks, filter, deleteTask, editTask, changeStyle, showAddNewTask, changeTasksOrder, filterTasks} ) => {
+class TaskList extends Component {
+    state = { tasks: this.props.tasks } 
 
-    const filteringTask = tasks.filter( task => {          
-        if (filter.list === "Default" && filter.priority === "All") {
-            return task
-        }
-        if (filter.list !== "Default" && filter.priority === "All") {
-            return task.list === filter.list
-        }
-        if (filter.priority !== "All" && filter.list === "Default") {
-            return task.priority === filter.priority
-        }
-        return task
-    }) 
+    render() {
 
-    const alltasks = filteringTask.map( task => {
-        const showProperty = (property) => {
-            let switchProperty = () => {
-                if (property === "list") {
-                    if(task.list === "Default") {
-                        task.list = ""
-                    }
-                    return task.list
+        const handleChangeInput = (id) => {
+            const newTasks = this.state.tasks.map( task => {
+                if (task.id === id) {
+                    task.checked = !task.checked
                 }
-                if (property === "priority") {
-                    return task.priority
-                }
-                if (property === "date") {
-                    return task.date
-                }
-                if (property === "time") {
-                    return task.time
-                }
-            }
-            if (switchProperty() !== "") {
-                return property.charAt(0).toUpperCase() + property.slice(1) + ": " + switchProperty() + ", "
-            }
+                return task
+            })
+            this.setState( {tasks: newTasks} )
+            this.props.changeStyle(this.state.tasks);
         }
-        
-        return <li className="one-task" key={task.id} id={task.id} //onClick={ () => {handleEdit(task.id)} }
-                style={ task.checked===true || task.edit===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
-                draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} >
-            <div className="checkbox-container">
-                <input type="checkbox" className="checkbox-style" onChange={ (e) => {changeStyle(e.target.checked, task.id) } } 
-                        defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } >
-                </input>
-                {/* <div className="trash-icon"></div> */}
-            </div> 
-            <div className="task-p-area"  >
-                <div className="task-p" onClick={(e) => {handleEdit(e, task.id)}} >
-                    <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } >{task.task}</p>
-                    {/* contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}} */}
-                     
-                    <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
-                </div>
-                
-                <div className={task.edit ? ("edit-task-div visible") : ("edit-task-div hidden")} >
-                    <EditTask task={task}/>
-                </div>
-            </div>
-            {/* <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li>  */}
-            <div className="delete-task-button" onClick={ () => {deleteTask(task.id)} }></div>
-        </li>
-        
 
-    } );
+        const handleDeleteTask = (id) => {
+            const newTasks = this.props.tasks.filter( task => {
+                return task.id !== id
+            })
+            this.setState( {tasks: newTasks} )
+            this.props.deleteTask(id);
+        }
 
-    const onDragStart = (e, id) => {
+        const onDragStart = (e, id) => {
         //e.preventDefault();
         e.dataTransfer.setData("text", id); 
         e.dataTransfer.effectAllowed = "move"; 
-        // console.log(e.target, id)
-    }
-
-    const handleEdit = (e, id) => {
-        editTask(id);
-    }
-
-    const dragoverHandler = e => {
-        e.preventDefault();
-        e.stopPropagation();
-        e.dataTransfer.dropEffect = 'move';
-        if(e.target === null) {return};
-       // if(e.target.tagName !== "LI") {return};
-        if(e.target.className !== "one-task") {return};
-        e.target.closest(".one-task").classList.add("one-task-dragover");
-        // console.log("trzymam ", e.target.className)
-        
-    }
-
-    const dragleaveHandler = e => {
-        e.preventDefault();
-        e.stopPropagation();
-        if(e.target === null) {return};
-        if(e.target.tagName !== "LI") {return};
-        e.target.closest(".one-task").classList.remove("one-task-dragover");
-    }
-
-    const dropHandler = e => {
-        const tasksCopy = tasks
-        // e.preventDefault();
-        // e.stopPropagation();
-        console.log("drop");
-        let MovedTask = e.dataTransfer.getData("text")
-        let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
-        console.log("id: ", MovedTask);
-
-        if( e.target.closest(".one-task") === null) {return};
-        if( e.target.closest(".one-task").tagName !== "LI") {return};
-        e.target.closest(".one-task").classList.remove("one-task-dragover");
-        if( e.target.closest(".one-task").id === MovedTask) { console.log("same id");return};
-        
-
-        const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
-        console.log("DeletedTask ", DeletedTask)
-        let newPlace = e.target.closest(".one-task");
-        console.log("new place: ", newPlace)
-        
-        let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id))
-        console.log("index: ", indexOfNewPlace);
-        if(MovedTaskIndex > indexOfNewPlace) {
-            tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
         }
-        if(MovedTaskIndex <= indexOfNewPlace) {
-            tasksCopy.splice(indexOfNewPlace+1, 0, DeletedTask[0]);
+
+        const dragoverHandler = (e, id) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.dataTransfer.dropEffect = 'move';
+            const newTasks = this.state.tasks.map( task => {
+                if (task.id === id) {
+                    task.moveTaskStyle = true
+                }
+                return task
+            })
+            this.setState( {tasks: newTasks})        
         }
+
+        const dragleaveHandler = (e, id) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // if(e.target === null) {return};
+            // if(e.target.tagName !== "LI") {return};
+            //e.target.closest(".one-task").classList.remove("one-task-dragover");
+            const newTasks = this.state.tasks.map( task => {
+                if (task.id === id) {
+                    task.moveTaskStyle = false
+                }
+                return task
+            })
+            this.setState( {tasks: newTasks})
+        }
+
+        const dropHandler = (e, task) => {
+            const tasksCopy = this.props.tasks
+            let MovedTask = e.dataTransfer.getData("text")
+            let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
+
+            const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
+            let newPlace = task;
+            let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id))
+
+            if(MovedTaskIndex > indexOfNewPlace) {
+                tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+            }
+            if(MovedTaskIndex <= indexOfNewPlace) {
+                tasksCopy.splice(indexOfNewPlace+1, 0, DeletedTask[0]);
+            }
+
+            tasksCopy.map( taskx => {
+                taskx.moveTaskStyle = false
+                return taskx
+            })
+
+            this.setState( {tasks: tasksCopy} )
+            this.props.changeTasksOrder(tasksCopy);
+        }
+
+        const filteringTask = this.props.tasks.filter( task => {    
+            const {filter} = this.props      
+            if (filter.list === "Default" && filter.priority === "All") {
+                return task
+            }
+            if (filter.list !== "Default" && filter.priority === "All") {
+                return task.list === filter.list
+            }
+            if (filter.priority !== "All" && filter.list === "Default") {
+                return task.priority === filter.priority
+            }
+            return task
+        }) 
+
+        const alltasks = filteringTask.map( task => {
+            const showProperty = (property) => {
+                let switchProperty = () => {
+                    if (property === "list") {
+                        if(task.list === "Default") {
+                            task.list = ""
+                        }
+                        return task.list
+                    }
+                    if (property === "priority") {
+                        return task.priority
+                    }
+                    if (property === "date") {
+                        return task.date
+                    }
+                    if (property === "time") {
+                        return task.time
+                    }
+                }
+                if (switchProperty() !== "") {
+                    return property.charAt(0).toUpperCase() + property.slice(1) + ": " + switchProperty() + ", "
+                }
+            }
         
-        console.log("tasks copy ", tasksCopy)
-        // tasksCopy.map(task => {
-        //     task.checked = true;
-        //     return task;
-        // })
-        
-        changeTasksOrder(tasksCopy);
+        return <li className={task.moveTaskStyle ? ("one-task one-task-dragover") : ("one-task") } 
+                    key={task.id} id={task.id} 
+                    style={ task.checked===true || task.edit===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
+                    draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} 
+                    onDragOver={ (e) => {dragoverHandler(e, task.id)} } 
+                    onDragLeave={(e) => {dragleaveHandler(e, task.id)} } 
+                    onDrop={(e) => {dropHandler(e, task)} }>
+                <div className="checkbox-container">
+                    <input type="checkbox" className="checkbox-style" onChange={ () => {handleChangeInput(task.id) } } 
+                            defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } >
+                    </input>
+                    {/* <div className="trash-icon"></div> */}
+                </div> 
+                <div className="task-p-area"  >
+                    <div className="task-p" onClick={() => {this.props.editTask(task.id)}} >
+                        <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } >{task.task}</p>
+                        {/* contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}} */}
+                        
+                        <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
+                    </div>
+                    
+                    <div className={task.edit ? ("edit-task-div visible") : ("edit-task-div hidden")} >
+                        <EditTask task={task}/>
+                    </div>
+                </div>
+                {/* <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li>  */}
+                <div className="delete-task-button" onClick={ () => {handleDeleteTask(task.id)} }></div>
+            </li>
+            
+
+        } );
+
+        return(
+            <div id="task-list-container">
+                <div id="round-button-area">
+                    <button className="add-task-button" onClick={this.props.showAddNewTask}>Add Task</button> 
+                    {/* <button className="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button> */}
+                </div>
+                
+                <div><AddTaskDiv /></div>
+                <div><AddListDiv /></div>
+                <ul id="task-list" >
+                    { alltasks }
+                </ul>
+            </div>
+        )
     }
     
-    return(
-        <div id="task-list-container">
-            <div id="round-button-area">
-                <button className="add-task-button" onClick={showAddNewTask}>Add Task</button> 
-                {/* <button className="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button> */}
-            </div>
-            
-            <div><AddTaskDiv /></div>
-            <div><AddListDiv /></div>
-            <ul id="task-list" onDragOver={dragoverHandler} onDragLeave={dragleaveHandler} onDrop={dropHandler}>
-                { alltasks }
-            </ul>
-        </div>
-    )
 }
-
 
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
@@ -167,7 +185,9 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 const mapDispatchToPost = (dispatch) => {
     return {
         deleteTask: (id) => { dispatch( { type: 'DELETE_TASK', id: id} ) }, 
-        changeStyle: (checked, id) => { dispatch( {type: 'CHANGE_TASK_STYLE', checked: checked, id: id}  ) },
+        //deleteAllTasks: () => { dispatch( {type: 'DELETE_All_TASKS'} ) },
+        changeStyle: (tasks) => { dispatch( {type: 'CHANGE_TASK_STYLE', tasks: tasks}  ) },
+        //changeStyle: (checked, id) => { dispatch( {type: 'CHANGE_TASK_STYLE', checked: checked, id: id}  ) },
         // editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
         editTask: (id) => { dispatch( { type: 'SHOW_EDIT_TASK', id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
