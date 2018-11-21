@@ -23,12 +23,12 @@ body {
 }
 
 #menu, #tasks {
-  min-width: 300px;
   height: auto;
   text-align: center;
 }
 
 #menu {
+  min-width: 300px;
   /* flex grow / shrink, basis */
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -36,22 +36,17 @@ body {
   background-color: #ffc539;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   #menu h4 {
     display: none;
   }
 }
 
 #tasks {
+  min-width: 550px;
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
   padding-bottom: 60px;
-}
-
-#test {
-  width: 500px;
-  height: 700px;
-  background-color: red;
 }
 /*# sourceMappingURL=index.css.map */

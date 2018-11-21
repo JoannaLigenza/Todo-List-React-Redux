@@ -1,3 +1,86 @@
+#round-button-area {
+  width: 52%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  float: right;
+  margin: 10px;
+}
+
+@media screen and (max-width: 850px) {
+  #round-button-area {
+    display: block;
+    width: 90%;
+  }
+}
+
+.add-task-button {
+  width: 50px;
+  height: 50px;
+  background-color: #ffc807;
+  border: 0 solid;
+  border-radius: 50px;
+  outline: none;
+  -webkit-box-shadow: 3px 3px 5px #9c9c9c;
+          box-shadow: 3px 3px 5px #9c9c9c;
+}
+
+.add-task-button:active {
+  -webkit-box-shadow: 1px 1px 5px #9c9c9c;
+          box-shadow: 1px 1px 5px #9c9c9c;
+  -webkit-transform: translateX(1px) translateY(1px);
+          transform: translateX(1px) translateY(1px);
+}
+
+@media screen and (max-width: 850px) {
+  .add-task-button {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+  }
+}
+
+#search-area {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+  #search-area {
+    width: 100%;
+    float: right;
+  }
+}
+
+#search-area #search-input {
+  width: 60%;
+  padding: 6px;
+  outline: none;
+  border: 1px solid #ffc539;
+}
+
+@media screen and (max-width: 850px) {
+  #search-area #search-input {
+    width: 70%;
+  }
+}
+
+#search-area #search-button {
+  width: 30%;
+  padding: 5px;
+}
+
 #task-list, #note-list {
   text-align: left;
   list-style: none;
@@ -29,7 +112,7 @@
   background-color: #ffc539;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .add-task-div-hidden, .add-list-div-hidden {
     top: 0px;
   }
@@ -56,13 +139,13 @@
   z-index: 3;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .add-task-div-visible, .add-list-div-visible {
     top: 0px;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .add-task-div-visible {
     height: 430px;
   }
@@ -109,7 +192,7 @@
   border: 1px solid #ffc539;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .one-task, .one-note {
     margin: 1px auto;
   }
@@ -149,7 +232,7 @@
   outline-color: grey;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .task-p-area {
     width: 60%;
   }
@@ -166,7 +249,7 @@
   font-size: 18px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .task-text {
     padding: 5px 0 0 0;
   }
@@ -179,7 +262,7 @@
   color: grey;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   .task-property {
     margin: 3px 0 5px 0;
     font-size: 12px;
@@ -253,44 +336,6 @@
   outline-color: grey;
 }
 
-#round-button-area {
-  width: 52%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  float: right;
-  margin: 10px;
-}
-
-.add-task-button {
-  width: 50px;
-  height: 50px;
-  background-color: #ffc807;
-  border: 0 solid;
-  border-radius: 50px;
-  outline: none;
-  -webkit-box-shadow: 3px 3px 5px #9c9c9c;
-          box-shadow: 3px 3px 5px #9c9c9c;
-}
-
-.add-task-button:active {
-  -webkit-box-shadow: 1px 1px 5px #9c9c9c;
-          box-shadow: 1px 1px 5px #9c9c9c;
-  -webkit-transform: translateX(1px) translateY(1px);
-          transform: translateX(1px) translateY(1px);
-}
-
-@media screen and (max-width: 500px) {
-  .add-task-button {
-    position: fixed;
-    bottom: 2%;
-    right: 2%;
-  }
-}
-
 #show-all-button, #delete-all-button {
   width: 120px;
   height: 50px;
@@ -317,7 +362,7 @@
           transform: translateX(1px) translateY(1px);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
   #show-all-button, #delete-all-button {
     height: 40px;
     padding: 5px;

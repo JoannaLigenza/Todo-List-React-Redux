@@ -21,13 +21,13 @@ body {
 }
 
 %menu-tasks {
-  min-width: 300px;
   // min-height: 760px;
   height: auto;
   text-align: center;
 }
 
 #menu {
+  min-width: 300px;
   @extend %menu-tasks;
   /* flex grow / shrink, basis */
   flex: 1;  
@@ -35,20 +35,15 @@ body {
 } 
 
 #menu h4 {
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     display: none;
   }
 }
 
 #tasks {
+  min-width: 550px;
   @extend %menu-tasks;
   flex: 3;
   padding-bottom: 60px;
-}
-
-#test {
-  width: 500px;
-  height: 700px;
-  background-color: red;
 }
 

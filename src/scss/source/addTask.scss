@@ -19,7 +19,7 @@
     appearance: none;
     border-radius: 2px;
     background-color: white;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
        margin: 0px;
        height: 50px;
     }
@@ -32,7 +32,7 @@
 
 .add-priority input {
     @extend %add-priority;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         padding: 0 5px;
     }
 }
@@ -73,7 +73,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 //     display: inline-block;
 //     margin: 20px;
 //     border: 1px solid red;
-//     @include mediaQuery(500px) {
+//     @include mediaQuery(850px) {
 //     margin: 2px;
 //   }
 //     }
@@ -130,7 +130,7 @@ input[type="radio"] {
 
 .edit-task-proprty input {
     @extend %add-priority;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         padding: 0 5px;
     }
 }

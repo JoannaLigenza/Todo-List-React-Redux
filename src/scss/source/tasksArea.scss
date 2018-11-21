@@ -1,6 +1,66 @@
 @import '../variables';
 @import './mixin';
 
+
+#round-button-area {
+  width: 52%;
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  margin: 10px;
+  @include mediaQuery(850px) {
+    display: block;
+    width: 90%
+  }
+}
+
+%button-round {
+  width: 50px;
+  height: 50px;
+  background-color: $button-border-color;
+  border: 0 solid;
+  border-radius: 50px;
+  outline: none;
+  box-shadow: 3px 3px 5px $button-shadow-color;
+}
+
+.add-task-button {
+  @extend %button-round;
+  &:active {
+    @include active;
+  }
+  @include mediaQuery(850px) {
+    position: fixed; 
+    bottom: 2%;
+    right: 2%;
+  }
+}
+
+#search-area {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  // justify-content: center;
+  @include mediaQuery(850px) {
+    width: 100%;
+    float: right;
+  }
+  #search-input {
+    width: 60%;
+    padding: 6px;
+    outline: none;
+    border: 1px solid $main-color;
+    @include mediaQuery(850px) {
+      width: 70%;
+    }
+  }
+  #search-button {
+    width: 30%;
+    padding: 5px;
+  }
+}
+
 %task-note-list {
   text-align: left;
   list-style: none;
@@ -37,7 +97,7 @@
   left: 4%;
   transition: height 0.5s ease;
   background-color: $main-color;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     top: 0px;
   }
 }
@@ -67,14 +127,14 @@
   border: 5px double #bbb;
   box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
   z-index: 3;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     top: 0px;
   }
 }
 
 .add-task-div-visible {
     @extend %add-task-list-div-visible;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         height: 430px;
     }
 }
@@ -113,7 +173,7 @@
   align-items: center;
   /* transition: margin 1s ease; */
   border: 1px solid $main-color;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     margin: 1px auto;
   }
 }
@@ -161,7 +221,7 @@
   margin-left: 10px;
   margin-right: 50px;
   outline-color: grey;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     width: 60%;
   }
 }
@@ -180,7 +240,7 @@
 
 .task-text {
   @extend %task;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     padding: 5px 0 0 0;
   }
 }
@@ -191,7 +251,7 @@
   padding: 0;
   font-size: 14px;
   color: grey;
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     margin: 3px 0 5px 0;
     font-size: 12px;
   }
@@ -249,36 +309,6 @@
   outline-color: grey;
 }
 
-#round-button-area {
-  width: 52%;
-  display: flex;
-  justify-content: space-between;
-  float: right;
-  margin: 10px;
-}
-
-%button-round {
-  width: 50px;
-  height: 50px;
-  background-color: $button-border-color;
-  border: 0 solid;
-  border-radius: 50px;
-  outline: none;
-  box-shadow: 3px 3px 5px $button-shadow-color;
-}
-
-.add-task-button {
-  @extend %button-round;
-  &:active {
-    @include active;
-  }
-  @include mediaQuery(500px) {
-    position: fixed; 
-    bottom: 2%;
-    right: 2%;
-  }
-}
-
 %button-menu {
   padding: 10px;
   background-color: $button-color;
@@ -299,7 +329,7 @@
   &:active {
     @include active;
   }
-  @include mediaQuery(500px) {
+  @include mediaQuery(850px) {
     height: 40px;
     padding: 5px;
   }

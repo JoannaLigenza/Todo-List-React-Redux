@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import AddTaskDiv from './AddTaskDiv.js';
 import EditTask from './Edit-task.js';
 import AddListDiv from './AddListDiv.js';
+import Search from './Search.js';
 
 class TaskList extends Component {
-    state = { tasks: this.props.tasks } 
+    state = { tasks: this.props.tasks, searchText: this.props.filter.searchText } 
+
+    // handleSearch = (searchText) => {
+    //         console.log("wcisniety")
+    //         console.log("searchText ", searchText)
+    //         // const searching = this.props.tasks.filter(task => {
+    //             // filtrowanie zadan
+    //         // })
+    //     }
 
     render() {
 
@@ -38,7 +47,7 @@ class TaskList extends Component {
             e.preventDefault();
             e.stopPropagation();
             e.dataTransfer.dropEffect = 'move';
-            const newTasks = this.state.tasks.map( task => {
+            const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = true
                 }
@@ -53,12 +62,13 @@ class TaskList extends Component {
             // if(e.target === null) {return};
             // if(e.target.tagName !== "LI") {return};
             //e.target.closest(".one-task").classList.remove("one-task-dragover");
-            const newTasks = this.state.tasks.map( task => {
+            const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = false
                 }
                 return task
             })
+            // setState render component, so each time dragleaveHandler is performed, state read tasks from store
             this.setState( {tasks: newTasks})
         }
 
@@ -87,7 +97,22 @@ class TaskList extends Component {
             this.props.changeTasksOrder(tasksCopy);
         }
 
-        const filteringTask = this.props.tasks.filter( task => {    
+        const handleSearch = (searchText) => {
+            this.setState( { searchText: searchText} );
+            this.props.search(searchText)
+            console.log("searchText ", searchText)
+        }
+
+        const search = this.props.tasks.filter( task => {
+            if(task.task.includes(this.props.filter.searchText) ) {
+                return task
+            }
+            return null
+        })
+
+        //console.log("search ", this.props.filter.searchText)
+
+        const filteringTask = search.filter( task => {    
             const {filter} = this.props      
             if (filter.list === "Default" && filter.priority === "All") {
                 return task
@@ -98,7 +123,7 @@ class TaskList extends Component {
             if (filter.priority !== "All" && filter.list === "Default") {
                 return task.priority === filter.priority
             }
-            return task
+            return null
         }) 
 
         const alltasks = filteringTask.map( task => {
@@ -125,7 +150,7 @@ class TaskList extends Component {
                 }
             }
         
-        return <li className={task.moveTaskStyle ? ("one-task one-task-dragover") : ("one-task") } 
+            return <li className={task.moveTaskStyle ? ("one-task one-task-dragover") : ("one-task") } 
                     key={task.id} id={task.id} 
                     style={ task.checked===true || task.edit===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
                     draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} 
@@ -161,7 +186,7 @@ class TaskList extends Component {
             <div id="task-list-container">
                 <div id="round-button-area">
                     <button className="add-task-button" onClick={this.props.showAddNewTask}>Add Task</button> 
-                    {/* <button className="show-all-buttton" onClick={ () => {filterTasks("none")} }>Show All</button> */}
+                    <Search handleSearch={handleSearch} defaultValue={this.state.searchText}/>
                 </div>
                 
                 <div><AddTaskDiv /></div>
@@ -192,7 +217,8 @@ const mapDispatchToPost = (dispatch) => {
         editTask: (id) => { dispatch( { type: 'SHOW_EDIT_TASK', id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
-        // filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) }
+        // filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) },
+        search: (searchText) => { dispatch( {type: 'SEARCH', searchText: searchText} ) },
     }
 }
 

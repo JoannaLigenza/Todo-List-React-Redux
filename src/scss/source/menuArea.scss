@@ -38,7 +38,7 @@
 .ovlp-title {
     @extend %ovlp;
     border: 1px solid $ovlp-border-color;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         padding: 5px;
     }
 }
@@ -46,13 +46,13 @@
     @extend %ovlp;
     // box-sizing: border-box;
     border: 3px solid $ovlp-border-color;
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         padding: 5px;
     }
 }
 
 .ovlp-descr-p {
-    @include mediaQuery(500px) {
+    @include mediaQuery(850px) {
         margin: 0 0 10px 0;
     }
 }

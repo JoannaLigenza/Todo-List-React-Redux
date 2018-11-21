@@ -24,17 +24,18 @@ const initState = {
             {note: "Sample note", id: 1},
         ],
     overlaps: [
-            { id: 1, title: "Desktop", description: "", visibility: false, style: {border: "none"} },
-            { id: 2, title: "Tasks", description: "", visibility: false, style: {border: "none"}},
+            { id: 1, title: "Tasks", description: "", visibility: false, style: {border: "none"} },
+            { id: 2, title: "Filter", description: "", visibility: false, style: {border: "none"}},
             { id: 3, title: "Lists", description: "", visibility: false, style: {border: "none"} },
             { id: 4, title: "Notes", description: "", visibility: false, style: {border: "none"} },
         ],
     filter: 
-        {list: "Default", priority: "All"}
+        {list: "Default", priority: "All", searchText: ""}
     
 }
 
 const rootReducer = (state = initState, action) => {
+    console.log("store ", state.filter)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -221,26 +222,33 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'FILTER_TASKS') {
-        //console.log("filterrrrrrrrrr ", state.filter.list)
+        //console.log("store ", state.filter)
        // console.log("checked ", state.filter.checked)
         const filter = ( ()  => {
             if (action.filter === "list") {
-                return  { list: action.value,
+                return  {...state.filter, list: action.value,
                 priority: "All" }
             }
             if (action.filter === "priority") {
-                return { list: "Default",
+                return {...state.filter, list: "Default",
                 priority: action.value }
             }
             if (action.filter === "none") {
-                return { list: "Default",
-                priority: "All" }
+                return {list: "Default",
+                priority: "All", searchText: "" }
             }
         })
         //console.log("state.filter.list ", state.filter.list)
         return {
             ...state, 
             filter: filter()
+        }
+    }
+    if (action.type === 'SEARCH') {
+        // console.log("store ", state.filter)
+        return {
+            ...state,
+            filter: {...state.filter, searchText:  action.searchText}
         }
     }
     if (action.type === 'CHANGE_TASKS_ORDER') {
@@ -251,7 +259,6 @@ const rootReducer = (state = initState, action) => {
             tasks: action.newOrder
         }
     }
-
     return state;
 }
 
