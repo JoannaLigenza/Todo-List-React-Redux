@@ -9,6 +9,7 @@ const initState = {
         {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", priority: "Middle", color: "orange", moveTaskStyle: false},
         ], 
+    taskId: 5,
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
         {list: "Private", id: 2, nameRepeat: false},
@@ -42,6 +43,12 @@ const rootReducer = (state = initState, action) => {
             tasks: [...state.tasks, action.task]
         }
     }  
+    if (action.type === 'ADD_TASK_ID') {
+        return {
+            ...state, 
+            taskId: action.id + 1
+        }
+    }
     if (action.type === 'DELETE_TASK') {
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id

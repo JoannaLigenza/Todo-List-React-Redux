@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddTask extends Component {
-    state = { task: "Add new task", id: 5, list: "Default", date:"", priority: "None", color: "", moveTaskStyle: false }
+    state = { task: "Add new task", id: this.props.taskId, list: "Default", date:"", priority: "None", color: "", moveTaskStyle: false }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
@@ -19,6 +19,8 @@ class AddTask extends Component {
         this.setState( {id: id})
         this.props.addTask(this.state.task, this.state.id, this.state.list, this.state.date, this.state.priority, this.state.color, this.state.moveTaskStyle);
         this.setState( {task: "", date: ""})
+        this.props.addTaskId(this.state.id)
+        console.log("id: ", this.state.id)
     };
     selectChange = (e) => {
         console.log("e.target.value ", e.target.value)
@@ -48,6 +50,7 @@ class AddTask extends Component {
     };
     
     render() {
+        console.log("tasks: ", this.props.tasks)
         const lists = this.props.lists.map( list => {
            return <option className="option" style={{margin: 5+"px"}} key={list.id}> {list.list} </option> 
         });
@@ -102,7 +105,8 @@ class AddTask extends Component {
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
         tasks: state.tasks, 
-        lists: state.lists
+        lists: state.lists,
+        taskId: state.taskId
     }
 }
 
@@ -110,7 +114,8 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 const mapDispatchToPost = (dispatch) => {
     return {
         addTask: (task, id, list, date, priority, color, style) => { dispatch( { type: 'ADD_TASK', task: {task: task, id: id, checked: false, edit: false, list: list, date: date, priority: priority, color: color, moveTaskStyle: style}} ) },
-        hideAddNewTask: () => { dispatch( {type: 'HIDE_ADD_TASK_AREA'} ) }
+        hideAddNewTask: () => { dispatch( {type: 'HIDE_ADD_TASK_AREA'} ) },
+        addTaskId: (id) => { dispatch( {type: 'ADD_TASK_ID', id: id}) }
     }
 }
 
