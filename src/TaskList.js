@@ -100,14 +100,17 @@ class TaskList extends Component {
 
         const filteringTask = search.filter( task => {    
             const {filter} = this.props      
-            if (filter.list === "Default" && filter.priority === "All") {
+            if (filter.list === "Default" && filter.priority === "All" && filter.date === "") {
                 return task
             }
-            if (filter.list !== "Default" && filter.priority === "All") {
+            if (filter.list !== "Default" && filter.priority === "All" && filter.date === "") {
                 return task.list === filter.list
             }
-            if (filter.priority !== "All" && filter.list === "Default") {
+            if (filter.priority !== "All" && filter.list === "Default" && filter.date === "") {
                 return task.priority === filter.priority
+            }
+            if (filter.date !== "" && filter.list === "Default" && filter.priority === "All") {
+                return task.date === filter.date
             }
             return null
         }) 
@@ -122,13 +125,13 @@ class TaskList extends Component {
                         return task.list
                     }
                     if (property === "priority") {
+                        if(task.priority === "None") {
+                            task.priority = ""
+                        }
                         return task.priority
                     }
                     if (property === "date") {
                         return task.date
-                    }
-                    if (property === "time") {
-                        return task.time
                     }
                 }
                 if (switchProperty() !== "") {
@@ -154,7 +157,7 @@ class TaskList extends Component {
                         <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } >{task.task}</p>
                         {/* contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}} */}
                         
-                        <p className="task-property">{showProperty("list")} {showProperty("priority")} {showProperty("date")} {showProperty("time")}</p>
+                        <p className="task-property"> {showProperty("list")} {showProperty("priority")} {showProperty("date")} </p>
                     </div>
                     
                     <div className={task.edit ? ("edit-task-div visible") : ("edit-task-div hidden")} >
@@ -168,7 +171,6 @@ class TaskList extends Component {
 
         } );
 
-        console.log("przed przekazaniem do searcha: ", this.props.filter.searchText)
         return(
             <div id="task-list-container">
                 <div id="round-button-area">
@@ -190,6 +192,7 @@ class TaskList extends Component {
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
         tasks: state.tasks,
+        lists: state.lists,
         filter: state.filter
     }
 }

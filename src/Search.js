@@ -10,17 +10,16 @@ class Search extends Component {
     }
 
     handleSearch = () => {
-       // Promise.all([this.props.search(this.state.search)]).then( () => { this.setState( {search: this.state.search2} ); console.log( "this.state2:  ", this.props.filter.searchText) })
         this.props.search(this.state.search);
     }
 
     render() {
-        console.log("po przekazaniu-1: ", this.props.searchText)
+
         return (
         <div id="search-area">
             <input type="search" id="search-input" onChange={this.handleChange}
             defaultValue={this.props.searchText !== "" ? (this.props.searchText) : ("")} ></input>
-            <button id="search-button" onClick={ () => { this.handleSearch()} }>Search</button>
+            <button id="search-button" onClick={this.handleSearch}>Search</button>
         </div>
     )
     }

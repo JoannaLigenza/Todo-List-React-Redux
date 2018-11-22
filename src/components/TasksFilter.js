@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const TasksFilter = ( {priorities, filterTasks} ) => {
+const TasksFilter = ( {priorities, filter, filterTasks} ) => {
 
     // const listOption = lists.map( list => {
     //     return <option key={list.id} > {list.list} </option>
@@ -10,28 +10,28 @@ const TasksFilter = ( {priorities, filterTasks} ) => {
     const priorityOption = priorities.map( prior => {
          return <div key={prior.id}> <h4>{prior.priority}</h4>
                 <input id={prior.id} type="radio" name="priority" key={prior.id}
-                onClick={ (e) => { filterTasks("priority", prior.priority);}} /> 
+                onClick={ () => { filterTasks("priority", prior.priority);}} /> 
                 <label htmlFor={prior.id}></label></div>
     })
 
+    const handleChange = (e) => {
+        filterTasks("date", e.target.value)
+    }
+
     return(
         <div className="ovlp-descr-select">
-            {/* <div className="choose-list">
-                <p>Choose List</p>
-                <select id="list-filter" onChange={ (e) => {filterTasks("list", e.target.value);}} value={filter.list}>
-                    {listOption}
-                </select>
-            </div> */}
-            <div className="choose-list">
-                <p>Choose Priority</p>
+            <div className="choose-priority">
+                <p>Priority</p>
                 <div id="priority-filter" >
                     {priorityOption}
                 </div>
             </div>
-            {/* <div className="choose-list">
-                <p>Reset Filters</p>
-                <div id="no-filter" onClick={ () => {filterTasks("none")} }>Reset</div>
-            </div> */}
+            <div id="choose-date">
+                <p>Date</p>
+                <div id="date-filter" >
+                    <input type="date" value={filter.date} onChange={handleChange}></input>
+                </div>
+            </div>
         </div>
     )
 }
@@ -39,6 +39,7 @@ const TasksFilter = ( {priorities, filterTasks} ) => {
 const mapStateToProps = (state) => {
     return {
         priorities: state.priorities,
+        filter: state.filter
     }
 }
 

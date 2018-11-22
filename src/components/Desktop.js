@@ -6,8 +6,8 @@ const Desktop = ( {tasks, filterTasks, deleteAllTasks} ) => {
     return(
         <div >
             <div id="desktop-div">
-                <button id="show-all-button" onClick={ () => {filterTasks("none")} }>Show All Tasks</button>
-                <button id="delete-all-button" onClick={ () => {deleteAllTasks()} }>Delete Checked Tasks</button>
+                <button id="show-all-button" onClick={ () => {filterTasks("none")} }>Show All</button>
+                <button id="delete-all-button" onClick={ () => {deleteAllTasks()} }>Delete Finished</button>
             </div>
         </div>
         

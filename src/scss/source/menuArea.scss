@@ -17,6 +17,7 @@
     display: block;
     height: auto;
     opacity: 1;
+    border: 1px solid $ovlp-border-color;
     /* transition: height 0.5s ease; */
 }
 
@@ -44,7 +45,6 @@
 }
 .ovlp-title-active {
     @extend %ovlp;
-    // box-sizing: border-box;
     border: 3px solid $ovlp-border-color;
     @include mediaQuery(850px) {
         padding: 5px;
@@ -111,16 +111,23 @@ input[type="radio"] + label[for="4"] {
     background: url(../img/redPr.png);
 }
 
-// #no-filter {
-//     width: 120px;
-//     height: 30px;
-//     margin: 5px;
-//     background-color: yellow;
-// }
-
-#choose-list{
+#choose-priority{
     width: 100%;
     margin: 0;
+}
+
+#choose-date {
+    width: 100%;
+    margin: 0;
+    #date-filter input {
+        width: 90%;
+    height: 50px;
+    padding: 0 5px;
+    margin: 10px;
+    background-color: white;
+    border: 3px solid $ovlp-border-color;
+    outline: none;
+    }
 }
 
 #add-new-list {

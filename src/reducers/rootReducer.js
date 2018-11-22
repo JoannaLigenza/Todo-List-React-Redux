@@ -4,10 +4,10 @@ const initState = {
     // addEditTaskArea: false,
     // editTask: {},
     tasks: [
-        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", time: "", priority: "Low", color: "yellow", moveTaskStyle: false},
-        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", time: "", priority: "High", color: "red", moveTaskStyle: false}, 
-        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", time: "", priority: "Low", color: "yellow", moveTaskStyle: false}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", time: "", priority: "", moveTaskStyle: false},
+        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", priority: "Low", color: "yellow", moveTaskStyle: false},
+        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", priority: "High", color: "red", moveTaskStyle: false}, 
+        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
+        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", priority: "Middle", color: "orange", moveTaskStyle: false},
         ], 
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
@@ -30,12 +30,12 @@ const initState = {
             { id: 4, title: "Notes", description: "", visibility: false, style: {border: "none"} },
         ],
     filter: 
-        {list: "Default", priority: "All", searchText: ""}
+        {list: "Default", priority: "All", searchText: "", date: ""}
     
 }
 
 const rootReducer = (state = initState, action) => {
-    console.log("store ", state.filter)
+    //console.log("store ", state.filter)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -58,23 +58,6 @@ const rootReducer = (state = initState, action) => {
         return {
             ...state, 
             tasks: newPosts
-        }
-    }
-    if (action.type === 'CHANGE_TASK_STYLE') {
-        let newTask = state.tasks.filter( task => {
-            if (task.id === action.id) {
-                if (action.checked) {
-                    task.checked = true 
-                }
-                if (!action.checked) {
-                    task.checked = false
-                }
-            }
-            return  task
-        })
-        return {
-            ...state, 
-            tasks: newTask
         }
     }
     if (action.type === 'CHANGE_TASK_STYLE') {
@@ -122,12 +105,21 @@ const rootReducer = (state = initState, action) => {
         }
     }  
     if (action.type === 'DELETE_LIST') {
-        let newPosts = state.lists.filter( list => {
+        if (action.list === "Default") {
+            return
+        }
+        let newTasks = state.tasks.map( task => {
+            if(task.list === action.list) {
+                task.list = "Default"
+            }
+            return task
+        })
+        let newLists = state.lists.filter( list => {
                 return list.list !== action.list
         })
         return {
             ...state, 
-            lists: newPosts
+            tasks: newTasks, lists: newLists
         }
     }
     // if (action.type === 'EDIT_LIST') {
@@ -202,7 +194,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'HIDE_ADD_TASK_AREA') {
-        console.log("ukryj")
         return {
             ...state, 
             addTaskArea: false
@@ -215,27 +206,31 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'HIDE_ADD_LIST_AREA') {
-        console.log("ukryj")
         return {
             ...state, 
             addListArea: false
         }
     }
     if (action.type === 'FILTER_TASKS') {
-        //console.log("store ", state.filter)
+       // console.log("store ", state.filter)
+        //console.log("action ", action)
        // console.log("checked ", state.filter.checked)
         const filter = ( ()  => {
             if (action.filter === "list") {
                 return  {...state.filter, list: action.value,
-                priority: "All" }
+                priority: "All", date: "" }
             }
             if (action.filter === "priority") {
                 return {...state.filter, list: "Default",
-                priority: action.value }
+                priority: action.value, date: "" }
+            }
+            if (action.filter === "date") {
+                return {...state.filter, list: "Default",
+                priority: "All", date: action.value }
             }
             if (action.filter === "none") {
                 return {list: "Default",
-                priority: "All", searchText: "" }
+                priority: "All", searchText: "", date: "" }
             }
         })
         //console.log("state.filter.list ", state.filter.list)
@@ -245,7 +240,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'SEARCH') {
-        console.log("store ", action.searchText)
         return {
             ...state,
             filter: {...state.filter, searchText:  action.searchText}

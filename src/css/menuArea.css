@@ -14,6 +14,7 @@
   display: block;
   height: auto;
   opacity: 1;
+  border: 1px solid #fff;
   /* transition: height 0.5s ease; */
 }
 
@@ -116,9 +117,24 @@ input[type="radio"] + label[for="4"] {
   background: url(../img/redPr.png);
 }
 
-#choose-list {
+#choose-priority {
   width: 100%;
   margin: 0;
+}
+
+#choose-date {
+  width: 100%;
+  margin: 0;
+}
+
+#choose-date #date-filter input {
+  width: 90%;
+  height: 50px;
+  padding: 0 5px;
+  margin: 10px;
+  background-color: white;
+  border: 3px solid #fff;
+  outline: none;
 }
 
 #add-new-list {
