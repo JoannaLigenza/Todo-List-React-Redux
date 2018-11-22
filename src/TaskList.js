@@ -6,15 +6,7 @@ import AddListDiv from './AddListDiv.js';
 import Search from './Search.js';
 
 class TaskList extends Component {
-    state = { tasks: this.props.tasks, searchText: this.props.filter.searchText } 
-
-    // handleSearch = (searchText) => {
-    //         console.log("wcisniety")
-    //         console.log("searchText ", searchText)
-    //         // const searching = this.props.tasks.filter(task => {
-    //             // filtrowanie zadan
-    //         // })
-    //     }
+    state = { tasks: this.props.tasks} 
 
     render() {
 
@@ -97,14 +89,8 @@ class TaskList extends Component {
             this.props.changeTasksOrder(tasksCopy);
         }
 
-        const handleSearch = (searchText) => {
-            this.setState( { searchText: searchText} );
-            this.props.search(searchText)
-            console.log("searchText ", searchText)
-        }
-
         const search = this.props.tasks.filter( task => {
-            if(task.task.includes(this.props.filter.searchText) ) {
+            if(task.task.toLocaleLowerCase().includes(this.props.filter.searchText) ) {
                 return task
             }
             return null
@@ -182,11 +168,12 @@ class TaskList extends Component {
 
         } );
 
+        console.log("przed przekazaniem do searcha: ", this.props.filter.searchText)
         return(
             <div id="task-list-container">
                 <div id="round-button-area">
                     <button className="add-task-button" onClick={this.props.showAddNewTask}>Add Task</button> 
-                    <Search handleSearch={handleSearch} defaultValue={this.state.searchText}/>
+                    <Search searchText={this.props.filter.searchText} />
                 </div>
                 
                 <div><AddTaskDiv /></div>
@@ -218,7 +205,7 @@ const mapDispatchToPost = (dispatch) => {
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
         // filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) },
-        search: (searchText) => { dispatch( {type: 'SEARCH', searchText: searchText} ) },
+        //search: (searchText) => { dispatch( {type: 'SEARCH', searchText: searchText} ) },
     }
 }
 

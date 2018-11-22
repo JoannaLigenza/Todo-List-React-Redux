@@ -245,7 +245,7 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'SEARCH') {
-        // console.log("store ", state.filter)
+        console.log("store ", action.searchText)
         return {
             ...state,
             filter: {...state.filter, searchText:  action.searchText}

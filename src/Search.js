@@ -2,49 +2,41 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class Search extends Component {
-    state = { search: "", value: this.props.defaultValue}
+    state = { search: ""}
 
     handleChange = (e) => {
-        this.setState( {search: e.target.value} )
+        const value = e.target.value.toLocaleLowerCase();
+        this.setState( {search: value} )
     }
 
-    defaultValue = () => {
-       // console.log(" this.props.filter.searchText ",  this.props.filter.searchText)
-       // return this.props.filter.searchText
+    handleSearch = () => {
+       // Promise.all([this.props.search(this.state.search)]).then( () => { this.setState( {search: this.state.search2} ); console.log( "this.state2:  ", this.props.filter.searchText) })
+        this.props.search(this.state.search);
     }
-
-    // handleSearch = () => {
-    //     //console.log("this.state.search ", this.state.search)
-    //     return this.state.search
-    // }
 
     render() {
-        
+        console.log("po przekazaniu-1: ", this.props.searchText)
         return (
         <div id="search-area">
-            <input type="search" id="search-input" defaultValue={this.props.filter.searchText} onChange={this.handleChange}></input>
-            <button id="search-button" onClick={ () => {this.props.handleSearch(this.state.search); this.defaultValue()} }>Search</button>
+            <input type="search" id="search-input" onChange={this.handleChange}
+            defaultValue={this.props.searchText !== "" ? (this.props.searchText) : ("")} ></input>
+            <button id="search-button" onClick={ () => { this.handleSearch()} }>Search</button>
         </div>
     )
     }
 }
 
-  
-
-
-
-const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
+const mapStateToProps = (state) => {
     return {
         tasks: state.tasks, 
         filter: state.filter
     }
 }
 
-// const mapDispatchToPost = (dispatch) => {
-//     return { 
-//         filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) },
-//         //deleteAllTasks: () => { dispatch( {type: 'DELETE_All_TASKS'} ) }
-//     }
-// }
+const mapDispatchToPost = (dispatch) => {
+    return { 
+        search: (searchText) => { dispatch( {type: 'SEARCH', searchText: searchText} ) },
+    }
+}
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToPost)(Search);
