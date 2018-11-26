@@ -9,8 +9,26 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer.js';
+import { loadState, saveState } from './localStorage.js';
 
-const store = createStore(rootReducer); 
+// Read from storage
+const persistedState = loadState();
+
+// Create store
+const store = createStore(rootReducer, persistedState); 
+
+// store.subscribe - this is a listener, which saves store in storage every time the state is changed
+store.subscribe( () => {
+    //saveState(store.getState())
+    saveState( {
+         tasks: store.getState().tasks , 
+         taskId: store.getState().taskId , 
+         lists: store.getState().lists , 
+         notes: store.getState().notes ,
+    } );
+})
+
+console.log("store ", store.getState())
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

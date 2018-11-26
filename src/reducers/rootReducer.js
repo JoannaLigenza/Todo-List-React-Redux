@@ -36,6 +36,10 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
+    // this merge state from localStorage and store
+    if (!state.hydrated) {
+        state = { ...initState, ...state, hydrated: true };
+    }
     //console.log("store ", state.filter)
     if (action.type === 'ADD_TASK') {
         return {

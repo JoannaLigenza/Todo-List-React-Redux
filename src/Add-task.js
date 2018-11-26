@@ -50,7 +50,7 @@ class AddTask extends Component {
     };
     
     render() {
-        console.log("tasks: ", this.props.tasks)
+        //console.log("tasks: ", this.props.tasks)
         const lists = this.props.lists.map( list => {
            return <option className="option" style={{margin: 5+"px"}} key={list.id}> {list.list} </option> 
         });
