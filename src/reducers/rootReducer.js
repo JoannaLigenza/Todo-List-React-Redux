@@ -6,7 +6,7 @@ const initState = {
     tasks: [
         {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", priority: "Low", color: "yellow", moveTaskStyle: false},
         {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", priority: "High", color: "red", moveTaskStyle: false}, 
-        {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
+        {task: "task 3", id: 3, checked: false, edit: false, list: "Default", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", priority: "Middle", color: "orange", moveTaskStyle: false},
         ], 
     id: {taskId: 5, listId: 4},
@@ -112,17 +112,21 @@ const rootReducer = (state = initState, action) => {
         }
     }  
     if (action.type === 'DELETE_LIST') {
-        if (action.list === "Default") {
-            return
-        }
+        console.log(" list: ", action.list)
+        // if (action.list === "Default") {
+        //     return null
+        // }
+        let newLists = state.lists.filter( list => {
+            if(action.list === "Default") {
+                return list
+            }
+            return list.list !== action.list
+        })
         let newTasks = state.tasks.map( task => {
             if(task.list === action.list) {
                 task.list = "Default"
             }
             return task
-        })
-        let newLists = state.lists.filter( list => {
-                return list.list !== action.list
         })
         return {
             ...state, 
