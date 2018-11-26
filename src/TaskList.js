@@ -11,23 +11,23 @@ class TaskList extends Component {
     render() {
 
         const handleChangeInput = (id) => {
-            const newTasks = this.state.tasks.map( task => {
+            const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
                     task.checked = !task.checked
                 }
                 return task
             })
-            this.setState( {tasks: newTasks} )
-            this.props.changeStyle(this.state.tasks);
+           // this.setState( {tasks: newTasks} )
+            this.props.changeStyle(newTasks);
         }
 
-        const handleDeleteTask = (id) => {
-            const newTasks = this.props.tasks.filter( task => {
-                return task.id !== id
-            })
-            this.setState( {tasks: newTasks} )
-            this.props.deleteTask(id);
-        }
+        // const handleDeleteTask = (id) => {
+        //     // const newTasks = this.props.tasks.filter( task => {
+        //     //     return task.id !== id
+        //     // })
+        //     // this.setState( {tasks: newTasks} )
+        //     this.props.deleteTask(id);
+        // }
 
         const onDragStart = (e, id) => {
         //e.preventDefault();
@@ -165,7 +165,7 @@ class TaskList extends Component {
                     </div>
                 </div>
                 {/* <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li>  */}
-                <div className="delete-task-button" onClick={ () => {handleDeleteTask(task.id)} }></div>
+                <div className="delete-task-button" onClick={ () => {this.props.deleteTask(task.id)} }></div>
             </li>
             
 
