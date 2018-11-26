@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddList extends Component {
-    state = { list: "Add new list", id: 4 , displayDiv: false, message: "This list already exists"}
+    state = { list: "Add new list", id: this.props.id.listId , displayDiv: false, message: "This list already exists"}
     handleChange = (e) => {
         this.setState( {list: e.target.value} );
     };
@@ -56,7 +56,8 @@ class AddList extends Component {
 
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
-        lists: state.lists
+        lists: state.lists,
+        id: state.id
     }
 }
 

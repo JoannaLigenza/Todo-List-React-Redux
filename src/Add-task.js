@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class AddTask extends Component {
-    state = { task: "Add new task", id: this.props.taskId, list: "Default", date:"", priority: "None", color: "", moveTaskStyle: false }
+    state = { task: "Add new task", id: this.props.id.taskId, list: "Default", date:"", priority: "None", color: "", moveTaskStyle: false }
     handleChange = (e) => {
         this.setState( {task: e.target.value} );
     };
@@ -15,11 +15,12 @@ class AddTask extends Component {
         this.props.hideAddNewTask();
     };
     addTask = (e) => {
+        console.log("id: ", this.props.id.taskId)
         let id = this.state.id+1;
         this.setState( {id: id})
         this.props.addTask(this.state.task, this.state.id, this.state.list, this.state.date, this.state.priority, this.state.color, this.state.moveTaskStyle);
         this.setState( {task: "", date: ""})
-        this.props.addTaskId(this.state.id)
+        //this.props.addTaskId(this.state.id, "taskId")
         console.log("id: ", this.state.id)
     };
     selectChange = (e) => {
@@ -106,7 +107,7 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
     return {
         tasks: state.tasks, 
         lists: state.lists,
-        taskId: state.taskId
+        id: state.id
     }
 }
 
@@ -115,7 +116,7 @@ const mapDispatchToPost = (dispatch) => {
     return {
         addTask: (task, id, list, date, priority, color, style) => { dispatch( { type: 'ADD_TASK', task: {task: task, id: id, checked: false, edit: false, list: list, date: date, priority: priority, color: color, moveTaskStyle: style}} ) },
         hideAddNewTask: () => { dispatch( {type: 'HIDE_ADD_TASK_AREA'} ) },
-        addTaskId: (id) => { dispatch( {type: 'ADD_TASK_ID', id: id}) }
+        //addTaskId: (id, whichId) => { dispatch( {type: 'ADD_TASK_ID', id: id, whichId: whichId}) }
     }
 }
 

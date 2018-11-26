@@ -9,7 +9,7 @@ const initState = {
         {task: "task 3", id: 3, checked: false, edit: false, list: "", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
         {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", priority: "Middle", color: "orange", moveTaskStyle: false},
         ], 
-    taskId: 5,
+    id: {taskId: 5, listId: 4},
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
         {list: "Private", id: 2, nameRepeat: false},
@@ -44,15 +44,10 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
-            tasks: [...state.tasks, action.task]
+            tasks: [...state.tasks, action.task], 
+            id: {...state.id, taskId: state.id.taskId + 1}
         }
     }  
-    if (action.type === 'ADD_TASK_ID') {
-        return {
-            ...state, 
-            taskId: action.id + 1
-        }
-    }
     if (action.type === 'DELETE_TASK') {
         let newPosts = state.tasks.filter( post => {
             return post.id !== action.id
@@ -112,7 +107,8 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'ADD_LIST') {
         return {
             ...state, 
-            lists: [...state.lists, action.list]
+            lists: [...state.lists, action.list], 
+            id: {...state.id, listId: state.id.listId + 1}
         }
     }  
     if (action.type === 'DELETE_LIST') {

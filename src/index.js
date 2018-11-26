@@ -22,7 +22,7 @@ store.subscribe( () => {
     //saveState(store.getState())
     saveState( {
          tasks: store.getState().tasks , 
-         taskId: store.getState().taskId , 
+         id: store.getState().id , 
          lists: store.getState().lists , 
          notes: store.getState().notes ,
     } );
