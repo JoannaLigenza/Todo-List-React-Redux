@@ -21,14 +21,6 @@ class TaskList extends Component {
             this.props.changeStyle(newTasks);
         }
 
-        // const handleDeleteTask = (id) => {
-        //     // const newTasks = this.props.tasks.filter( task => {
-        //     //     return task.id !== id
-        //     // })
-        //     // this.setState( {tasks: newTasks} )
-        //     this.props.deleteTask(id);
-        // }
-
         const onDragStart = (e, id) => {
         //e.preventDefault();
         e.dataTransfer.setData("text", id); 
@@ -39,12 +31,14 @@ class TaskList extends Component {
             e.preventDefault();
             e.stopPropagation();
             e.dataTransfer.dropEffect = 'move';
+            //console.log("over ", id)
             const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = true
                 }
                 return task
             })
+            //setState is made because task.moveTaskStyle is changed every time that state is changing
             this.setState( {tasks: newTasks})        
         }
 
@@ -54,6 +48,7 @@ class TaskList extends Component {
             // if(e.target === null) {return};
             // if(e.target.tagName !== "LI") {return};
             //e.target.closest(".one-task").classList.remove("one-task-dragover");
+            //console.log("leave ", id)
             const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = false
@@ -65,25 +60,33 @@ class TaskList extends Component {
         }
 
         const dropHandler = (e, task) => {
-            const tasksCopy = this.props.tasks
-            let MovedTask = e.dataTransfer.getData("text")
-            let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask))
-
-            const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
+            console.log("drop ", task.id)
+            const tasksCopy = this.props.tasks;
+            let MovedTask = e.dataTransfer.getData("text");
+            let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask));
             let newPlace = task;
-            let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id))
-
-            if(MovedTaskIndex > indexOfNewPlace) {
-                tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
-            }
-            if(MovedTaskIndex <= indexOfNewPlace) {
-                tasksCopy.splice(indexOfNewPlace+1, 0, DeletedTask[0]);
-            }
-
+            let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id));
+            console.log("MovedTaskIndex ", MovedTaskIndex)
+            console.log("indexOfNewPlace ", indexOfNewPlace)
+            
             tasksCopy.map( taskx => {
                 taskx.moveTaskStyle = false
                 return taskx
             })
+            if(MovedTaskIndex === indexOfNewPlace) {
+                console.log("rowne ")
+                this.setState( {tasks: tasksCopy} )
+               return null;
+            }
+
+            const DeletedTask = tasksCopy.splice(MovedTaskIndex, 1);
+
+            if(MovedTaskIndex > indexOfNewPlace) {
+                tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+            }
+            if(MovedTaskIndex < indexOfNewPlace) {
+                tasksCopy.splice(indexOfNewPlace, 0, DeletedTask[0]);
+            }
 
             this.setState( {tasks: tasksCopy} )
             this.props.changeTasksOrder(tasksCopy);
@@ -95,8 +98,6 @@ class TaskList extends Component {
             }
             return null
         })
-
-        //console.log("search ", this.props.filter.searchText)
 
         const filteringTask = search.filter( task => {    
             const {filter} = this.props      
@@ -142,10 +143,11 @@ class TaskList extends Component {
             return <li className={task.moveTaskStyle ? ("one-task one-task-dragover") : ("one-task") } 
                     key={task.id} id={task.id} 
                     style={ task.checked===true || task.edit===true ? ({backgroundColor:"#f6f6f6"}) : (null) }
-                    draggable="true" onDragStart={ (e) => {onDragStart(e, task.id) }} 
-                    onDragOver={ (e) => {dragoverHandler(e, task.id)} } 
-                    onDragLeave={(e) => {dragleaveHandler(e, task.id)} } 
-                    onDrop={(e) => {dropHandler(e, task)} }>
+                    draggable="true" onDragStart={ (e) => {onDragStart(e, task.id)} } 
+                    onDragOver={ (e) => {dragoverHandler(e, task.id) } } 
+                    onDragLeave={(e) => {dragleaveHandler(e, task.id) } } 
+                    onDrop={(e) => {dropHandler(e, task)} }  
+                   >
                 <div className="checkbox-container">
                     <input type="checkbox" className="checkbox-style" onChange={ () => {handleChangeInput(task.id) } } 
                             defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } >
