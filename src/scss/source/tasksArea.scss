@@ -79,6 +79,7 @@
 .button-to-input {
   width: 200px;
   padding: 5px;
+  border: 1px solid $button-shadow-color;
 }
 
 #taskArea {
@@ -117,7 +118,6 @@
 %add-task-list-div-visible {
   display: block;
   width: 90%;
-  height: 450px;
   opacity: 1;
   position: absolute;
   top: 60px;
@@ -133,9 +133,10 @@
 }
 
 .add-task-div-visible {
+    height: 380px;
     @extend %add-task-list-div-visible;
     @include mediaQuery(850px) {
-        height: 430px;
+        height: 360px;
     }
 }
 

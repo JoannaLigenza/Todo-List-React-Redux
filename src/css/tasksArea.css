@@ -91,6 +91,7 @@
 .button-to-input {
   width: 200px;
   padding: 5px;
+  border: 1px solid #9c9c9c;
 }
 
 #taskArea {
@@ -125,7 +126,6 @@
 .add-task-div-visible, .add-list-div-visible {
   display: block;
   width: 90%;
-  height: 450px;
   opacity: 1;
   position: absolute;
   top: 60px;
@@ -145,9 +145,13 @@
   }
 }
 
+.add-task-div-visible {
+  height: 380px;
+}
+
 @media screen and (max-width: 850px) {
   .add-task-div-visible {
-    height: 430px;
+    height: 360px;
   }
 }
 

@@ -71,10 +71,6 @@ class AddTask extends Component {
                         <h4>Date:</h4>
                         <input type="date" value={this.state.date} onChange={this.dateChange}></input>
                     </div>
-                    <div className="add-priority priority-time">
-                        <h4>Time:</h4>
-                        <input type="time" value={this.state.time} onChange={this.timeChange}></input>
-                    </div>
                     <div className="add-priority priority-priority">
                         <h4>Priority:</h4>
                         <select id="priority-select" onChange={this.priorityChange} default="none">

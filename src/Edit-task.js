@@ -67,10 +67,6 @@ class EditTask extends Component {
                         <h4>Date:</h4>
                         <input type="date" defaultValue={this.props.task.date} onChange={this.dateChange}></input>
                     </div>
-                    <div className="edit-task-proprty priority-time">
-                        <h4>Time:</h4>
-                        <input type="time" defaultValue={this.props.task.time} onChange={this.timeChange}></input>
-                    </div>
                     <div className="edit-task-proprty priority-priority">
                         <h4>Priority:</h4>
                         <select label="wybierz" onChange={this.priorityChange} defaultValue={this.props.task.priority}>
