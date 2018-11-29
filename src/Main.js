@@ -15,28 +15,22 @@ class Main extends Component {
     loadOverlap = (id) => {
         const overlap = this.state.overlap.map( ov => {
             if( id === 1) {
-            //console.log("jeden ", id)
             ov =  <div key={1}>
                 <TaskArea />
             </div>
             }
             if( id === 2) {
-            //    console.log("dwa ", id)
              ov = <TaskArea key={2}/>
             }
             if( id === 3) {
-            //    console.log("trzy ", id)
              ov = <TaskArea key={3}/>
             }
             if( id === 4) {
-            //    console.log("cztery ", id)
              ov =<NoteArea key={4}/> 
             }
             return ov 
         })
         this.setState( {overlap: overlap } )
-        // console.log("overlap " ,overlap)
-        // console.log("state: " ,this.state.overlap)
     }
 
     render() {

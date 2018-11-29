@@ -203,6 +203,8 @@
 }
 
 .one-task {
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
   background-image: url("../img/dnd.png");
   background-repeat: no-repeat;
   background-position: right 55px bottom 50%;

@@ -17,7 +17,6 @@ class TaskList extends Component {
                 }
                 return task
             })
-           // this.setState( {tasks: newTasks} )
             this.props.changeStyle(newTasks);
         }
 
@@ -31,8 +30,7 @@ class TaskList extends Component {
             e.preventDefault();
             e.stopPropagation();
             e.dataTransfer.dropEffect = 'move';
-            //console.log("over ", id)
-            const newTasks = this.props.tasks.map( task => {
+            const newTasks = this.state.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = true
                 }
@@ -45,11 +43,7 @@ class TaskList extends Component {
         const dragleaveHandler = (e, id) => {
             e.preventDefault();
             e.stopPropagation();
-            // if(e.target === null) {return};
-            // if(e.target.tagName !== "LI") {return};
-            //e.target.closest(".one-task").classList.remove("one-task-dragover");
-            //console.log("leave ", id)
-            const newTasks = this.props.tasks.map( task => {
+            const newTasks = this.state.tasks.map( task => {
                 if (task.id === id) {
                     task.moveTaskStyle = false
                 }
@@ -60,21 +54,17 @@ class TaskList extends Component {
         }
 
         const dropHandler = (e, task) => {
-            console.log("drop ", task.id)
             const tasksCopy = this.props.tasks;
             let MovedTask = e.dataTransfer.getData("text");
             let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask));
             let newPlace = task;
             let indexOfNewPlace = tasksCopy.findIndex(task => task.id === Number(newPlace.id));
-            console.log("MovedTaskIndex ", MovedTaskIndex)
-            console.log("indexOfNewPlace ", indexOfNewPlace)
             
             tasksCopy.map( taskx => {
                 taskx.moveTaskStyle = false
                 return taskx
             })
             if(MovedTaskIndex === indexOfNewPlace) {
-                console.log("rowne ")
                 this.setState( {tasks: tasksCopy} )
                return null;
             }
@@ -152,12 +142,10 @@ class TaskList extends Component {
                     <input type="checkbox" className="checkbox-style" onChange={ () => {handleChangeInput(task.id) } } 
                             defaultChecked={task.checked} style={ task.color==="" ? ({boxShadow: "none" }) : ({boxShadow: "3px 3px 3px " + task.color }) } >
                     </input>
-                    {/* <div className="trash-icon"></div> */}
                 </div> 
                 <div className="task-p-area"  >
                     <div className="task-p" onClick={() => {this.props.editTask(task.id)}} >
                         <p className="task-text" style={ task.checked===true ? ({textDecoration: "line-through"}) : ({textDecoration: "none"}) } >{task.task}</p>
-                        {/* contentEditable="true" onBlur={ (e) => {editTask(e.target.innerText, task.id)}} */}
                         
                         <p className="task-property"> {showProperty("list")} {showProperty("priority")} {showProperty("date")} </p>
                     </div>
@@ -166,7 +154,6 @@ class TaskList extends Component {
                         <EditTask task={task}/>
                     </div>
                 </div>
-                {/* <button className="delete-task-button" onClick={ () => {deleteTask(task.id)} }>X</button></li>  */}
                 <div className="delete-task-button" onClick={ () => {this.props.deleteTask(task.id)} }></div>
             </li>
             
@@ -202,15 +189,10 @@ const mapStateToProps = (state) => {            // state is form redux store (fr
 const mapDispatchToPost = (dispatch) => {
     return {
         deleteTask: (id) => { dispatch( { type: 'DELETE_TASK', id: id} ) }, 
-        //deleteAllTasks: () => { dispatch( {type: 'DELETE_All_TASKS'} ) },
         changeStyle: (tasks) => { dispatch( {type: 'CHANGE_TASK_STYLE', tasks: tasks}  ) },
-        //changeStyle: (checked, id) => { dispatch( {type: 'CHANGE_TASK_STYLE', checked: checked, id: id}  ) },
-        // editTask: (text, id) => { dispatch( { type: 'EDIT_TASK', task: text, id: id} ) }, 
         editTask: (id) => { dispatch( { type: 'SHOW_EDIT_TASK', id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
-        // filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) },
-        //search: (searchText) => { dispatch( {type: 'SEARCH', searchText: searchText} ) },
     }
 }
 

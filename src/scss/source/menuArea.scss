@@ -10,7 +10,6 @@
     display: block;
     height: 0;
     opacity: 0;
-    /* transition: height 0.s ease; */
 }
 
 .visible {
@@ -18,7 +17,6 @@
     height: auto;
     opacity: 1;
     border: 1px solid $ovlp-border-color;
-    /* transition: height 0.5s ease; */
 }
 
 .hidden * {
@@ -28,7 +26,6 @@
 .visible * {
     display: block;
     opacity: 1;
-    /* border: 1px solid yellow; */
 }
 
 %ovlp {

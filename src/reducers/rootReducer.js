@@ -40,7 +40,6 @@ const rootReducer = (state = initState, action) => {
     if (!state.hydrated) {
         state = { ...initState, ...state, hydrated: true };
     }
-    //console.log("store ", state.filter)
     if (action.type === 'ADD_TASK') {
         return {
             ...state, 
@@ -67,7 +66,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'CHANGE_TASK_STYLE') {
-        //console.log("tasks: ", state.tasks)
         return {
             ...state, 
             tasks: action.tasks
@@ -96,7 +94,6 @@ const rootReducer = (state = initState, action) => {
             if (task.id === action.task.id) {
                task = action.task;
             }
-            //console.log("task ", task)
             return task
         })
         return {
@@ -112,10 +109,6 @@ const rootReducer = (state = initState, action) => {
         }
     }  
     if (action.type === 'DELETE_LIST') {
-        console.log(" list: ", action.list)
-        // if (action.list === "Default") {
-        //     return null
-        // }
         let newLists = state.lists.filter( list => {
             if(action.list === "Default") {
                 return list
@@ -133,19 +126,6 @@ const rootReducer = (state = initState, action) => {
             tasks: newTasks, lists: newLists
         }
     }
-    // if (action.type === 'EDIT_LIST') {
-    //     const newList = state.lists.map( list => {
-    //         if (list.id === action.id) {
-    //            list.list = action.list;
-    //         }
-    //         return list
-    //     })
-    //     return {
-    //         ...state, 
-    //         lists: newList
-    //     }
-    // }
-
     if (action.type === 'ADD_NOTE') {
         return {
             ...state, 
@@ -189,7 +169,6 @@ const rootReducer = (state = initState, action) => {
                 if (overlap.visibility === true) {
                     overlap.visibility = false
                 }
-                // return visible.visibility
             }
             return overlap
         }) 
@@ -223,9 +202,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'FILTER_TASKS') {
-       // console.log("store ", state.filter)
-        //console.log("action ", action)
-       // console.log("checked ", state.filter.checked)
         const filter = ( ()  => {
             if (action.filter === "list") {
                 return  {...state.filter, list: action.value,
@@ -244,7 +220,6 @@ const rootReducer = (state = initState, action) => {
                 priority: "All", searchText: "", date: "" }
             }
         })
-        //console.log("state.filter.list ", state.filter.list)
         return {
             ...state, 
             filter: filter()
@@ -257,8 +232,6 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'CHANGE_TASKS_ORDER') {
-        //console.log("tasks: ", state.tasks)
-        //console.log("action.newOrder: ", action.newOrder)
         return {
             ...state, 
             tasks: action.newOrder

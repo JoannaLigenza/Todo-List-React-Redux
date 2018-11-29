@@ -41,7 +41,7 @@ class AddList extends Component {
         return(
             <div id="add-list-area">
                 <button className="delete-list-button right" onClick={this.props.hideAddNewList}>X</button>
-                <input className="add-list-input" value={this.state.list} onChange={this.handleChange}></input>
+                <input className="add-list-input" placeholder={this.state.list} onChange={this.handleChange}></input>
                 <div >
                     
                     

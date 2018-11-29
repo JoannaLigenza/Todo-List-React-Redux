@@ -4,7 +4,6 @@ export const loadState = () => {
         if (store === null) {
             return undefined;
         }
-       // console.log("bzbz ", JSON.parse([tasksState, taskIdState, listsState, notesState]))
         return JSON.parse(store);
     } catch (err) {
         return undefined;

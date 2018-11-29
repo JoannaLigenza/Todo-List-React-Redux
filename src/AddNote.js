@@ -16,7 +16,7 @@ class AddNote extends Component {
      render() {
         return(
             <div id="add-note">
-                <textarea className="textarea" value={this.state.note} onChange={this.handleChange}></textarea>
+                <textarea className="textarea" placeholder={this.state.note} onChange={this.handleChange}></textarea>
                 <button className="button-to-input" onClick={this.handleClick}>Add Note</button>
             </div>
             

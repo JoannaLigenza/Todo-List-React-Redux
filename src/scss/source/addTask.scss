@@ -59,27 +59,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 3px;
 }
 
-// #priority-select {
-//     width: 97%;
-//     padding: 0 10px;
-//     margin: 10px;
-
-//     ul {
-//     list-style: none;
-//     border: 1px solid yellow;
-//     text-align: left;
-
-//     li {
-//     display: inline-block;
-//     margin: 20px;
-//     border: 1px solid red;
-//     @include mediaQuery(850px) {
-//     margin: 2px;
-//   }
-//     }
-//     }
-
-
 input[type="radio"] {
     width: 20px;
     height: 20px;
@@ -97,7 +76,6 @@ input[type="radio"] {
   outline: none;
 }
 
- /* displayDiv is in add list div */
 .displayDiv {
     display: block;
     margin: 20px;
@@ -106,10 +84,6 @@ input[type="radio"] {
 .notDisplayDiv {
     display: none;
 }
-
-// #edit-task-area {
-//   border: 1px solid red;
-// }
 
 .edit-task-div {
     width: 100%;

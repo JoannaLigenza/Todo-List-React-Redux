@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 const TasksFilter = ( {priorities, filter, filterTasks} ) => {
 
-    // const listOption = lists.map( list => {
-    //     return <option key={list.id} > {list.list} </option>
-    // })
-
     const priorityOption = priorities.map( prior => {
          return <div key={prior.id}> <h4>{prior.priority}</h4>
                 <input id={prior.id} type="radio" name="priority" key={prior.id}

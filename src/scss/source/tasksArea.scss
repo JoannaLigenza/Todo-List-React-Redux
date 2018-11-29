@@ -41,7 +41,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  // justify-content: center;
   @include mediaQuery(850px) {
     width: 100%;
     float: right;
@@ -172,7 +171,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* transition: margin 1s ease; */
   border: 1px solid $main-color;
   @include mediaQuery(850px) {
     margin: 1px auto;
@@ -180,6 +178,7 @@
 }
 
 .one-task {
+  touch-action: pan-y;
     @extend %one-task-one-note;
   background-image: url("../img/dnd.png");
   background-repeat: no-repeat;
@@ -193,8 +192,6 @@
 
 .one-task-dragover * {pointer-events: none;}
 
-/* .one-task * {pointer-events: none;} */
-
 .checkbox-container {
   padding-left: 5px;
 }
@@ -205,17 +202,6 @@
   height: 20px;
   position: relative;
 }
-
-// .checkbox-style:after {
-//   content: "";
-//   background-image: url("../img/trashIcon.png");
-//   width: 25px;
-//   height: 24px;
-//   position: absolute;
-//   left: -3px;
-//   bottom: -28px;
-//   // border: 1px solid red;
-// }
 
 .task-p-area {
   width: 85%;
@@ -236,7 +222,6 @@
   margin-bottom: 0;
   padding: 15px 0 0 0;
   font-size: 18px;
-  
 }
 
 .task-text {
