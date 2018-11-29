@@ -4,12 +4,9 @@ const initState = {
     // addEditTaskArea: false,
     // editTask: {},
     tasks: [
-        {task: "task 1", id: 1, checked: false, edit: false, list: "Default", date: "2018-10-30", priority: "Low", color: "yellow", moveTaskStyle: false},
-        {task: "task 2", id: 2, checked: false, edit: false, list: "Work", date: "2018-11-02", priority: "High", color: "red", moveTaskStyle: false}, 
-        {task: "task 3", id: 3, checked: false, edit: false, list: "Default", date: "2018-10-15", priority: "Low", color: "yellow", moveTaskStyle: false}, 
-        {task: "task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4 task 4 task 4 task 4 task 4 task 4 task 4task 4 task 4", id: 4, checked: false, edit: false, list: "Private", date: "2018-11-02", priority: "Middle", color: "orange", moveTaskStyle: false},
+        {task: "Sample task", id: 1, checked: false, edit: false, list: "Default", date: "", priority: "Low", color: "yellow", moveTaskStyle: false},
         ], 
-    id: {taskId: 5, listId: 4},
+    id: {taskId: 3, listId: 4},
     lists: [
         {list: "Default", id: 1, nameRepeat: false},
         {list: "Private", id: 2, nameRepeat: false},
