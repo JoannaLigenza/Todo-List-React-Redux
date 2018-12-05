@@ -54,6 +54,7 @@ class TaskList extends Component {
         }
 
         const dropHandler = (e, task) => {
+            e.preventDefault();
             const tasksCopy = this.props.tasks;
             let MovedTask = e.dataTransfer.getData("text");
             let MovedTaskIndex = tasksCopy.findIndex(task => task.id === Number(MovedTask));
