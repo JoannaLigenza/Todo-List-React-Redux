@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import EditNote from './Edit-note.js';
 
 const NoteList = ( {notes, deleteNote, editNote} ) => {
     const showNotes = notes.map( (note) => {
         return <li className="one-note" key={note.id}>
-            <p className="note-text" contentEditable="true" onBlur={ (e) => {editNote(e.target.innerText, note.id)} }>{note.note}</p>
-            <div className="delete-note-button" onClick={ () => {deleteNote(note.id)} }></div></li>
+            {/* <p className="note-text" contentEditable="true" onBlur={ (e) => {editNote(e.target.innerText, note.id)} }>{note.note}</p> */}
+            <p className="note-text" >{note.note}</p>
+            <div className="delete-note-button" onClick={ () => {deleteNote(note.id)} }></div>
+            <div className={note.edit ? ("edit-note visible") : ("edit-note hidden")} >
+                <EditNote note={note}/>
+            </div>
+            </li>
     })
     return(
         <div id="notes">

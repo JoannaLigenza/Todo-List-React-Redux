@@ -8,9 +8,9 @@ const initState = {
         ], 
     id: {taskId: 3, listId: 4},
     lists: [
-        {list: "Default", id: 1, nameRepeat: false},
-        {list: "Private", id: 2, nameRepeat: false},
-        {list: "Work", id: 3, nameRepeat: false},
+        {list: "Default", id: 1, nameRepeat: false, color: "default"},
+        {list: "Private", id: 2, nameRepeat: false, color: "default"},
+        {list: "Work", id: 3, nameRepeat: false, color: "default"},
     ],
     priorities: [
         {priority: "All", id: 1},
@@ -23,9 +23,9 @@ const initState = {
         ],
     overlaps: [
             { id: 1, title: "Tasks", description: "", visibility: false, style: {border: "none"} },
-            { id: 2, title: "Filter", description: "", visibility: false, style: {border: "none"}},
-            { id: 3, title: "Lists", description: "", visibility: false, style: {border: "none"} },
-            { id: 4, title: "Notes", description: "", visibility: false, style: {border: "none"} },
+            { id: 2, title: "Date", description: "", visibility: false, style: {border: "none"}},
+            { id: 3, title: "Filter", description: "", visibility: false, style: {border: "none"} },
+            { id: 4, title: "Lists", description: "", visibility: false, style: {border: "none"} },
         ],
     filter: 
         {list: "Default", priority: "All", searchText: "", date: ""}
@@ -153,25 +153,35 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'TOGGLE_VISIBILITY') {
         const visible = state.overlaps.map( overlap => {
             if (overlap.id === action.id) {
-                if (overlap.visibility === action.visibility) {
-                    overlap.visibility = !action.visibility
-                    return overlap
-                }
-                if (overlap.visibility !== action.visibility) {
-                    overlap.visibility = action.visibility
-                    return overlap
-                }
+                overlap.visibility = !overlap.visibility
             }
-            if (overlap.id !== action.id) {
-                if (overlap.visibility === true) {
-                    overlap.visibility = false
-                }
-            }
-            return overlap
+            return overlap;
         }) 
         return {
                 ...state, 
                 overlaps: visible
+            }
+    }
+    if (action.type === 'TOGGLE_COLOR') {
+        const setColor = state.lists.map( list => {
+            if (list.id === action.id) {
+                if (list.color === "default") {
+                    list.color = "color";
+                    return list
+                }
+                else {
+                    list.color = "default"
+                    return list
+                }
+            }
+            if (list.id !== action.id) {
+                list.color = "default"
+            }
+            return list
+        }) 
+        return {
+                ...state, 
+                lists: setColor
             }
     }
     if (action.type === 'SHOW_ADD_TASK_AREA') {
@@ -210,7 +220,7 @@ const rootReducer = (state = initState, action) => {
             }
             if (action.filter === "date") {
                 return {...state.filter, list: "Default",
-                priority: "All", date: action.value }
+                priority: "All", date: [action.value, action.endValue, action.string] }
             }
             if (action.filter === "none") {
                 return {list: "Default",

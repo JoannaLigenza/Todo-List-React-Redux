@@ -8,10 +8,8 @@ class AddNote extends Component {
     }
     handleClick = (e) => {
         e.preventDefault();
-        let id = this.state.id + 1
-        this.setState( {id: id} );
         this.props.addNote(this.state.note, this.state.id);
-        this.setState( {note: ""} )
+        this.setState( {note: "", id: this.state.id + 1} )
     }
      render() {
         return(

@@ -85,7 +85,7 @@ class TaskList extends Component {
 
         const search = this.props.tasks.filter( task => {
             if(task.task.toLocaleLowerCase().includes(this.props.filter.searchText) ) {
-                return task
+                return task;
             }
             return null
         })
@@ -93,16 +93,16 @@ class TaskList extends Component {
         const filteringTask = search.filter( task => {    
             const {filter} = this.props      
             if (filter.list === "Default" && filter.priority === "All" && filter.date === "") {
-                return task
+                return task;
             }
             if (filter.list !== "Default" && filter.priority === "All" && filter.date === "") {
-                return task.list === filter.list
+                return task.list === filter.list;
             }
             if (filter.priority !== "All" && filter.list === "Default" && filter.date === "") {
-                return task.priority === filter.priority
+                return task.priority === filter.priority;
             }
             if (filter.date !== "" && filter.list === "Default" && filter.priority === "All") {
-                return task.date === filter.date
+                return task.date >= filter.date[0] && task.date <= filter.date[1];
             }
             return null
         }) 
