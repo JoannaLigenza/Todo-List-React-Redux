@@ -129,7 +129,9 @@
   opacity: 1;
   position: absolute;
   top: 60px;
-  left: 4%;
+  left: 0;
+  right: 0;
+  margin: auto;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
   background-color: #ffc539;
@@ -192,7 +194,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /* transition: margin 1s ease; */
   border: 1px solid #ffc539;
 }
 
@@ -219,7 +220,6 @@
   pointer-events: none;
 }
 
-/* .one-task * {pointer-events: none;} */
 .checkbox-container {
   padding-left: 5px;
 }

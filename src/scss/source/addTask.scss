@@ -40,23 +40,36 @@
 input[type="date"] {
   outline: none;
   border: 0;
-}
-
-input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
-  font-size: 18px;
-  height: 30px;
-  margin: 6px;
   position: relative;
 }
 
-input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
-  height: 40px;
-  margin: 3px;
+// x button closing date
+input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
+  font-size: 18px;
+  margin: 15px;
+  z-index: 10;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  font-size: 15px;
+// spin button - choose date with up and down buttons
+input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button {
+  height: 40px;
+  width: 20px;
   margin: 3px;
+  z-index: 10;
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+//   font-size: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
 }
 
 input[type="radio"] {

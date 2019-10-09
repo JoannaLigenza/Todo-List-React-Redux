@@ -16,7 +16,7 @@
     display: block;
     height: auto;
     opacity: 1;
-    border: 1px solid $ovlp-border-color;
+    //border: 1px solid $ovlp-border-color;
 }
 
 .hidden * {
@@ -35,14 +35,12 @@
 
 .ovlp-title {
     @extend %ovlp;
-    border: 1px solid $ovlp-border-color;
-    @include mediaQuery(850px) {
+    @include mediaQuery(678px) {
         padding: 5px;
     }
 }
 .ovlp-title-active {
     @extend %ovlp;
-    border: 3px solid $ovlp-border-color;
     @include mediaQuery(850px) {
         padding: 5px;
     }
@@ -62,13 +60,12 @@
     padding: 20px 5px;
 }
 
-.list-filter {
-    width: 95%;
-    height: 50px;
-    padding: 0 5px;
-    margin: 10px;
+.list-filter-item, .date-filter-item {
+    width: 100%;
+    padding: 15px 0;
+    margin: 10px 0;
     background-color: white;
-    border: 3px solid $ovlp-border-color;
+    //border: 3px solid $ovlp-border-color;
     outline: none;
 }
 
@@ -90,6 +87,11 @@ input[type="radio"] + label {
 	content: "";
     width: 40px;
     height: 42px;
+
+    &:active {
+        transform: translateX(1px) translateY(1px);
+
+    }
 }
 
 input[type="radio"] + label[for="1"] {
@@ -116,14 +118,14 @@ input[type="radio"] + label[for="4"] {
 #choose-date {
     width: 100%;
     margin: 0;
-    #date-filter input {
-        width: 90%;
-    height: 50px;
-    padding: 0 5px;
-    margin: 10px;
-    background-color: white;
-    border: 3px solid $ovlp-border-color;
-    outline: none;
+    
+    input[type="date"] {
+        width: 100%;
+        height: 50px;
+        margin: 10px 0;
+        background-color: white;
+       // border: 3px solid $ovlp-border-color;
+        outline: none;
     }
 }
 

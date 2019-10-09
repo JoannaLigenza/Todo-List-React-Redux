@@ -120,7 +120,9 @@
   opacity: 1;
   position: absolute;
   top: 60px;
-  left: 4%;
+  left: 0;
+  right: 0;
+  margin: auto;
   transition: height 0.5s ease;
   background-color: $main-color;
   border: 5px double #bbb;

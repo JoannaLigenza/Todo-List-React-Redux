@@ -12,6 +12,21 @@ body {
   background-color: $background-color;
 }
 
+button {
+  background-color: $main-color;
+  border: 1px solid $main-color;
+  border-radius: 5px;
+  margin: 5px;
+  outline: none;
+  box-shadow: 1px 1px 3px $button-shadow-color;
+
+  &:active {
+    transform: translateX(1px) translateY(1px);
+    box-shadow: 1px 1px 1px $button-shadow-color;
+  }
+  
+}
+
 #root, .App { 
   height: 100%;
 }
@@ -20,8 +35,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  min-height: 100%;
   justify-content: center;
+  @include mediaQuery(678px) {
+    flex-direction: column;
+  }
 }
 
 %menu-tasks {
@@ -30,14 +47,20 @@ body {
 
 #menu {
   min-width: 300px;
-  min-height: 100%;
+  width: 100%;
+  min-height: 100vh;
   @extend %menu-tasks;
   flex: 1;  
   background-color: $main-color;
+  @include mediaQuery(678px) {
+    flex-direction: column;
+    min-height: min-content;
+    min-width: unset;
+  }
 } 
 
 #menu h4 {
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     display: none;
   }
 }
