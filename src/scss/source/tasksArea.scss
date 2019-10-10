@@ -8,7 +8,7 @@
   justify-content: space-between;
   float: right;
   margin: 10px;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     display: block;
     width: 90%
   }
@@ -29,7 +29,7 @@
   &:active {
     @include active;
   }
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     position: fixed; 
     bottom: 2%;
     right: 2%;
@@ -41,7 +41,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     width: 100%;
     float: right;
   }
@@ -50,7 +50,7 @@
     padding: 6px;
     outline: none;
     border: 1px solid $main-color;
-    @include mediaQuery(850px) {
+    @include mediaQuery(678px) {
       width: 70%;
     }
   }
@@ -97,7 +97,7 @@
   left: 4%;
   transition: height 0.5s ease;
   background-color: $main-color;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     top: 0px;
   }
 }
@@ -128,7 +128,7 @@
   border: 5px double #bbb;
   box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
   z-index: 3;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     top: 0px;
   }
 }
@@ -136,7 +136,7 @@
 .add-task-div-visible {
     height: 380px;
     @extend %add-task-list-div-visible;
-    @include mediaQuery(850px) {
+    @include mediaQuery(678px) {
         height: 360px;
     }
 }
@@ -173,8 +173,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid $main-color;
-  @include mediaQuery(850px) {
+  //border: 1px solid $main-color;
+  @include mediaQuery(678px) {
     margin: 1px auto;
   }
 }
@@ -182,14 +182,15 @@
 .one-task {
   touch-action: pan-y;
     @extend %one-task-one-note;
-  background-image: url("../img/dnd.png");
-  background-repeat: no-repeat;
-  background-position: right 55px bottom 50%;
+}
+
+.one-task:after {
+  content: url("../img/dnd.png");
 }
 
 .one-task-dragover {
   background-color: rgba(255,255,255,0.7);
-  border: 2px dashed blue;
+  border-bottom: 2px solid #2272bd;
 }
 
 .one-task-dragover * {pointer-events: none;}
@@ -210,8 +211,8 @@
   margin-left: 10px;
   margin-right: 50px;
   outline-color: grey;
-  @include mediaQuery(850px) {
-    width: 60%;
+  @include mediaQuery(678px) {
+    margin-right: 5px;
   }
 }
 
@@ -228,7 +229,7 @@
 
 .task-text {
   @extend %task;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     padding: 5px 0 0 0;
   }
 }
@@ -236,10 +237,10 @@
 .task-property {
   @extend %task;
   margin: 3px 0 15px 0;
-  padding: 0;
+  padding: 3px 0;
   font-size: 14px;
   color: grey;
-  @include mediaQuery(850px) {
+  @include mediaQuery(678px) {
     margin: 3px 0 5px 0;
     font-size: 12px;
   }
@@ -313,12 +314,14 @@
   height: 50px;
   display: inline-block;
   vertical-align: top;
+  background: transparent; 
   @include button-menu;
   &:active {
     @include active;
   }
-  @include mediaQuery(850px) {
+  @include mediaQuery(320px) {
     height: 40px;
     padding: 5px;
+    margin: 7px 3px;
   }
 }

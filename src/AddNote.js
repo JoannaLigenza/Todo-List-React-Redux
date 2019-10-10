@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class AddNote extends Component {
-    state = { note: "Add some note here", id: 2 }
+    state = { note: "Add some note here", id: this.props.id.noteId }
     handleChange = (e) => {
         this.setState( {note: e.target.value} );
     }
-    handleClick = (e) => {
+    addNote = (e) => {
         e.preventDefault();
-        this.props.addNote(this.state.note, this.state.id);
-        this.setState( {note: "", id: this.state.id + 1} )
+        let id = this.state.id+1;
+        this.props.addNote(this.state.note, id);
+        this.setState( {note: "", id: id} );
+        e.target.firstChild.value= "";
     }
-     render() {
+    render() {
         return(
             <div id="add-note">
-                <textarea className="textarea" placeholder={this.state.note} onChange={this.handleChange}></textarea>
-                <button className="button-to-input" onClick={this.handleClick}>Add Note</button>
+                <form onSubmit={this.addNote}>
+                    <textarea className="textarea" placeholder={this.state.note} onChange={this.handleChange}></textarea>
+                    <button className="button-to-input">Add Note</button>
+                </form>
             </div>
             
         )
@@ -24,7 +28,8 @@ class AddNote extends Component {
 
 const mapStateToProps = (state) => {            // state is form redux store (from imported connect)
     return {
-        notes: state.notes
+        notes: state.notes,
+        id: state.id
     }
 }
 

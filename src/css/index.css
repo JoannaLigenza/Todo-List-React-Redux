@@ -34,15 +34,13 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 750px) {
   #main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -62,10 +60,12 @@ button:active {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: #ffc539;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2272bd), color-stop(34%, #5d6dbd), color-stop(63%, #a72659), to(#784072));
+  background: linear-gradient(to bottom, #2272bd 0%, #5d6dbd 34%, #a72659 63%, #784072 100%);
+  color: white;
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 750px) {
   #menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -78,14 +78,13 @@ button:active {
   }
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 750px) {
   #menu h4 {
     display: none;
   }
 }
 
 #tasks {
-  min-width: 550px;
   height: auto;
   -webkit-box-flex: 3;
       -ms-flex: 3;

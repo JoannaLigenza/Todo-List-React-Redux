@@ -26,6 +26,9 @@ class Main extends Component {
              ov = <TaskArea key={3}/>
             }
             if( id === 4) {
+             ov =<TaskArea key={4}/> 
+            }
+            if( id === 5) {
              ov =<NoteArea key={4}/> 
             }
             return ov 

@@ -14,12 +14,17 @@
 @mixin button-menu {
   padding: 10px;
   margin: 0 10px;
-  background-color: $button-color;
-  border: 0 solid;
   border-radius: 5px;
   outline: none;
-  box-shadow: 3px 3px 5px $button-shadow-color;
+  box-shadow: 2px 2px 2px white;
+  border: 1px solid $button-color;
+  color: $button-color;
   user-select: none;
+  width: 120px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: top;
+  background: transparent; 
 }
 
 @mixin active {

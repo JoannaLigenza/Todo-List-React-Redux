@@ -33,10 +33,9 @@ button {
 
 #main {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-  @include mediaQuery(678px) {
+  @include mediaQuery(750px) {
     flex-direction: column;
   }
 }
@@ -51,8 +50,9 @@ button {
   min-height: 100vh;
   @extend %menu-tasks;
   flex: 1;  
-  background-color: $main-color;
-  @include mediaQuery(678px) {
+  background: $menu-background-gradient;
+  color: white;
+  @include mediaQuery(750px) {
     flex-direction: column;
     min-height: min-content;
     min-width: unset;
@@ -60,13 +60,12 @@ button {
 } 
 
 #menu h4 {
-  @include mediaQuery(678px) {
+  @include mediaQuery(750px) {
     display: none;
   }
 }
 
 #tasks {
-  min-width: 550px;
   height: auto;
   @extend %menu-tasks;
   flex: 3;

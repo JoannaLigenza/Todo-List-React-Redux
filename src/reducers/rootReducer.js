@@ -6,7 +6,7 @@ const initState = {
     tasks: [
         {task: "Sample task", id: 1, checked: false, edit: false, list: "Default", date: "", priority: "Low", color: "yellow", moveTaskStyle: false},
         ], 
-    id: {taskId: 3, listId: 4},
+    id: {taskId: 3, listId: 4, noteId: 2},
     lists: [
         {list: "Default", id: 1, nameRepeat: false, color: "default"},
         {list: "Private", id: 2, nameRepeat: false, color: "default"},
@@ -22,10 +22,11 @@ const initState = {
             {note: "Sample note", id: 1},
         ],
     overlaps: [
-            { id: 1, title: "Tasks", description: "", visibility: false, style: {border: "none"} },
+            { id: 1, title: "Tasks Manage", description: "", visibility: false, style: {border: "none"} },
             { id: 2, title: "Date", description: "", visibility: false, style: {border: "none"}},
-            { id: 3, title: "Filter", description: "", visibility: false, style: {border: "none"} },
+            { id: 3, title: "Priority", description: "", visibility: false, style: {border: "none"} },
             { id: 4, title: "Lists", description: "", visibility: false, style: {border: "none"} },
+            { id: 5, title: "Notes", description: "", visibility: false, style: {border: "none"} },
         ],
     filter: 
         {list: "Default", priority: "All", searchText: "", date: ""}
@@ -126,7 +127,7 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'ADD_NOTE') {
         return {
             ...state, 
-            notes: [...state.notes, action.note]
+            notes: [...state.notes, action.note], id: {...state.id, noteId: state.id.noteId + 1}
         }
     }  
     if (action.type === 'DELETE_NOTE') {
@@ -220,7 +221,7 @@ const rootReducer = (state = initState, action) => {
             }
             if (action.filter === "date") {
                 return {...state.filter, list: "Default",
-                priority: "All", date: [action.value, action.endValue, action.string] }
+                priority: "All", date: [action.value, action.endValue, action.day, action.string] }
             }
             if (action.filter === "none") {
                 return {list: "Default",

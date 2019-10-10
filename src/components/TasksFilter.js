@@ -13,7 +13,6 @@ const TasksFilter = ( {priorities, filterTasks} ) => {
     return(
         <div className="ovlp-descr-select">
             <div className="choose-priority">
-                <p>Priority</p>
                 <div id="priority-filter" >
                     {priorityOption}
                 </div>

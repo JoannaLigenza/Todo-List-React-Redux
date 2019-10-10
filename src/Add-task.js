@@ -13,6 +13,7 @@ class AddTask extends Component {
         }
         this.addTask();
         this.props.hideAddNewTask();
+        e.target.parentElement.children[1].value = "";
     };
     addTask = (e) => {
         let id = this.state.id+1;

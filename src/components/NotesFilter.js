@@ -2,8 +2,7 @@ import React from 'react';
 
 const NotesFilter = () => {
     return(
-        <p >
-        </p>
+        <div></div>
     )
 }
 

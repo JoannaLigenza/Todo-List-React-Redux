@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const ListFilter = ( {lists, filter, toggleColor, filterTasks, showAddNewList, deleteList} ) => {
 
     const listOption = lists.map( list => {
-        return <div key={list.id} className="list-filter-item" style={{backgroundColor: list.color === "default" ? "white" : "red"}}
+        return <div key={list.id} className="list-filter-item" style={{backgroundColor: list.color === "default" ? "rgba(255,255,255, 0.3)" : "rgba(255,255,255, 0.6)"}}
                     onClick={ () => {
                         filterTasks("list", list.list); toggleColor("red", list.id); console.log(list.color);
                     }} > 
@@ -12,18 +12,9 @@ const ListFilter = ( {lists, filter, toggleColor, filterTasks, showAddNewList, d
             </div>
     })
 
-    // const changeListStyle = (e) => {
-    //     //toggleColor("red", )
-    //    // e.target.style.backgroundColor = e.target.style.backgroundColor === "red" ? "white" : "red";
-    // }
-
     return(
         <div className="ovlp-descr-select">
             <div id="choose-list">
-                {/* <p>Choose List</p> */}
-                {/* <select className="list-filter" onChange={ (e) => {filterTasks("list", e.target.value);}} value={filter.list}>
-                    {listOption}
-                </select> */}
                 {listOption}
             </div>
             <div id="add-new-list">

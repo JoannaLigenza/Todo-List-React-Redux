@@ -10,7 +10,7 @@
   margin: 10px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   #round-button-area {
     display: block;
     width: 90%;
@@ -35,7 +35,7 @@
           transform: translateX(1px) translateY(1px);
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .add-task-button {
     position: fixed;
     bottom: 2%;
@@ -56,7 +56,7 @@
           align-items: center;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   #search-area {
     width: 100%;
     float: right;
@@ -70,7 +70,7 @@
   border: 1px solid #ffc539;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   #search-area #search-input {
     width: 70%;
   }
@@ -113,7 +113,7 @@
   background-color: #ffc539;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .add-task-div-hidden, .add-list-div-hidden {
     top: 0px;
   }
@@ -141,7 +141,7 @@
   z-index: 3;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .add-task-div-visible, .add-list-div-visible {
     top: 0px;
   }
@@ -151,7 +151,7 @@
   height: 380px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .add-task-div-visible {
     height: 360px;
   }
@@ -194,10 +194,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #ffc539;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .one-task, .one-note {
     margin: 1px auto;
   }
@@ -206,14 +205,15 @@
 .one-task {
   -ms-touch-action: pan-y;
       touch-action: pan-y;
-  background-image: url("../img/dnd.png");
-  background-repeat: no-repeat;
-  background-position: right 55px bottom 50%;
+}
+
+.one-task:after {
+  content: url("../img/dnd.png");
 }
 
 .one-task-dragover {
   background-color: rgba(255, 255, 255, 0.7);
-  border: 2px dashed blue;
+  border-bottom: 2px solid #2272bd;
 }
 
 .one-task-dragover * {
@@ -238,9 +238,9 @@
   outline-color: grey;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .task-p-area {
-    width: 60%;
+    margin-right: 5px;
   }
 }
 
@@ -255,7 +255,7 @@
   font-size: 18px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .task-text {
     padding: 5px 0 0 0;
   }
@@ -263,12 +263,12 @@
 
 .task-property {
   margin: 3px 0 15px 0;
-  padding: 0;
+  padding: 3px 0;
   font-size: 14px;
   color: grey;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 678px) {
   .task-property {
     margin: 3px 0 5px 0;
     font-size: 12px;
@@ -347,18 +347,24 @@
   height: 50px;
   display: inline-block;
   vertical-align: top;
+  background: transparent;
   padding: 10px;
   margin: 0 10px;
-  background-color: #fff;
-  border: 0 solid;
   border-radius: 5px;
   outline: none;
-  -webkit-box-shadow: 3px 3px 5px #9c9c9c;
-          box-shadow: 3px 3px 5px #9c9c9c;
+  -webkit-box-shadow: 2px 2px 2px white;
+          box-shadow: 2px 2px 2px white;
+  border: 1px solid #fff;
+  color: #fff;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  width: 120px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: top;
+  background: transparent;
 }
 
 #show-all-button:active, #delete-all-button:active {
@@ -368,10 +374,11 @@
           transform: translateX(1px) translateY(1px);
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 320px) {
   #show-all-button, #delete-all-button {
     height: 40px;
     padding: 5px;
+    margin: 7px 3px;
   }
 }
 /*# sourceMappingURL=tasksArea.css.map */

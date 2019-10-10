@@ -9,7 +9,6 @@ class TaskList extends Component {
     state = { tasks: this.props.tasks} 
 
     render() {
-
         const handleChangeInput = (id) => {
             const newTasks = this.props.tasks.map( task => {
                 if (task.id === id) {
@@ -102,7 +101,15 @@ class TaskList extends Component {
                 return task.priority === filter.priority;
             }
             if (filter.date !== "" && filter.list === "Default" && filter.priority === "All") {
-                return task.date >= filter.date[0] && task.date <= filter.date[1];
+                if (filter.date[2] === "expired") {
+                    if (task.date !== "") {
+                        return task.date < filter.date[0];
+                    }
+                } else if (filter.date[2] === "all") {
+                    return task;
+                } else {
+                    return task.date >= filter.date[0] && task.date <= filter.date[1];
+                }
             }
             return null
         }) 
