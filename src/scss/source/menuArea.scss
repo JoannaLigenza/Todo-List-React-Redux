@@ -123,4 +123,9 @@ input[type="radio"] + label[for="4"] {
   &:active {
     @include active;
   }
+  @include mediaQuery(320px) {
+    height: 40px;
+    padding: 5px;
+    margin: 7px 3px;
+  }
 }

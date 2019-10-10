@@ -10,8 +10,9 @@ body {
 }
 
 button {
-  background-color: #ffc539;
-  border: 1px solid #ffc539;
+  background-color: #884681;
+  border: 1px solid #884681;
+  color: #fff;
   border-radius: 5px;
   margin: 5px;
   outline: none;

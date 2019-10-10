@@ -20,7 +20,8 @@
 .add-task-button {
   width: 50px;
   height: 50px;
-  background-color: #ffc807;
+  background-color: #884681;
+  color: #fff;
   border: 0 solid;
   border-radius: 50px;
   outline: none;
@@ -67,7 +68,7 @@
   width: 60%;
   padding: 6px;
   outline: none;
-  border: 1px solid #ffc539;
+  border: 1px solid #884681;
 }
 
 @media screen and (max-width: 678px) {
@@ -110,7 +111,7 @@
   left: 4%;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
-  background-color: #ffc539;
+  background-color: #884681;
 }
 
 @media screen and (max-width: 678px) {
@@ -134,7 +135,7 @@
   margin: auto;
   -webkit-transition: height 0.5s ease;
   transition: height 0.5s ease;
-  background-color: #ffc539;
+  background-color: #884681;
   border: 5px double #bbb;
   -webkit-box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
           box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
@@ -315,7 +316,7 @@
   display: block;
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid #ffc539;
+  border: 1px solid #884681;
   border-radius: 10px;
   outline: none;
   resize: vertical;
@@ -329,7 +330,7 @@
   display: block;
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid #ffc539;
+  border: 1px solid #884681;
   border-radius: 10px;
   outline: none;
   resize: vertical;
@@ -343,11 +344,6 @@
 }
 
 #show-all-button, #delete-all-button {
-  width: 120px;
-  height: 50px;
-  display: inline-block;
-  vertical-align: top;
-  background: transparent;
   padding: 10px;
   margin: 0 10px;
   border-radius: 5px;
@@ -365,6 +361,11 @@
   display: inline-block;
   vertical-align: top;
   background: transparent;
+  background: #884681;
+  -webkit-box-shadow: 2px 2px 2px #9c9c9c;
+          box-shadow: 2px 2px 2px #9c9c9c;
+  border: 1px solid #884681;
+  color: #fff;
 }
 
 #show-all-button:active, #delete-all-button:active {

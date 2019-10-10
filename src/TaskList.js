@@ -180,6 +180,10 @@ class TaskList extends Component {
                 <ul id="task-list" >
                     { alltasks }
                 </ul>
+                <div id="desktop-div">
+                    <button id="show-all-button" onClick={ () => {this.props.filterTasks("none")} }>Show All</button>
+                    <button id="delete-all-button" onClick={ () => {this.props.deleteAllTasks()} }>Delete Finished</button>
+                </div>
             </div>
         )
     }
@@ -201,6 +205,8 @@ const mapDispatchToPost = (dispatch) => {
         editTask: (id) => { dispatch( { type: 'SHOW_EDIT_TASK', id: id} ) }, 
         showAddNewTask: () => { dispatch( {type: 'SHOW_ADD_TASK_AREA'} ) },
         changeTasksOrder: (newOrder) => { dispatch( {type: 'CHANGE_TASKS_ORDER', newOrder: newOrder } ) }, 
+        filterTasks: (filter, value) => { dispatch( {type: 'FILTER_TASKS', filter: filter, value: value} ) },
+        deleteAllTasks: () => { dispatch( {type: 'DELETE_All_TASKS'} ) }
     }
 }
 
