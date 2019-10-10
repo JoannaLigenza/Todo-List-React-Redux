@@ -9,7 +9,6 @@ class EditTask extends Component {
         this.setState( {task: e.target.value} );
     };
     selectChange = (e) => {
-        console.log("e.target.value ", e.target.value)
         this.setState( {list: e.target.value} );
     };
     
@@ -22,7 +21,6 @@ class EditTask extends Component {
     };
 
     priorityChange = (e) => {
-        console.log("e.target.value ", e.target.value)
         let color = "";
         if (e.target.value === "Low") {
             color = "yellow"

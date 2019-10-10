@@ -6,7 +6,7 @@ const ListFilter = ( {lists, filter, toggleColor, filterTasks, showAddNewList, d
     const listOption = lists.map( list => {
         return <div key={list.id} className="list-filter-item" style={{backgroundColor: list.color === "default" ? "rgba(255,255,255, 0.3)" : "rgba(255,255,255, 0.6)"}}
                     onClick={ () => {
-                        filterTasks("list", list.list); toggleColor("red", list.id); console.log(list.color);
+                        filterTasks("list", list.list); toggleColor("red", list.id);
                     }} > 
                 {list.list} 
             </div>

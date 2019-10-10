@@ -39,7 +39,6 @@ class Main extends Component {
 
     toggleMobileMenu = (e) => {
         this.setState({ showMenu: !this.state.showMenu })
-        console.log("klikniety")
     }
 
     render() {
