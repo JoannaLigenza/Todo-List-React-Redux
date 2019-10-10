@@ -53,12 +53,61 @@ button {
   flex: 1;  
   background: $menu-background-gradient;
   color: white;
+  position: relative;
   @include mediaQuery(750px) {
     flex-direction: column;
-    min-height: min-content;
+    min-height: 55px;
     min-width: unset;
   }
 } 
+
+#mobile-menu-button {
+  display: none;
+  @include mediaQuery(750px) {
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px;
+    border: 1px solid $button-color;
+    border-radius: 5px;
+  }
+}
+
+.show-menu {
+  display: block;
+}
+
+.hide-menu {
+  display: block;
+  @include mediaQuery(750px) {
+    display: none;
+  }
+}
+
+.menu-line {
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+}
+
+.menu-X-1 {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+  transform: translateX(6px) translateY(3px) rotate(45deg);
+}
+
+.menu-X-2 {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+  transform: translateX(6px) translateY(-3px) rotate(-45deg);
+}
 
 #menu h4 {
   @include mediaQuery(750px) {

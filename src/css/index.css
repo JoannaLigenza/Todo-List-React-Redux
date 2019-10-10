@@ -64,6 +64,7 @@ button:active {
   background: -webkit-gradient(linear, left top, left bottom, from(#2272bd), color-stop(34%, #5d6dbd), color-stop(63%, #a72659), to(#784072));
   background: linear-gradient(to bottom, #2272bd 0%, #5d6dbd 34%, #a72659 63%, #784072 100%);
   color: white;
+  position: relative;
 }
 
 @media screen and (max-width: 750px) {
@@ -72,11 +73,65 @@ button:active {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    min-height: -webkit-min-content;
-    min-height: -moz-min-content;
-    min-height: min-content;
+    min-height: 55px;
     min-width: unset;
   }
+}
+
+#mobile-menu-button {
+  display: none;
+}
+
+@media screen and (max-width: 750px) {
+  #mobile-menu-button {
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+  }
+}
+
+.show-menu {
+  display: block;
+}
+
+.hide-menu {
+  display: block;
+}
+
+@media screen and (max-width: 750px) {
+  .hide-menu {
+    display: none;
+  }
+}
+
+.menu-line {
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+}
+
+.menu-X-1 {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+  -webkit-transform: translateX(6px) translateY(3px) rotate(45deg);
+          transform: translateX(6px) translateY(3px) rotate(45deg);
+}
+
+.menu-X-2 {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 4px;
+  -webkit-transform: translateX(6px) translateY(-3px) rotate(-45deg);
+          transform: translateX(6px) translateY(-3px) rotate(-45deg);
 }
 
 @media screen and (max-width: 750px) {

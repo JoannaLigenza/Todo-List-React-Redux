@@ -9,7 +9,8 @@ class Main extends Component {
              <div key={0}>
                 <TaskArea />
             </div>
-            ]
+            ],
+        showMenu: false
     }
     
     loadOverlap = (id) => {
@@ -36,11 +37,23 @@ class Main extends Component {
         this.setState( {overlap: overlap } )
     }
 
+    toggleMobileMenu = (e) => {
+        this.setState({ showMenu: !this.state.showMenu })
+        console.log("klikniety")
+    }
+
     render() {
         return (
             <div id="main">
                 <div id="menu">
-                    <Menu loadOverlap={this.loadOverlap} />
+                    <div id="mobile-menu-button" onClick={this.toggleMobileMenu}> 
+                        <div className="menu-line" style={{display: this.state.showMenu ? "none" : "block" }}></div>
+                        <div className="menu-line" style={{display: this.state.showMenu ? "none" : "block" }}></div>
+                        <div className="menu-line" style={{display: this.state.showMenu ? "none" : "block" }}></div>
+                        <div className="menu-X-1" style={{display: this.state.showMenu ? "block" : "none" }}></div>
+                        <div className="menu-X-2" style={{display: this.state.showMenu ? "block" : "none" }}></div>
+                    </div>
+                    <Menu loadOverlap={this.loadOverlap} showMenu={this.state.showMenu}/>
                 </div>
                 <div id="tasks">
                     {this.state.overlap}

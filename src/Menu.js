@@ -8,7 +8,7 @@ class Menu extends Component {
 
     render() {
         return(
-            <div id="menu-container">
+            <div id="menu-container" className={this.props.showMenu ? "show-menu " : "hide-menu " }>
                 <h4>Menu</h4>
                 <AllOverlaps displayOverlap={this.displayOverlap} />
             </div>
