@@ -77,9 +77,13 @@
 }
 
 .button-to-input {
-  width: 200px;
-  padding: 5px;
-  border: 1px solid $button-shadow-color;
+  @include button-menu;
+  &:active {
+    @include active;
+  }
+  // width: 200px;
+  // padding: 5px;
+  // border: 1px solid $button-shadow-color;
 }
 
 #taskArea {
@@ -118,16 +122,18 @@
 %add-task-list-div-visible {
   display: block;
   width: 90%;
+  height: auto;
+  padding-bottom: 20px;
   opacity: 1;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 0;
   right: 0;
   margin: auto;
   transition: height 0.5s ease;
   background-color: $main-color;
-  border: 5px double #bbb;
-  box-shadow: 5px 5px 2px rgba(77, 77, 77, 0.8);
+  border: 5px double #5e3059;
+  box-shadow: 2px 2px 2px rgba(77, 77, 77, 0.8);
   z-index: 3;
   @include mediaQuery(678px) {
     top: 0px;
@@ -135,16 +141,11 @@
 }
 
 .add-task-div-visible {
-    height: 380px;
     @extend %add-task-list-div-visible;
-    @include mediaQuery(678px) {
-        height: 360px;
-    }
 }
 
 .add-list-div-visible {
     @extend %add-task-list-div-visible;
-    height: 200px;
 }
 
 .add-task-area, .add-list-area {
@@ -155,7 +156,7 @@
 
 .right {
   position: absolute;
-  top: -15px;
+  top: -18px;
   right: -19px;
 }
 
@@ -254,6 +255,8 @@
     text-align: center;
     background-color: $button-color;
     border: 2px solid $button-border-color;
+    color: black;
+    font-weight: bold;
     border-radius: 50px;
     outline: none;
     box-shadow: 2px 2px $button-shadow-color;
@@ -310,7 +313,7 @@
   user-select: none;
 }
 
-#show-all-button, #delete-all-button {
+#show-all-button, #delete-all-button, #add-note-button {
   @include button-menu;
   background: $main-color; 
   box-shadow: 2px 2px 2px $button-shadow-color;

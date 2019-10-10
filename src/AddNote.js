@@ -18,7 +18,7 @@ class AddNote extends Component {
             <div id="add-note">
                 <form onSubmit={this.addNote}>
                     <textarea className="textarea" placeholder={this.state.note} onChange={this.handleChange}></textarea>
-                    <button className="button-to-input">Add Note</button>
+                    <button id="add-note-button">Add Note</button>
                 </form>
             </div>
             
