@@ -22,7 +22,7 @@ const initState = {
             {note: "Sample note", id: 1},
         ],
     overlaps: [
-            { id: 1, title: "Tasks Manage", description: "", visibility: false, style: {border: "none"} },
+            { id: 1, title: "Tasks", description: "", visibility: false, style: {border: "none"} },
             { id: 2, title: "Date", description: "", visibility: false, style: {border: "none"}},
             { id: 3, title: "Priority", description: "", visibility: false, style: {border: "none"} },
             { id: 4, title: "Lists", description: "", visibility: false, style: {border: "none"} },
@@ -152,9 +152,15 @@ const rootReducer = (state = initState, action) => {
         }
     }
     if (action.type === 'TOGGLE_VISIBILITY') {
-        const visible = state.overlaps.map( overlap => {
+        const visible = state.overlaps.map( (overlap, index) => {
             if (overlap.id === action.id) {
                 overlap.visibility = !overlap.visibility
+            }
+            if (index === 0 && action.id !== 1) {
+                overlap.visibility = false;
+            }
+            if (index === 4 && action.id !== 5) {
+                overlap.visibility = false;
             }
             return overlap;
         }) 
