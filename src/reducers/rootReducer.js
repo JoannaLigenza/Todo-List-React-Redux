@@ -233,10 +233,14 @@ const rootReducer = (state = initState, action) => {
                 return {list: "Default",
                 priority: "All", searchText: "", date: "" }
             }
+        });
+        const lists = state.lists.map( list => {
+            list.color = "default";
+            return list;
         })
         return {
             ...state, 
-            filter: filter()
+            filter: filter(), lists: lists
         }
     }
     if (action.type === 'SEARCH') {
